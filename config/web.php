@@ -7,11 +7,16 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'pl',
     'sourceLanguage'=>'pl',
-    'language'=>'pl',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\Admin',
+        ],
     ],
     'components' => [
         'request' => [
@@ -23,8 +28,9 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass'     => 'app\models\User',
+            'enableAutoLogin'   => true,
+            'loginUrl'          => ['admin/default/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -47,14 +53,49 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => require(__DIR__.'/_urlManager.php'),
-//        'urlManager' => [
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => false,
-//            'rules' => [
-//                ['pattern'=>'/',            'route'=>'site/index'],
-//                ['pattern'=>'/about',       'route'=>'site/about'],
-//            ],
-//        ],
+        'i18n' => [
+            'translations' => [
+                '*'=> [
+                    'class'                 => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable'    =>'{{%i18n_source_message}}',
+                    'messageTable'          =>'{{%i18n_message}}',
+                    'enableCaching'         => YII_ENV_DEV,
+                    'cachingDuration'       => 3600,
+                ],
+
+            ],
+        ],
+    ],
+    'as globalAccess'=>[
+        'class'=>'\app\components\GlobalAccessBehavior',
+        'rules'=>[
+            [
+                'controllers'=>['admin/default'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/default'],
+                'allow' => true,
+                'roles' => ['?'],
+                'actions'=>['login']
+            ],
+            [
+                'controllers'=>['admin/i18n-source-message'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/i18n-message'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['site'],
+                'allow' => true,
+                'roles' => ['?', '@'],
+            ],
+        ]
     ],
     'params' => $params,
 ];
