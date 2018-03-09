@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#333333ff">
+    <title>TED a car</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="loading-indicator"></div>
+    </div>
+    <main class="cart-page">
+      <div class="header">
+        <div class="header-wraper">
+          <div class="header-inner">
+            <div class="header-nav-wrap">
+              <ul class="header-nav">
+                <li class="header-nav__item"><a class="active header-nav__link" href="index.html"> <span class="none-after">Home</span></a></li>
+                <li class="header-nav__item"><a class="header-nav__link" href="about.html"> <span>About us</span></a></li>
+                <li class="header-nav__item"><a class="header-nav__link" href="#"> <span>Gallery</span></a></li>
+                <li class="header-nav__item"><a class="header-nav__link" href="#"> <span>Special offers</span></a></li>
+                <li class="header-nav__item"><a class="header-nav__link" href="cart.html"> <span>Shoping Cart</span><!--</a></li>
+                <li class="header-nav__item"><a class="header-nav__link" href="#"> <span>Contacts--></span></a></li>
+              </ul>
+              <div class="total-cart"><a class="cart-button" href="#">
+                  <div class="total-cart__cart"><img src="img/cart.png"></div>
+                  <div class="total-cart__total">
+                    <div class="total-price"><span class="cart-amount">100</span></div>
+                    <div class="total-price"><img src="img/dollar.png"></div>
+                  </div></a></div>
+              <div class="header-lang">
+                <div class="header-lang__select lang-pl"><a class="header-lang__link" href="#">
+                    <p>PL</p></a></div><span></span>
+                <div class="header-lang__select lang-en active"><a class="header-lang__link" href="#">
+                    <p>EN</p></a></div>
+              </div>
+              <div class="menu-icon"><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-container-cart">
+        <div class="wrapper">
+          <div class="cart-block">
+            <div class="cart-block__header">
+              <h1>Shopping cart</h1>
+            </div>
+            <div class="cart-block__cart">
+              <div class="column-labels">
+                <label class="product-image"> </label>
+                <label class="product-details"> </label>
+                <label class="product-price">Price</label>
+                <label class="product-quantity">Quantity</label>
+                <label class="product-line-price">Total</label>
+                <label class="product-removal">Remove</label>
+              </div>
+              <div class="product">
+                <div class="product__image"><img src="img/FullSizeRender 2.jpg"></div>
+                <div class="product__details">
+                  <p class="product-description">Ted a Car Joma</p>
+                </div>
+                <div class="product__price">12.99 <span class="currency">$</span></div>
+                <div class="product__quantity">
+                  <button class="minus-btn" type="button" name="button">+</button>
+                  <input type="text" value="1" min="1">
+                  <button class="plus-btn" type="button" name="button">-</button>
+                </div>
+                <div class="product__line-price">12.99 <span class="currency">$</span></div>
+                <div class="product__removal">
+                  <div class="remove-product">
+                    <button class="remove"> </button>
+                  </div>
+                </div>
+              </div>
+              <div class="product">
+                <div class="product__image"><img src="img/FullSizeRender 3.jpg"></div>
+                <div class="product__details">
+                  <p class="product-description">Ted a Car BLV</p>
+                </div>
+                <div class="product__price">45.99 <span class="currency">$</span></div>
+                <div class="product__quantity">
+                  <button class="minus-btn" type="button" name="button">+</button>
+                  <input type="text" value="1" min="1">
+                  <button class="plus-btn" type="button" name="button">-</button>
+                </div>
+                <div class="product__line-price">45.99 <span class="currency">$</span></div>
+                <div class="product__removal">
+                  <div class="remove-product"></div>
+                </div>
+              </div>
+              <div class="totals">
+                <div class="totals-item">90.57 <span class="currency">$</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+  <script src="js/main.js"></script>
+</html>

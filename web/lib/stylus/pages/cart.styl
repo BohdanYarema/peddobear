@@ -1,0 +1,147 @@
+.main-container-cart
+    position: relative
+    display block
+    width 100%
+    height 100vh
+    overflow hidden
+    gradient()
+    
+    +above-h(hz)
+        //height auto
+        //overflow auto
+        
+.cart-block
+    display flex
+    position relative
+    padding 80px 20px 0 20px
+    flex-direction column
+    
+    &__header
+        display flex 
+        width 100%
+        margin-top 53px
+        
+        h1
+            title-40()
+            color #fff
+            text-transform uppercase
+            position relative
+            
+            &:after
+                content ""
+                display block
+                content: "";
+                display: block;
+                position: absolute;
+                top: 70px;
+                width: 100px;
+                height: 4px;
+                background-color: #fff;
+
+    &__cart
+        display block
+        position relative
+        margin-top 50px
+        color #fff
+        regular-16()
+        text-transform uppercase
+
+.column-labels
+    display flex
+    justify-content flex-start
+    flex-direction row
+    margin-bottom 50px
+
+.product-image
+    width 10%
+    
+    
+.product-details
+    width 59%
+    
+
+.product-price
+    width 15%
+    text-align center
+    
+.product-quantity 
+    width 10%
+    text-align center
+               
+.currency
+    regular-20() !important
+    color #999
+    font-weight 600    
+
+.product-removal
+    width 9%
+    text-align center
+
+.product-line-price
+    width 12%
+    text-align center
+    
+.product
+    display flex
+    flex-direction row
+    justify-content flex-start
+    color #fff
+    margin-bottom 15px
+    
+    &__image
+        display block
+        width 10%
+        
+        img
+            width 45px
+
+    &__details
+        width 59%
+        
+        p
+            regular-16()
+        
+    &__price
+        width 15%
+        text-align center
+    &__quantity
+        width 10%
+        text-align center
+        display flex
+        
+        input
+            border none
+            text-align center
+            color #fff
+            background-color transparent
+            cursor text
+            height: 30px
+            width: 30px
+            outline 0
+            -webkit-appearance: none
+            regular-16()
+    
+        button[class*=btn] 
+            width: 30px
+            height: 30px
+            background-color: transparent
+            border: none
+            cursor: pointer
+            color #fff
+            outline 0
+            -webkit-appearance button
+            title-30()
+            color #999
+            text-align center
+            vertical-align center
+            font-weight 500
+            
+            
+            
+    &__line-price
+        width 12%
+        text-align center
+    &__removal
+        width 9%
+        text-align center
+    

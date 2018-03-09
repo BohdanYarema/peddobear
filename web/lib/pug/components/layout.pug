@@ -1,0 +1,27 @@
+block variables
+
+doctype html
+html
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width')
+    meta(name="theme-color" content="#333333ff")
+    title TED a car
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', rel='stylesheet')
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css')
+    link(rel='stylesheet', href='css/style.css')
+
+  body
+        .preloader
+          .loading-indicator
+            
+        main(class=`${pageName}-page`)
+          include header
+          block content
+          include footer
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js')
+  script(src='js/main.js')

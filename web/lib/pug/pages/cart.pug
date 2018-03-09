@@ -1,0 +1,74 @@
+extends ../components/layout.pug
+
+block variables
+
+  - var pageName = 'cart'
+
+block content
+    .main-container-cart
+        .wrapper
+            .cart-block
+                .cart-block__header
+                    h1 Shopping cart
+                .cart-block__cart
+                    .column-labels
+                        label.product-image 
+                        label.product-details 
+                        label.product-price Price
+                        label.product-quantity Quantity
+                        label.product-line-price Total
+                        label.product-removal Remove
+                    .product
+                        .product__image
+                            img(src="img/FullSizeRender 2.jpg")
+                        .product__details
+                            p.product-description Ted a Car Joma
+                        .product__price 12.99 #[span.currency $]
+                        .product__quantity
+                            button.minus-btn(
+                                type="button"
+                                name="button") +
+                            input(
+                                type='text'
+                                value='1'
+                                min='1'
+                                )
+                            button.plus-btn(
+                                type="button"
+                                name="button"
+                                ) -
+                        .product__line-price 12.99 #[span.currency $]
+                        .product__removal
+                            .remove-product
+                                button.remove 
+                    .product
+                        .product__image
+                            img(src="img/FullSizeRender 3.jpg")
+                        .product__details
+                            p.product-description Ted a Car BLV
+                        .product__price 45.99 #[span.currency $]
+                        .product__quantity
+                            button.minus-btn(
+                                type="button"
+                                name="button") +
+                            input(
+                                type='text'
+                                value='1'
+                                min='1'
+                                )
+                            button.plus-btn(
+                                type="button"
+                                name="button"
+                                ) -
+                        .product__line-price 45.99 #[span.currency $]
+                        .product__removal
+                            .remove-product
+                    .totals
+                        .totals-item 90.57 #[span.currency $]
+
+
+
+
+
+
+

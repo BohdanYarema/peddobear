@@ -1,0 +1,277 @@
+.header
+    display block
+    position absolute
+    top 0
+    left 0
+    width 100%
+    background gray
+    z-index 999
+    
+.header-wraper
+    margin 0 auto
+    display block
+    width 90%
+
+.header-inner
+    height 80px
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+            
+.header-nav-wrap
+    display flex
+    align-items center
+    height 100%
+    
+    +below(tb)
+        justify-content space-between
+        width 100%
+        flex-direction row
+                
+.header-nav
+    display flex
+    align-items center
+    height 100%
+        
+    +below(tb)
+        display: none
+        background-color gray
+        position: absolute
+        margin: auto
+        top: 80px
+        left: 0
+        right: 0
+        text-align: center
+        z-index: 2
+        height auto
+    
+    &__item
+        display flex
+        align-items center
+        justify-content center
+        height 100%
+        
+        +below(tb)
+            margin-top 35px
+            
+            &:last-child
+                margin-bottom 75px
+        
+        .active
+            span
+                color orange
+                -webkit-transition: 0.4s ease
+                -moz-transition: 0.4s ease
+                -o-transition: 0.4s ease
+                transition: 0.4s ease
+        
+    &__link
+        display flex
+        justify-content center
+        align-items center
+        height 100%
+        padding-left 11px
+        padding-right 11px
+        
+        span
+            title-18()
+            color #fff
+            text-transform uppercase
+            position relative
+            -webkit-transition: 0.4s ease
+            -moz-transition: 0.4s ease
+            -o-transition: 0.4s ease
+            transition: 0.4s ease
+            
+            +below(de)
+                title-16()
+                color #fff
+            
+            &:after
+                content ""
+                display block
+                background icecream
+                position: absolute
+                left -11px
+                top 0
+                bottom 0
+                margin auto
+                width 1px
+                height 13px
+                
+                +below(tb)
+                    display none
+                    left 0 
+                    right 0
+                
+            &:hover
+                color orange
+                
+                +below(tb)
+                    color #fff
+                
+        .none-after
+            &:after
+                width 0
+                
+.header-lang
+    display flex
+    align-items center
+    height 100%
+    justify-content space-between
+    flex-direction row
+    position relative
+    
+    +below(tb)
+        display none
+        justify-content center
+        position absolute
+        left 0
+        right 0
+        margin auto
+        top 400px
+        z-index 5
+    
+    span
+        content ""
+        display block
+        background icecream
+        position: absolute
+        top 0
+        bottom 0
+        margin auto
+        width 1px
+        height 13px
+        right 30px
+        left 0 
+        right 0
+                
+        
+    .active p
+        color orange
+        
+    &__select
+        display flex
+        margin 0 5px
+        
+    &__link
+        display flex
+        align-items center
+        height 100%
+        
+        p
+            title-18()
+            color #fff
+            text-transform uppercase
+            
+            +below(de)
+                title-16()
+                color #fff
+            
+            &:hover
+                color orange
+                
+                +below(tb)
+                    color #fff
+        
+.total-cart
+    display flex
+    align-items center
+    margin 0 100px
+    height 100%
+    
+    +below(de)
+        margin 0 40px
+        
+    +below(tb)
+        margin 0
+    
+    a
+        display flex
+        flex-direction row
+        justify-content space-between
+        align-items center
+        height 100%
+    
+    &__cart
+    &__total
+        display flex
+        align-items center
+        
+        img
+            height 100%
+    
+    &__total
+        margin-left 10px
+        
+        .total-price
+            span
+                title-18()
+                color icecream
+                padding 0 5px
+                
+                +below(de)
+                    title-16()
+                    color #fff
+                
+    &__cart
+        margin-right 10px
+        position relative
+        
+        &:after
+            content ""
+            display block
+            background icecream
+            right -16px
+            top 0
+            bottom 0
+            margin auto
+            width 1px
+            height 22px
+            position: absolute
+
+.menu-icon 
+    display: none
+    width: 30px
+    height: 20px
+    position: relative
+    cursor: pointer
+    
+    +below(tb)
+        display block
+
+    span 
+        display: block
+        width: 30px
+        height: 4px
+        background-color: #fff
+        position: absolute
+        margin: auto
+        left: 0
+        top: 0
+        bottom: 0
+        
+    &:before 
+    &:after 
+        content: ''
+        display: block
+        height: 4px
+        background-color: #fff
+        position: absolute
+        right: 0
+        
+    &:before 
+        top: 0
+        width: 30px
+        
+    &:after 
+        bottom: 0
+        width: 20px
+        -webkit-transition: 0.3s ease
+        -moz-transition: 0.3s ease
+        -o-transition: 0.3s ease
+        transition: 0.3s ease
+        
+.menu-icon.active:after 
+        width 30px 

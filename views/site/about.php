@@ -1,18 +1,82 @@
 <?php
+use app\widgets\HeaderWidget;
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
-
-$this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'My Yii Application';
 ?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
-</div>
+<main class="about-page">
+    <?php echo HeaderWidget::widget(['model' => null]); ?>
+    <div class="main-container-about">
+        <div class="wrapper">
+            <div class="block-content">
+                <div class="left-part">
+                    <div class="left-part__header">
+                        <h1 class="aboutted">About <span>Ted</h1>
+                    </div>
+                    <div class="left-part__icon-text">
+                        <div class="order-text-row">
+                            <div class="icon-block"><img src="img/icon1.svg"></div>
+                            <div class="text-block">
+                                <p><span>TED A CAR</span> is a universal and premium kind of air aromatization in the form of a stylish accessory that can be used in a car, in the bathroom or in any room.</p>
+                            </div>
+                        </div>
+                        <div class="order-text-row">
+                            <div class="icon-block"><img src="img/icon2.svg"></div>
+                            <div class="text-block">
+                                <p><span>TED A CAR</span> is different from its competitors with it’s fashionable and stylish design, as well as unusual  and original fragrances that will be appreciated by connoisseurs of fashion accessories and style.</p>
+                            </div>
+                        </div>
+                        <div class="order-text-row">
+                            <div class="icon-block"><img src="img/icon3.svg"></div>
+                            <div class="text-block">
+                                <p><span>Persistent and pleasant</span> aromas developed in Europe will quickly help your move unpleasant smells, and also make your surrounding more comfortable to be in and just cheer up!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-part__footer">
+                        <div class="footer-title">
+                            <h2>Now the world smells like your scent!</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-part">
+                    <div class="right-part__header">
+                        <h1 class="aboutted"><span>Ted</span> IS</h1>
+                    </div>
+                    <div class="background-ted"><img src="img/TED EBASOS.svg"></div>
+                    <div class="right-part__icon-text">
+                        <div class="text-icon-column">
+                            <div class="icon-item"><img src="img/icon1.svg"></div>
+                            <div class="text-icon">
+                                <p>External layer becomes multicolored by covering non-toxic and<span>anti-allergic paints</span></p>
+                            </div>
+                        </div>
+                        <div class="text-icon-column">
+                            <div class="icon-item"><img src="img/icon2.svg"></div>
+                            <div class="text-icon">
+                                <p>Due to its specially adapted cellulose, which possesses a conserve function, the fragrance is equally <span>persistent during a month</span></p>
+                            </div>
+                        </div>
+                        <div class="text-icon-column">
+                            <div class="icon-item"><img src="img/icon3.svg"></div>
+                            <div class="text-icon">
+                                <p>
+                                    We use eco friendly cardboard
+                                    only. It is chemically free as
+                                    well as safe for an environment.
+                                    <span> It don't cause any
+                      irritations</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-part__footer">
+                        <h4>Three internal layers are being evenly penetrated with perfume liquid by special machine. Each layer absorbs an ideal amount of fragrance. Finally it brings you luxury fragrance as well as saves your money</h4>
+                    </div><a class="right-part__next-btn" href="#">
+                        <p>NEXT <span class="triangle"></span></p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
