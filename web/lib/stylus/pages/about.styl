@@ -15,12 +15,17 @@
     flex-direction row
     justify-content space-between
     padding 80px 20px 0 20px
+    transition: ease-in-out 0.25s;
 
 .left-part
 .right-part
     display flex
     width 50%
     align-items flex-start
+    padding-top 15px
+    
+    +below(tb)
+        padding-top 0
     
     &__header
         display flex
@@ -29,11 +34,12 @@
         width 100%
         position relative
         
+        
         &:after
             content ""
             display block
             position absolute
-            top 143px
+            top 100px
             width 100px
             height 4px
             background-color #fff
@@ -41,14 +47,13 @@
         h1
             regular-30()
             text-transform uppercase
-            padding-top: 14px;
-            font-size 56px
+            font-size 45px
             color #fff
             
             span
                 title-30()
                 text-transform uppercase
-                font-size 56px
+                font-size 45px
                 color #fff
 
 .right-part
@@ -58,7 +63,6 @@
     &__header
         justify-content flex-end
         height 335px
-        
         
         &:after
             right 0 !important
@@ -72,6 +76,8 @@
         width 100%
         margin-top 40px
         position relative
+        
+        
         
         &:before
             content ""
@@ -100,36 +106,10 @@
             line-height 16px
             padding 15px 0 0 15px
             
+
     &__next-btn
-        display flex
-        justify-content flex-end
-        align-items center
-        margin-top 20px
-        
-        +above-h(hz)
-            margin-bottom 40px
-        
-        p 
-            display flex
-            color #fff !important
-            regular-24()
-            margin 0
-            
-            span
-                width 0
-                height 0
-                border-top 12px solid transparent 
-                border-bottom 12px solid transparent
-                border-left 24px solid #fff
-                margin 2px 0 0 10px
-                animation: mymove 2s infinite;
-                position relative
-                
-            @keyframes mymove {
-                from {left: 0px;}
-                to {left: 20px;}
-            }
-    
+        next-btn()
+
 .text-icon-column
     display flex
     align-items center
@@ -139,6 +119,9 @@
     &:nth-child(2)
         margin 0 50px
         position relative 
+        
+        +below(tb)
+            margin 0 18px
         
         &:after
         &:before
@@ -153,8 +136,14 @@
             bottom 0
             margin auto
             
+            +below(tb)
+                right -7px
+            
         &:before
             left -207px
+            
+            +below(tb)
+                left -150px
         
 .icon-item
     display flex
@@ -193,6 +182,9 @@
         right 60px
         bottom 55px
         background-color #fff
+        
+        +below(tb)
+            right 25px
     
     &__icon-text
         display block
@@ -200,9 +192,15 @@
         flex-direction row
         margin-top 40px
         
+        +below(tb)
+            margin-top 25px
+        
     &__footer
         display flex
         min-width 10px
+        
+        +below(tb)
+            width 300px
         
         .footer-title
             display flex
@@ -236,12 +234,18 @@
     
     &:nth-child(2)
         margin 36px 0
+        
+        +below(tb)
+            margin 10px 0
 
 .icon-block
     display flex
     align-items center
     min-width 100px
     min-height 40px
+    
+    +below(tb)
+        min-width 50px
 
 .text-block
     display flex

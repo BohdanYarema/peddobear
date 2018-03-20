@@ -12,5 +12,10 @@ return [
         ['pattern'=>'/', 'route'=>'site/index'],
         ['pattern'=>'/about', 'route'=>'site/about'],
         ['pattern'=>'/cart', 'route'=>'site/cart'],
-    ]
+    ],
+    // Ignore / Filter route pattern's
+    'ignoreLanguageUrlPatterns' => [
+        '#^admin/#' => '#^admin/#',
+        '#^gii/#' => '#^gii/#',
+    ],
 ];

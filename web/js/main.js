@@ -102,7 +102,7 @@ window.onload = function() {
 };
 
 
-$(".minus-btn").on("click", function() {
+$(".plus-btn").on("click", function() {
     var $button = $(this);
     var oldValue = $button.parent().find("input").val();
     if ($button.text() == "+") {
@@ -113,7 +113,7 @@ $(".minus-btn").on("click", function() {
     $button.parent().find("input").val(newVal);
 });
 
-$(".plus-btn").on("click", function() {
+$(".minus-btn").on("click", function() {
     var $button = $(this);
     var oldValue = $button.parent().find("input").val();
     if (oldValue > 0) {
@@ -122,4 +122,41 @@ $(".plus-btn").on("click", function() {
       newVal = 0;
     }
     $button.parent().find("input").val(newVal);
+});
+
+
+$('[data-slider-logos]').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '[data-slider-logos-text]',
+    centerMode: true,
+    focusOnSelect: true,
+    prevArrow: '[data-slider-logos-prev]',
+    nextArrow: '[data-slider-logos-next]',
+    responsive: [
+    {
+        breakpoint: 1022,
+        settings: {
+            slidesToShow: 3
+        }
+    },
+    {
+        breakpoint: 765,
+        settings: {
+            slidesToShow: 1, 
+            arrows: true,
+            prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+            nextArrow: '<button type="button" class="slick-next">next</button>'
+        }
+    }
+    ]
+});
+
+$('[data-slider-logos-text]').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    asNavFor: '[data-slider-logos]',
+    adaptiveHeight: false,
+    arrows: false
 });

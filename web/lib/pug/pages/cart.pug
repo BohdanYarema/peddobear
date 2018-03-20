@@ -9,7 +9,7 @@ block content
         .wrapper
             .cart-block
                 .cart-block__header
-                    h1 Shopping cart
+                    h1 #[span Shopping] cart
                 .cart-block__cart
                     .column-labels
                         label.product-image 
@@ -22,12 +22,12 @@ block content
                         .product__image
                             img(src="img/FullSizeRender 2.jpg")
                         .product__details
-                            p.product-description Ted a Car Joma
+                            p.product-description #[span.ted-name Ted a Car] Joma
                         .product__price 12.99 #[span.currency $]
                         .product__quantity
                             button.minus-btn(
                                 type="button"
-                                name="button") +
+                                name="button") -
                             input(
                                 type='text'
                                 value='1'
@@ -36,21 +36,21 @@ block content
                             button.plus-btn(
                                 type="button"
                                 name="button"
-                                ) -
+                                ) +
                         .product__line-price 12.99 #[span.currency $]
                         .product__removal
-                            .remove-product
-                                button.remove 
+                            a.remove-product
+                                img.remove-krest(src="img/Krest.svg")
                     .product
                         .product__image
                             img(src="img/FullSizeRender 3.jpg")
                         .product__details
-                            p.product-description Ted a Car BLV
+                            p.product-description #[span.ted-name Ted a Car] BLV
                         .product__price 45.99 #[span.currency $]
                         .product__quantity
                             button.minus-btn(
                                 type="button"
-                                name="button") +
+                                name="button") -
                             input(
                                 type='text'
                                 value='1'
@@ -59,13 +59,58 @@ block content
                             button.plus-btn(
                                 type="button"
                                 name="button"
-                                ) -
+                                ) +
                         .product__line-price 45.99 #[span.currency $]
                         .product__removal
-                            .remove-product
+                            a.remove-product
+                                img.remove-krest(src="img/Krest.svg")
                     .totals
-                        .totals-item 90.57 #[span.currency $]
-
+                        .totals__titles
+                            .titles-wrapper
+                                label.titl
+                                    h4 #[span Delivery] Point
+                                label.titl
+                                    h4 #[span Total] Quantity
+                                label.titl
+                                    h4 #[span Total] Price
+                        .totals__values
+                            .values-wrapp
+                                label.radio-delivery
+                                    .radio-wrapp
+                                        input#qwe(
+                                            type='radio'
+                                            name='dilivery'
+                                            value='poland'
+                                            checked
+                                            )
+                                        input#qwe(
+                                            type='radio'
+                                            name='dilivery'
+                                            value='world'
+                                            )
+                                    .radio-labeles-wrapp
+                                        .radio-labeles-wrapp__label
+                                            p Poland
+                                        .radio-labeles-wrapp__label
+                                            p World
+                                label.common-quantity 4
+                                label.common-price 90.57 #[span.currency $]
+                        .buttons-links
+                            a.cart-prev-btn(href="shop.html")
+                                p #[span.triangle] RETURN TO shop
+                            a.cart-next-btn(href="payment.html")
+                                p CONTINUE #[span.triangle]
+                        .ted-fon
+                            img(src="img/TED EBASOS.svg")
+                .cart-empty
+                    .cart-empty__header
+                        h1 Your cart is empty
+                    .cart-empty__logo
+                        img(src="img/SADTED.png")
+                    .cart-empty__subtext
+                        p But you can fix it
+                    a.cart-empty__btn(href="shop.html")
+                        p Return to shop
 
 
 

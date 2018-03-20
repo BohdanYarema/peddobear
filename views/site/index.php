@@ -16,7 +16,7 @@ $this->title = 'My Yii Application';
         </div>
         <div class="wrapper">
             <div class="main-container__inner">
-                <div class="main-container__content"><img class="main-page__logo" src="img/1.png"><a class="start-button" href="#">Start</a></div>
+                <div class="main-container__content"><img class="main-page__logo" src="img/1.png"><a class="start-button" href="#"><?=Yii::t('frontend', 'test')?></a></div>
             </div>
         </div>
     </div>
