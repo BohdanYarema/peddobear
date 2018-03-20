@@ -1,0 +1,159 @@
+.main-container-payment
+    position: relative
+    display block
+    width 100%
+    min-height 100vh
+    overflow hidden
+    gradient()
+    
+    +above-h(hz)
+        //height auto
+        //overflow auto
+        
+.payment-content
+    display flex
+    position relative
+    padding 80px 20px 0 20px
+    flex-direction column
+    
+    &__header
+        display flex 
+        width 100%
+        margin-top 5px
+        
+        h1
+            title-40()
+            color #fff
+            text-transform uppercase
+            position relative
+            
+            span
+                font-weight 300
+            
+            &:after
+                content ""
+                display block
+                position: absolute;
+                top: 70px;
+                width: 100px;
+                height: 4px;
+                background-color: #fff;
+                
+    &__personal-info
+        display flex
+        position relative
+        flex-direction column
+        align-items center
+        justify-content center
+        
+        .ted-fon-payment
+            position absolute
+            top 0
+            left 0
+            margin-top 100px
+
+        .ted-info
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+            margin-top 30px
+            margin-left 100px
+            position relative    
+                
+        .input-wrapp
+            display flex
+            flex-direction row
+            justify-content space-between
+
+            input
+                width 280px
+                height 35px
+                margin-bottom 15px
+                border 0
+                border-bottom 2px gray solid
+                background-color inherit
+                box-sizing border-box
+                regular-16()
+                color lightgrey
+                transition: ease-in-out 0.25s;
+                padding-left 5px
+                
+                &:focus
+                    outline none
+                    resize none
+                    border-bottom 2px  solid
+                    
+            #zipcode 
+            #city
+                width 130px
+                
+            #zipcode
+                margin-right 20px
+                
+        .ted-info-payment
+            display flex
+            flex-direction row
+            justify-content space-between
+            margin-top 40px
+            position relative
+            
+            &:before
+                content ""
+                display block
+                width 310px
+                height 1px
+                background-color #fff
+                position absolute
+                left -15px
+                right 0
+                margin 0 auto
+                top -15px
+                
+            
+            &__item
+                display flex
+                flex-direction column
+                align-items center
+                
+                &:nth-child(2)
+                    margin 0 20px
+                    
+                
+                .payment-btn
+                    display flex
+                    justify-content center
+                    align-items center
+                    margin-top 10px
+                    
+                label
+                    regular-12()
+                    color #b3b3b3
+                    
+
+                #pay
+                    transform:scale(1.7)
+                    opacity:0.9
+                    cursor:pointer
+                    display block
+                    padding 5px
+                    width 100%
+                    margin 15px
+                    box-sizing border-box
+                    
+                    &:focus
+                        outline none
+                        resize none
+                    
+    .links-btns
+        display flex
+        width 100%
+        justify-content flex-end
+        margin-top 15px
+    
+    .pay-next-btn
+        next-btn()
+    
+    .pay-prev-btn
+        previous-btn()
+        margin-right 58px

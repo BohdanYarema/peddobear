@@ -1,0 +1,19 @@
+extends ../components/layout.pug
+
+block variables
+
+  - var pageName = 'failed'
+
+block content
+    .main-container-failed
+        .wrapper
+            .failed-wrap
+                .failed
+                    .failed__header
+                        h1 thank you!
+                    .failed__logo
+                        img(src="img/MIDDLETED.png")
+                    .failed__subtext
+                        p your payment was <br> proccesed successfully
+                    a.failed__btn(href="gallery.html")
+                        p buy some more ted'#[span s]

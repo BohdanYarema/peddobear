@@ -1,0 +1,236 @@
+.main-container-special
+    position: relative
+    display block
+    width 100%
+    min-height 100vh
+    overflow hidden
+    gradient()
+    
+.special-item
+    padding 80px 20px 0 20px
+
+.special-item-wrap
+    display flex !important
+    flex-direction row
+    justify-content space-between
+    
+    &__description
+        display flex
+        flex-direction column
+        width 350px
+        
+        .special-header
+            display block
+            
+            h1
+                title-40()
+                color #fff
+                text-transform uppercase
+                position relative
+                
+                span
+                    font-weight 300
+                
+                &:after
+                    content ""
+                    display block
+                    position: absolute;
+                    top: 70px;
+                    width: 100px;
+                    height: 4px;
+                    background-color: #fff;
+                
+        .special-text
+            display block
+            margin-top 15px
+
+            p
+                regular-14()
+                color #fff
+                
+    &__price
+        display flex
+        flex-direction column
+        justify-content space-between
+        height 250px
+        align-items center
+        
+        .price-amount
+            display block
+            position relative
+            
+            &:after
+                content ""
+                display block
+                position absolute
+                left 0
+                bottom 20px
+                width 140px
+                height 1px
+                background-color #fff
+            
+            p
+                display block
+                min-width 200px
+                regular-30()
+                color #afe9c6
+                min-width 140px
+                
+                span
+                    color #afe9c6
+                
+        .item-quantity
+            text-align center
+            display flex
+            margin auto
+            font-family Verdana,sans-serif
+
+            input
+                border none
+                text-align center
+                color #fff
+                background-color transparent
+                cursor text
+                height: 30px
+                width: 40px
+                outline 0
+                -webkit-appearance: none
+                regular-16()
+                line-height 40px
+                font-family Verdana,sans-serif
+        
+            button[class*=btn] 
+                width: 30px
+                height: 30px
+                background-color: transparent
+                border: none
+                cursor: pointer
+                outline 0
+                -webkit-appearance button
+                title-20()
+                font-family Verdana,sans-serif
+                color #999
+                text-align center
+                font-weight 500
+                line-height 30px
+                
+        .add-to-cart
+            display flex
+            width 190px
+            height 50px
+            cursor pointer
+            align-items center
+            text-align center
+            justify-content center
+            regular-16()
+            color #A0A0A0FF
+            text-transform uppercase
+            //background-color #494949D4
+            gradient()
+            border none
+            box-sizing border-box
+            
+            &:active
+            &:hover
+            &:focus
+                outline none
+                
+    &__img 
+        display flex
+        width 160px
+        margin-top 35px
+        margin-right 70px
+        
+.slider-btn-wrap
+    display flex !important
+    width 100%
+    justify-content flex-end
+    position relative
+    flex-direction row
+    align-items center
+    margin-top 50px
+    
+.ted-fon-slider
+    position absolute
+    left 0
+    top -70px
+    
+.slider-nav
+    display flex !important
+    width 350px
+    flex-direction row
+    justify-content space-between
+    
+    .img-ted-mini
+        display block
+        width 40px
+        filter url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+        filter gray
+        -webkit-filter grayscale(100%)
+        -webkit-filter grayscale(100%)
+        -moz-filter grayscale(100%)
+        -ms-filter grayscale(100%)
+        -o-filter grayscale(100%)
+        filter url(grayscale.svg) /* Firefox 4+ */
+        filter grayscale(100%)
+        transition filter .3s
+        outline 0 !important
+        cursor pointer
+        
+        &.slick-current
+            filter grayscale(0%)
+            outline 0 !important
+        
+        &:hover
+            filter grayscale(0%)
+            outline 0 !important
+        
+        img
+            width 40px
+        
+    .slick-list
+        padding 0 90px !important
+        outline 0 !important
+
+.btn-left
+.btn-right
+    display flex !important
+    height 50px
+    width 30px
+    gradient()
+    align-items center
+    justify-content center
+    cursor pointer
+    
+    span
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: solid #cecece;
+        border-width: 0 2px 2px 0;
+        outline: 0 !important;
+        transform: rotate(135deg)
+
+.btn-left
+    margin-right 20px
+
+.btn-right
+    margin-left 20px
+
+    span
+        transform: rotate(315deg)
+        margin-right: -4px
+        
+.buttons-links
+    display flex
+    width 100%
+    justify-content flex-end
+    margin-top 40px
+    
+.cart-next-btn
+    next-btn()
+
+.cart-prev-btn
+    previous-btn()
+    margin-right 58px

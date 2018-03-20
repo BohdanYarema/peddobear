@@ -1,0 +1,99 @@
+extends ../components/layout.pug
+
+block variables
+
+  - var pageName = 'payment'
+
+block content
+    .main-container-payment
+        .wrapper
+            .payment-content
+                .payment-content__header
+                    h1 #[span Personal] information
+                .payment-content__personal-info
+                    .ted-fon-payment
+                        img(src="img/TED EBASOS.svg")
+                    .ted-info
+                        .input-wrapp
+                            input#name(
+                                type="input"
+                                name="name"
+                                placeholder="Your Name"
+                                autocomplete="off"
+                                )
+                        .input-wrapp
+                            input#email(
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                autocomplete="off"
+                                )
+                        .input-wrapp
+                            input#phone(
+                                type="text"
+                                name="phone"
+                                placeholder="Phone"
+                                autocomplete="off"
+                                )
+                        .input-wrapp
+                            input#adress(
+                                type="text"
+                                name="adress"
+                                placeholder="Country"
+                                autocomplete="off"
+                                )
+                        .input-wrapp
+                            input#street(
+                                type="text"
+                                name="street"
+                                placeholder="Address"
+                                autocomplete="off"
+                                )
+                        .input-wrapp
+                            input#zipcode(
+                                type="text"
+                                name="zipcode"
+                                placeholder="Zip code"
+                                autocomplete="off"
+                                )
+                            input#city(
+                                type="text"
+                                name="city"
+                                placeholder="City"
+                                autocomplete="off"
+                                )
+                        .ted-info-payment
+                            .ted-info-payment__item
+                                input#pay(
+                                    type="radio"
+                                    name="paytype"
+                                    value="paypal"
+                                    checked
+                                    )
+                                label(for="pay") PayPal
+                                .payment-btn
+                                    img(src="img/PAYPAL.png")
+                            .ted-info-payment__item
+                                input#pay(
+                                    type="radio"
+                                    name="paytype"
+                                    value="payu"
+                                    )
+                                label(for="pay") PayU
+                                .payment-btn
+                                    img(src="img/PAYU.png")
+                            .ted-info-payment__item
+                                input#pay(
+                                    type="radio"
+                                    name="paytype"
+                                    value="applepay"
+                                    )
+                                label(for="pay") Apple Pay
+                                .payment-btn
+                                    img(src="img/APPLEPAY.png")
+                .links-btns
+                    a.pay-prev-btn(href="cart.html")
+                        p #[span.triangle] back
+                    a.pay-next-btn(href="#")
+                        p pay #[span.triangle]
+
