@@ -1,0 +1,67 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "shop_i18n".
+ *
+ * @property int $id
+ * @property int $shop_id
+ * @property string $i18n
+ * @property string $title
+ * @property string $description
+ * @property int $created_at
+ * @property int $updated_at
+ *
+ * @property Shop $shop
+ */
+class ShopI18n extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'shop_i18n';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['shop_id', 'created_at', 'updated_at'], 'integer'],
+            [['description'], 'string'],
+            [['i18n'], 'string', 'max' => 45],
+            [['title'], 'string', 'max' => 1024],
+            [['shop_id'], 'exist', 'skipOnError' => true, 'targetClass' => Shop::className(), 'targetAttribute' => ['shop_id' => 'id']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'shop_id' => 'Shop ID',
+            'i18n' => 'I18n',
+            'title' => 'Title',
+            'description' => 'Description',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getShop()
+    {
+        return $this->hasOne(Shop::className(), ['id' => 'shop_id']);
+    }
+}

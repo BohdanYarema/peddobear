@@ -95,6 +95,11 @@ $config = [
                 'roles' => ['@'],
             ],
             [
+                'controllers'=>['admin/shop'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
                 'controllers'=>['site'],
                 'allow' => true,
                 'roles' => ['?', '@'],
