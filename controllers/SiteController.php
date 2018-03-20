@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Shop;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -91,6 +92,9 @@ class SiteController extends Controller
      */
     public function actionShop()
     {
-        return $this->render('shop');
+        $model = Shop::find()->where(['status' => 1])->all();
+        return $this->render('shop', [
+            'model' => $model
+        ]);
     }
 }
