@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "shop".
@@ -21,6 +23,26 @@ use Yii;
  */
 class Shop extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            'image' => [
+                'class' => 'trntv\filekit\behaviors\UploadBehavior',
+                'attribute' => 'image',
+                'pathAttribute' => 'image_path',
+                'baseUrlAttribute' => 'image_base_url',
+            ],
+        ];
+    }
+
+    /**
+     * @var array
+     */
+    public $i18n;
+    public $image;
+
+
     /**
      * {@inheritdoc}
      */
@@ -39,6 +61,7 @@ class Shop extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['slug'], 'string', 'max' => 32],
             [['image_base_url', 'image_path'], 'string', 'max' => 1024],
+            [['i18n', 'image'], 'safe']
         ];
     }
 
@@ -67,4 +90,45 @@ class Shop extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ShopI18n::className(), ['shop_id' => 'id']);
     }
+
+    public function afterFind()
+    {
+        $this->i18n = ShopI18n::getLocaleData($this->id);
+
+        parent::afterFind();
+    }
+
+    /**
+     * @param bool $insert
+     * @param array $changedAttributes
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        ShopI18n::saveLanguageData($this->id, $this->i18n, $insert);
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLocale()
+    {
+        return $this->hasOne(ShopI18n::className(), ['shop_id' => 'id'])->andWhere([
+            'i18n' => Yii::$app->language
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultTitle()
+    {
+        if(!empty($this->i18n)) {
+            return $this->i18n[Yii::$app->language]['title'];
+        }
+
+        return $this->locale ? $this->locale->title : null;
+    }
+
 }

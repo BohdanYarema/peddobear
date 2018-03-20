@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use app\components\LocaleTrait;
 
 /**
  * This is the model class for table "shop_i18n".
@@ -19,6 +21,26 @@ use Yii;
  */
 class ShopI18n extends \yii\db\ActiveRecord
 {
+    use LocaleTrait;
+
+    /**
+     * @var string
+     */
+    protected static $relationColumnName = 'shop_id';
+
+    /**
+     * @var array
+     */
+    protected static $additionalLocaleDataAttributes = [];
+
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

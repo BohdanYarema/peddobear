@@ -19,6 +19,18 @@ $config = [
         ],
     ],
     'components' => [
+        'fileStorage' => [
+            'class' => '\trntv\filekit\Storage',
+            'baseUrl' => '@web/source',
+            'filesystem' => [
+                'class' => 'app\components\LocalFlysystemBuilder',
+                'path' => '@webroot/source'
+            ],
+            'as log' => [
+                'class' => 'app\components\FileStorageLogBehavior',
+                'component' => 'fileStorage'
+            ]
+        ],
         'assetManager' => [
             'linkAssets' => false,
             'appendTimestamp' => true,
@@ -98,6 +110,11 @@ $config = [
                 'controllers'=>['admin/shop'],
                 'allow' => true,
                 'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['file-storage'],
+                'allow' => true,
+                'roles' => ['?', '@'],
             ],
             [
                 'controllers'=>['site'],

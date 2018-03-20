@@ -12,21 +12,39 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <ul class="nav nav-tabs">
+        <?php foreach (Yii::$app->params['availableLocales'] as $locale => $localeTitle): ?>
+            <li <?php if($locale == Yii::$app->language): ?>class="active"<?php endif;?>><a data-toggle="tab" href="#tab<?=$locale?>"><?=$localeTitle?></a></li>
+        <?php endforeach; ?>
+    </ul>
 
-    <?= $form->field($model, 'image_base_url')->textInput(['maxlength' => true]) ?>
+    <div class="tab-content">
+        <br />
+        <?php foreach (Yii::$app->params['availableLocales'] as $locale => $localeTitle): ?>
+            <div id="tab<?=$locale?>" class="tab-pane fade <?php if($locale == Yii::$app->language): ?>in active<?php endif;?>">
 
-    <?= $form->field($model, 'image_path')->textInput(['maxlength' => true]) ?>
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
+
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
+
+            </div>
+        <?php endforeach; ?>
+    </div>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
     <?= $form->field($model, 'sale')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->checkbox() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?php echo $form->field($model, 'image')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'maxFileSize' => 5000000, // 5 MiB
+        ])
+        ->label($model->getAttributeLabel("image"));
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
