@@ -33,11 +33,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'specail_price')->textInput() ?>
+    <?= $form->field($model, 'special_price')->textInput() ?>
 
     <?= $form->field($model, 'sale')->textInput() ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'status')->dropDownList([
+        '0' => 'Отключен',
+        '1' => 'Активный',
+        '2' => 'Спец предложение'
+    ]); ?>
 
     <?php echo $form->field($model, 'image')->widget(
         \trntv\filekit\widget\Upload::className(),
