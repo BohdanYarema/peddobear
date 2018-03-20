@@ -14,6 +14,7 @@ use yii\behaviors\SluggableBehavior;
  * @property string $image_base_url
  * @property string $image_path
  * @property double $price
+ * @property double $special_price
  * @property double $sale
  * @property int $status
  * @property int $created_at
@@ -57,7 +58,7 @@ class Shop extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'sale'], 'number'],
+            [['price', 'sale', 'special_price'], 'number'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['slug'], 'string', 'max' => 32],
             [['image_base_url', 'image_path'], 'string', 'max' => 1024],
@@ -76,6 +77,7 @@ class Shop extends \yii\db\ActiveRecord
             'image_base_url' => 'Image Base Url',
             'image_path' => 'Image Path',
             'price' => 'Price',
+            'special_price' => 'Special Price',
             'sale' => 'Sale',
             'status' => 'Status',
             'created_at' => 'Created At',

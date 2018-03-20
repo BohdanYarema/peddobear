@@ -33,6 +33,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
+    <?= $form->field($model, 'specail_price')->textInput() ?>
+
     <?= $form->field($model, 'sale')->textInput() ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
