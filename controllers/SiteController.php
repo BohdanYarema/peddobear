@@ -97,4 +97,17 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    /**
+     * Displays cartpage.
+     *
+     * @return string
+     */
+    public function actionSpecials()
+    {
+        $model = Shop::find()->where(['status' => 2])->all();
+        return $this->render('specials', [
+            'model' => $model
+        ]);
+    }
 }
