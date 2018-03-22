@@ -6,10 +6,12 @@ $('*[data-menu='+classname+']').addClass("active");
 
 $(document).on("click", ".add", function() {
     addToCart($(this).data('id'), $(this).data('count'));
+    getCart();
 });
 
 $(document).on("click", ".delete", function() {
     deleteFromCart($(this).data('id'));
+    getCart();
 });
 
 function addToCart(id, count) {
@@ -34,5 +36,16 @@ function deleteFromCart(id) {
         data
     ).done(function( response ) {
         console.log(response);
+    });
+}
+
+function getCart() {
+    var data = {};
+    data[param]     = token;
+    $.post(
+        "site/get",
+        data
+    ).done(function( response ) {
+        $(".price").append( response );
     });
 }

@@ -154,4 +154,20 @@ class SiteController extends Controller
             print_r($model->getCookie());
         }
     }
+
+
+    /**
+     * Displays addpage.
+     *
+     * @return string
+     */
+    public function actionGet()
+    {
+        if (Yii::$app->request->isAjax){
+            \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
+
+            $model = new CartModel();
+            return $model->getCookie();
+        }
+    }
 }
