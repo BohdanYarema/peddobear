@@ -138,4 +138,20 @@ class SiteController extends Controller
             print_r($model->getCookie());
         }
     }
+
+    /**
+     * Displays addpage.
+     *
+     * @return string
+     */
+    public function actionDelete()
+    {
+        if (Yii::$app->request->isAjax){
+            \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
+
+            $model = new CartModel();
+            $model->deleteFormCart(Yii::$app->request->post('id'));
+            print_r($model->getCookie());
+        }
+    }
 }

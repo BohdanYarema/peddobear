@@ -8,6 +8,37 @@ use yii\base\Model;
 class CartModel extends Model
 {
     public function addToCart($id, $count){
+        $cart = $this->checkCoockie();
+        $cart = $this->deleteCoockie($id, $cart);
+        $cart[]    = ['id' => $id, 'count' => $count];
+        $this->setCoockie($cart);
+    }
+
+    public function deleteFormCart($id){
+
+        $cart = $this->checkCoockie();
+        $cart = $this->deleteCoockie($id, $cart);
+        $this->setCoockie($cart);
+    }
+
+    public function setCoockie($data){
+        $set_cookies = Yii::$app->response->cookies;
+        $set_cookies->add(new \yii\web\Cookie([
+            'name'  => 'cart',
+            'value' => $data,
+        ]));
+    }
+
+    public function deleteCoockie($id, $cart){
+        foreach ($cart as $key => $value){
+            if ($value['id'] == $id){
+                unset($cart[$key]);
+            }
+        }
+        return $cart;
+    }
+
+    public function checkCoockie(){
         $cookies = Yii::$app->request->cookies;
         if (($cookie = $cookies->get('cart')) !== null) {
             $cart      = $cookie->value;
@@ -15,45 +46,7 @@ class CartModel extends Model
             $cart = [];
         }
 
-        foreach ($cart as $key => $value){
-            if ($value['id'] == $id){
-                unset($cart[$key]);
-            }
-        }
-
-        $cart[]    = ['id' => $id, 'count' => $count];
-
-        $set_cookies = Yii::$app->response->cookies;
-        $set_cookies->add(new \yii\web\Cookie([
-            'name'  => 'cart',
-            'value' => $cart,
-        ]));
-
-        return true;
-    }
-
-    public function deleteCookie(){
-        $cookies = Yii::$app->response->cookies;
-
-        // удаление куки...
-        $cookies->remove('cart');
-    }
-
-    public function checkCookie($id){
-        $cookies = Yii::$app->request->cookies;
-        // альтернативный способ получения куки "language"
-        $cookie = $cookies->get('cart');
-        if ($cookie !== null) {
-            $data = $cookie->value;
-            if (array_key_exists($id, $data)){
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-
+        return $cart;
     }
 
     public function getCookie(){
