@@ -9,11 +9,12 @@ return [
     'languages' => ['pl' => 'pl', 'en' => 'en'],
     'rules'=> [
         // Pages
-        ['pattern'=>'/',         'route'=>'site/index'],
-        ['pattern'=>'/about',    'route'=>'site/about'],
-        ['pattern'=>'/cart',     'route'=>'site/cart'],
-        ['pattern'=>'/shop',     'route'=>'site/shop'],
-        ['pattern'=>'/specials', 'route'=>'site/specials'],
+        ['pattern'=>'/',            'route'=>'site/index'],
+        ['pattern'=>'/about',       'route'=>'site/about'],
+        ['pattern'=>'/cart',        'route'=>'site/cart'],
+        ['pattern'=>'/shop',        'route'=>'site/shop'],
+        ['pattern'=>'/specials',    'route'=>'site/specials'],
+        ['pattern'=>'/test',        'route'=>'site/test'],
     ],
     // Ignore / Filter route pattern's
     'ignoreLanguageUrlPatterns' => [

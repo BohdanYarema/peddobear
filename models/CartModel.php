@@ -7,16 +7,29 @@ use yii\base\Model;
 
 class CartModel extends Model
 {
-    public function addCookie($id, $count){
-        $cookies = Yii::$app->response->cookies;
+    public function addToCart($id, $count){
+        $cookies = Yii::$app->request->cookies;
+        if (($cookie = $cookies->get('cart')) !== null) {
+            $cart      = $cookie->value;
+        } else {
+            $cart = [];
+        }
 
-        // добавление новой куки в HTTP-ответ
-        $cookies->add(new \yii\web\Cookie([
+        foreach ($cart as $key => $value){
+            if ($value['id'] == $id){
+                unset($cart[$key]);
+            }
+        }
+
+        $cart[]    = ['id' => $id, 'count' => $count];
+
+        $set_cookies = Yii::$app->response->cookies;
+        $set_cookies->add(new \yii\web\Cookie([
             'name'  => 'cart',
-            'value' => [
-                $id => $count
-            ],
+            'value' => $cart,
         ]));
+
+        return true;
     }
 
     public function deleteCookie(){
@@ -45,14 +58,11 @@ class CartModel extends Model
 
     public function getCookie(){
         $cookies = Yii::$app->request->cookies;
-        // альтернативный способ получения куки "language"
-        $cookie = $cookies->get('cart');
-        if ($cookie !== null) {
-            $data = $cookie->value;
-            return $data;
-        } else {
-            return [];
+        // Check the availability of the cookie
+        if ($cookies->has('cart')){
+            $cart = $cookies->getValue('cart');
         }
+        return $cart;
 
     }
 }

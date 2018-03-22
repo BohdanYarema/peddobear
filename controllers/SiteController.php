@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CartModel;
 use app\models\Shop;
 use Yii;
 use yii\filters\AccessControl;
@@ -109,5 +110,32 @@ class SiteController extends Controller
         return $this->render('specials', [
             'model' => $model
         ]);
+    }
+
+    /**
+     * Displays testpage.
+     *
+     * @return string
+     */
+    public function actionTest()
+    {
+        return $this->render('test');
+    }
+
+
+    /**
+     * Displays addpage.
+     *
+     * @return string
+     */
+    public function actionAdd()
+    {
+        if (Yii::$app->request->isAjax){
+            \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
+
+            $model = new CartModel();
+            $model->addToCart(Yii::$app->request->post('id'), Yii::$app->request->post('count'));
+            print_r($model->getCookie());
+        }
     }
 }
