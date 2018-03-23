@@ -138,8 +138,7 @@ class SiteController extends Controller
             \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
 
             $model = new CartModel();
-            $model->addToCart(Yii::$app->request->post('id'), Yii::$app->request->post('count'));
-            print_r($model->getCookie());
+            return $model->addToCart(Yii::$app->request->post('id'), Yii::$app->request->post('count'));
         }
     }
 

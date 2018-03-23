@@ -5,12 +5,10 @@ $('*[data-menu='+classname+']').addClass("active");
 
 $(document).on("click", ".add", function () {
     addToCart($(this).data('id'), $(this).data('count'));
-    $.pjax.reload({container: '#list-pjax'});
 });
 
 $(document).on("click", ".delete", function() {
     deleteFromCart($(this).data('id'));
-    $.pjax.reload({container: '#list-pjax'});
 });
 
 function addToCart(id, count) {
@@ -22,6 +20,7 @@ function addToCart(id, count) {
         "site/add",
          data
     ).done(function( response ) {
+        $(".price").text(response);
         console.log(response);
     });
 }
@@ -34,17 +33,7 @@ function deleteFromCart(id) {
         "site/delete",
         data
     ).done(function( response ) {
+        $(".price").text(response);
         console.log(response);
-    });
-}
-
-function getCart() {
-    var data = {};
-    data[param]     = token;
-    $.post(
-        "site/get",
-        data
-    ).done(function( response ) {
-        $(".price").append( response );
     });
 }

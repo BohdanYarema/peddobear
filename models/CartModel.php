@@ -12,6 +12,7 @@ class CartModel extends Model
         $cart = $this->deleteCoockie($id, $cart);
         $cart[]    = ['id' => $id, 'count' => $count];
         $this->setCoockie($cart);
+        return $cart;
     }
 
     public function deleteFormCart($id){
@@ -19,6 +20,7 @@ class CartModel extends Model
         $cart = $this->checkCoockie();
         $cart = $this->deleteCoockie($id, $cart);
         $this->setCoockie($cart);
+        return $cart;
     }
 
     public function setCoockie($data){
@@ -56,6 +58,24 @@ class CartModel extends Model
             $cart = $cookies->getValue('cart');
         }
         return $cart;
+    }
 
+    public function getPrice(){
+        $cookies = Yii::$app->request->cookies;
+        // Check the availability of the cookie
+        if ($cookies->has('cart')){
+            $cart = $cookies->getValue('cart');
+        }
+
+        $id = [];
+        foreach ($cart as $value){
+            $id[] = $value['id'];
+        }
+
+        $list = Shop::find()->where(['in', 'id', $id])->sum('price');
+
+        print_r($list);
+
+        return $list;
     }
 }
