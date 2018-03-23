@@ -3,15 +3,14 @@ var param = $('meta[name=csrf-param]').attr("content");
 var token = $('meta[name=csrf-token]').attr("content");
 $('*[data-menu='+classname+']').addClass("active");
 
-
-$(document).on("click", ".add", function() {
+$(document).on("click", ".add", function () {
     addToCart($(this).data('id'), $(this).data('count'));
-    getCart();
+    $.pjax.reload({container: '#list-pjax'});
 });
 
 $(document).on("click", ".delete", function() {
     deleteFromCart($(this).data('id'));
-    getCart();
+    $.pjax.reload({container: '#list-pjax'});
 });
 
 function addToCart(id, count) {

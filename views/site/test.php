@@ -35,7 +35,20 @@
 <a class="delete" data-id="5"  data-count="4" href="javascript:void(0);">delete</a>
 <a class="delete" data-id="6"  data-count="4" href="javascript:void(0);">delete</a>
 <br>
-<p class="price"></p>
+
+
+
+
+<?php \yii\widgets\Pjax::begin([
+    'id' => 'list-pjax',
+    'linkSelector' => false
+]); ?>
+
+<p class="price">
+    <?php print_r($cart);?>
+</p>
+
+<?php \yii\widgets\Pjax::end()?>
 
 
 

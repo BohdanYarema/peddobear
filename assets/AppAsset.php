@@ -26,13 +26,13 @@ class AppAsset extends AssetBundle
         'css/style.css',
     ];
     public $js = [
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js',
-        'js/main.js',
+        //'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js',
+        //'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js',
+        //'js/main.js',
         'js/my.js',
     ];
     public $depends = [
-        //'yii\web\YiiAsset',
+        'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',
     ];
 }

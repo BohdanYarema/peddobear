@@ -26,9 +26,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="preloader">
-    <div class="loading-indicator"></div>
-</div>
+<!--<div class="preloader">-->
+<!--    <div class="loading-indicator"></div>-->
+<!--</div>-->
 
 <?= $content ?>
 

@@ -119,7 +119,11 @@ class SiteController extends Controller
      */
     public function actionTest()
     {
-        return $this->render('test');
+        $cart = new CartModel();
+
+        return $this->render('test', [
+            'cart' => $cart->getCookie()
+        ]);
     }
 
 
@@ -165,9 +169,7 @@ class SiteController extends Controller
     {
         if (Yii::$app->request->isAjax){
             \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
-
-            $model = new CartModel();
-            return $model->getCookie();
+            print_r(CartModel::getCookie());
         }
     }
 }
