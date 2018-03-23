@@ -8,11 +8,26 @@ use yii\base\Model;
 class CartModel extends Model
 {
     public function addToCart($id, $count){
-        $cart = $this->checkCoockie();
-        $cart = $this->deleteCoockie($id, $cart);
-        $cart[]    = ['id' => $id, 'count' => $count];
-        $this->setCoockie($cart);
-        return $cart;
+        $model = Shop::find()->where(['id' => $id])->one();
+        if ($model === null){
+            return 0;
+        } else {
+            $cart = $this->checkCoockie();
+            $cart = $this->deleteCoockie($id, $cart);
+            $cart[]    = ['id' => $model->id, 'count' => $count, 'price' => $model->price * $count];
+
+            $this->setCoockie($cart);
+
+            if (empty($cart)){
+                return 0;
+            } else {
+                $summ = 0;
+                foreach ($cart as $item) {
+                    $summ += floatval($item['price']);
+                }
+                return $summ;
+            }
+        }
     }
 
     public function deleteFormCart($id){
@@ -20,7 +35,19 @@ class CartModel extends Model
         $cart = $this->checkCoockie();
         $cart = $this->deleteCoockie($id, $cart);
         $this->setCoockie($cart);
-        return $cart;
+
+        $id = [];
+        foreach ($cart as $value){
+            $id[] = $value['id'];
+        }
+
+        if (empty($id)){
+            return 0;
+        } else {
+            $list = Shop::find()->where(['in', 'id', $id])->sum('price');
+            return $list;
+        }
+
     }
 
     public function setCoockie($data){

@@ -153,8 +153,7 @@ class SiteController extends Controller
             \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
 
             $model = new CartModel();
-            $model->deleteFormCart(Yii::$app->request->post('id'));
-            print_r($model->getCookie());
+            return $model->deleteFormCart(Yii::$app->request->post('id'));
         }
     }
 

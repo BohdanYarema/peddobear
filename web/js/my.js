@@ -20,6 +20,7 @@ function addToCart(id, count) {
         "site/add",
          data
     ).done(function( response ) {
+        $(".price").empty();
         $(".price").text(response);
         console.log(response);
     });
@@ -33,6 +34,7 @@ function deleteFromCart(id) {
         "site/delete",
         data
     ).done(function( response ) {
+        $(".price").empty();
         $(".price").text(response);
         console.log(response);
     });
