@@ -12,17 +12,17 @@ block content
                     h1 #[span Shopping] cart
                 .cart-block__cart
                     .column-labels
-                        label.product-image 
                         label.product-details 
                         label.product-price Price
                         label.product-quantity Quantity
                         label.product-line-price Total
                         label.product-removal Remove
                     .product
-                        .product__image
-                            img(src="img/FullSizeRender 2.jpg")
-                        .product__details
-                            p.product-description #[span.ted-name Ted a Car] Joma
+                        .product__item
+                            .product__item__image
+                                img(src="img/FullSizeRender 2.jpg")
+                            .product__item__details
+                                p.product-description #[span.ted-name Ted a Car] Joma
                         .product__price 12.99 #[span.currency $]
                         .product__quantity
                             button.minus-btn(
@@ -42,10 +42,11 @@ block content
                             a.remove-product
                                 img.remove-krest(src="img/Krest.svg")
                     .product
-                        .product__image
-                            img(src="img/FullSizeRender 3.jpg")
-                        .product__details
-                            p.product-description #[span.ted-name Ted a Car] BLV
+                        .product__item
+                            .product__item__image
+                                img(src="img/FullSizeRender 3.jpg")
+                            .product__item__details
+                                p.product-description #[span.ted-name Ted a Car] BLV
                         .product__price 45.99 #[span.currency $]
                         .product__quantity
                             button.minus-btn(
@@ -95,9 +96,10 @@ block content
                                             p World
                                 label.common-quantity 4
                                 label.common-price 90.57 #[span.currency $]
+                                    .delivery-label (Delivery costs included)
                         .buttons-links
                             a.cart-prev-btn(href="shop.html")
-                                p #[span.triangle] RETURN TO shop
+                                p #[span.triangle] RETURN
                             a.cart-next-btn(href="payment.html")
                                 p CONTINUE #[span.triangle]
                         .ted-fon

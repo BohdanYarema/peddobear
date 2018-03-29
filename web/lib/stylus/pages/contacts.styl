@@ -1,0 +1,273 @@
+.main-container-contacts
+    position: relative
+    display block
+    width 100%
+    min-height 100vh
+    overflow hidden
+    gradient()
+    
+.contacts-inner
+    display flex
+    flex-direction column
+    padding 65px 20px 0 20px
+    
+    +below(tb)
+        padding 50px 20px 0 20px
+        
+    +below(mb)
+        padding 50px 0 0 0 
+    
+    &__header
+        display flex
+        justify-content flex-start
+        align-items flex-start
+        width 100%
+        position relative
+        
+        +below(mb)
+            margin-left 20px
+        
+        &:after
+            content ""
+            display block
+            position absolute
+            bottom 0
+            width 100px
+            height 4px
+            background-color #fff
+            
+            +below(mb)
+                height 2px
+        
+        h1
+            regular-30()
+            text-transform uppercase
+            font-size 45px
+            color #fff
+            
+            +below(mb)
+                font-size 35px
+            
+            span
+                title-30()
+                text-transform uppercase
+                font-size 45px
+                color #fff
+                
+                +below(mb)
+                    font-size 30px
+    
+    &__ebasos
+        display flex
+        width 100%
+        justify-content center
+        margin-top 43px
+        
+        +below(tb)
+            margin-top 110px
+            
+        +below(mb)
+            margin 25px 0 10px 0
+    
+.contact-info-inner
+    display flex
+    flex-direction row
+    justify-content space-between
+    position relative
+    
+    +below(tb)
+        margin-top 135px
+    
+    +below(mb)
+        flex-direction column
+        margin-top 25px
+
+.contact-info
+    display flex
+    flex-direction column
+    
+    &__header-item
+        display block
+        margin-bottom 20px
+        
+        +below(tb)
+            margin-left 20px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            +below(mb)
+                regular-20()
+                color #808080
+            
+            span
+                font-weight 700
+    
+    &__mail
+        display flex
+        justify-content row
+        margin-top 10px
+        
+        a
+            regular-16()
+            color #fff
+        
+        img 
+            margin 0 15px
+            
+            +below(mb)
+                margin 0 15px 0 30px 
+        
+    &__title
+        display block
+        
+        +below(mb)
+            margin-left 30px
+            
+        +below(tb)
+            margin-left 20px
+        
+        p
+            regular-16()
+            color #808080 !important
+            
+            span
+                font-weight 700 !important
+    
+    &__icons
+        img
+            margin 0 15px 20px 15px
+            
+            +below(mb)
+                margin 0 5px 0 5px
+            
+        +below(mb)
+            margin-left 25px
+
+.contact-phones
+    display flex
+    flex-direction column
+    
+    &__header-item
+        display block
+        line-height 20px
+        margin-bottom 20px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            span
+                font-weight 700
+    
+    &__item
+        display flex
+        align-items center
+        margin-top 10px
+        
+        +below(mb)
+            margin-left 10px
+        
+        a
+            regular-16()
+            color #fff
+            
+        img
+            margin 0 20px
+            
+.contact-payments
+    display flex
+    flex-direction column
+    
+    &__img-item
+        display flex
+        align-items center
+        
+        +below(mb)
+            margin 10px 0 30px 17px
+    
+        img
+            margin-right 15px
+
+    &__header-item
+        display block
+        margin-bottom 60px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            span
+                font-weight 700
+                
+.contact-copy
+    display block
+    position absolute
+    bottom 0
+    right 0
+    margin 5px  
+    
+    p
+        regular-8()
+        color #808080

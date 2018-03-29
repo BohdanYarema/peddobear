@@ -6,6 +6,12 @@ gray-fon = #f3f3f3
 orange-ligth = #ff991a
 icecream = #b3b3b3ff
 
+regular-8()
+  color #fff
+  font-size 8px
+  font-family 'Raleway', sans-serif
+  font-weight 300
+
 regular-10()
   color black
   font-size 10px
@@ -35,7 +41,7 @@ regular-16()
   
 regular-18()
   color black
-  font-size 16px
+  font-size 18px
   font-family 'Raleway', sans-serif
   font-weight 300
   color #fff
@@ -48,7 +54,7 @@ regular-20()
   color #fff
 
 regular-24()
-  color black
+  color #fff
   font-size 24px
   font-family 'Raleway', sans-serif
   font-weight 300
@@ -107,6 +113,12 @@ title-30()
   color black
   font-weight 800
   
+title-35()
+  font-family 'Raleway', sans-serif
+  font-size 35px
+  color #fff
+  font-weight 800
+  
 title-40()
   font-family 'Raleway', sans-serif
   font-size 40px
@@ -124,11 +136,12 @@ above(value)
 tb = 1023
 mb = 765
 hd = 1670
-mbb = 350
+mbb = 357
 de = 1280
 
+
 above-h(value)
-  @media screen and (max-height: unit(value, px))
+  @media screen and (min-height: unit(value, px))
     {block}
     
 hz = 767
@@ -145,7 +158,10 @@ next-btn()
     margin-top 20px
     
     +above-h(hz)
-        margin-bottom 40px
+      margin-bottom 40px
+        
+    +below(tb)
+      margin-right 30px
     
     p 
         display flex
@@ -153,6 +169,33 @@ next-btn()
         regular-18()
         margin 0
         text-transform uppercase
+        position relative
+        
+        &:hover:after
+            opacity 1
+            visibility visible
+            transform scale(1, 1)
+            
+            +below(tb)
+              opacity 0
+              visibility hidden
+              transform scale(0, 1)
+        
+        &:after
+            content ''
+            position absolute
+            left 0
+            bottom -8px
+            display block
+            width 100%
+            height 2px
+            background-color #fff
+            transition-property opacity, visibility, transform
+            transition-duration .2s
+            opacity 0
+            visibility hidden
+            transform-origin center
+            transform scale(0, 1)
         
         span
             width 0
@@ -197,6 +240,32 @@ previous-btn()
         regular-18()
         margin 0
         text-transform uppercase
+        
+        &:hover:after
+            opacity 1
+            visibility visible
+            transform scale(1, 1)
+            
+            +below(tb)
+              opacity 0
+              visibility hidden
+              transform scale(0, 1)
+        
+        &:after
+            content ''
+            position absolute
+            left 0
+            bottom -8px
+            display block
+            width 100%
+            height 2px
+            background-color #fff
+            transition-property opacity, visibility, transform
+            transition-duration .2s
+            opacity 0
+            visibility hidden
+            transform-origin center
+            transform scale(0, 1)
         
         span
             width 0

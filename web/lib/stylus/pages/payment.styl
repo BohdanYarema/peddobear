@@ -1,14 +1,18 @@
+.payment-page
+    gradient()
+    
+    +below(tb)
+        min-height 100vh
+
 .main-container-payment
     position: relative
     display block
     width 100%
     min-height 100vh
     overflow hidden
-    gradient()
     
-    +above-h(hz)
-        //height auto
-        //overflow auto
+    +below(tb)
+        min-height auto
         
 .payment-content
     display flex
@@ -26,6 +30,10 @@
             color #fff
             text-transform uppercase
             position relative
+            
+            +below(mb)
+                title-30()
+                color #fff
             
             span
                 font-weight 300
@@ -51,6 +59,15 @@
             top 0
             left 0
             margin-top 100px
+            
+            +below(tb)
+                left auto
+                right 0
+                margin-top 0
+                top -80px
+                
+            +below(mb)
+                display none
 
         .ted-info
             display flex
@@ -59,7 +76,10 @@
             align-items center
             margin-top 30px
             margin-left 100px
-            position relative    
+            position relative
+            
+            +below(tb)
+                margin-left 0
                 
         .input-wrapp
             display flex
@@ -132,14 +152,15 @@
                     
 
                 #pay
-                    transform:scale(1.7)
-                    opacity:0.9
+                    //transform:scale(1.7)
+                    //opacity:0.9
                     cursor:pointer
                     display block
                     padding 5px
-                    width 100%
                     margin 15px
                     box-sizing border-box
+                    width 20px
+                    height 20px
                     
                     &:focus
                         outline none
@@ -150,10 +171,61 @@
         width 100%
         justify-content flex-end
         margin-top 15px
+        
+        +below(tb)
+            margin-bottom 30px
     
-    .pay-next-btn
-        next-btn()
+    input
+        background-color #333
+        width 150px
+        height 50px
+        text-align center
+        margin-top 10px
+        border none
+        regular-16()
+        cursor pointer
+        outline none
+        
+        &:hover
+            background-color #171717
+            -webkit-transition: 0.6s ease
+            -moz-transition: 0.6s ease
+            -o-transition: 0.6s ease
+            transition: 0.6s ease
+            //border 1px solid #fff
+            
+            +below(tb)
+                background-color #333
+                border none
     
     .pay-prev-btn
-        previous-btn()
+        display block
+        background-color #333
+        width 150px
+        height 50px
+        text-align center
+        margin-top 10px
+        border none
+        regular-16()
+        cursor pointer
+        outline none
         margin-right 58px
+        
+        &:hover
+            background-color #171717
+            -webkit-transition: 0.6s ease
+            -moz-transition: 0.6s ease
+            -o-transition: 0.6s ease
+            transition: 0.6s ease
+            //border 1px solid #fff
+            
+            +below(tb)
+                background-color #333
+                border none
+        
+        +below(mb)
+            margin-right 10px
+        
+        p
+            &:after
+                display none

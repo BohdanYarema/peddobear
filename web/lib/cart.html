@@ -2,12 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#333333ff">
     <title>TED a car</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
-    <link rel="stylesheet" href="css/style.css"><link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"><link id="revealatorCss" rel="stylesheet" href="css/fm.revealator.jquery.min.css">
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<meta name="format-detection" content="telephone=no">
   </head>
   <body>
     <div class="preloader">
@@ -27,7 +30,7 @@
                 <li class="header-nav__item"><a class="header-nav__link" href="contacts.html"> <span>Contacts</span></a></li>
               </ul>
               <div class="total-cart"><a class="cart-button" href="cart.html">
-                  <div class="total-cart__cart"><img src="img/cart.png"></div>
+                  <div class="total-cart__cart"><img src="img/basket.svg"></div>
                   <div class="total-cart__total">
                     <div class="total-price"><span class="cart-amount">100<span class="currency">$</span></span></div>
                   </div></a></div>
@@ -50,7 +53,6 @@
             </div>
             <div class="cart-block__cart">
               <div class="column-labels">
-                <label class="product-image"> </label>
                 <label class="product-details"> </label>
                 <label class="product-price">Price</label>
                 <label class="product-quantity">Quantity</label>
@@ -58,9 +60,11 @@
                 <label class="product-removal">Remove</label>
               </div>
               <div class="product">
-                <div class="product__image"><img src="img/FullSizeRender 2.jpg"></div>
-                <div class="product__details">
-                  <p class="product-description"><span class="ted-name">Ted a Car</span> Joma</p>
+                <div class="product__item">
+                  <div class="product__item__image"><img src="img/FullSizeRender 2.jpg"></div>
+                  <div class="product__item__details">
+                    <p class="product-description"><span class="ted-name">Ted a Car</span> Joma</p>
+                  </div>
                 </div>
                 <div class="product__price">12.99 <span class="currency">$</span></div>
                 <div class="product__quantity">
@@ -72,9 +76,11 @@
                 <div class="product__removal"><a class="remove-product"><img class="remove-krest" src="img/Krest.svg"></a></div>
               </div>
               <div class="product">
-                <div class="product__image"><img src="img/FullSizeRender 3.jpg"></div>
-                <div class="product__details">
-                  <p class="product-description"><span class="ted-name">Ted a Car</span> BLV</p>
+                <div class="product__item">
+                  <div class="product__item__image"><img src="img/FullSizeRender 3.jpg"></div>
+                  <div class="product__item__details">
+                    <p class="product-description"><span class="ted-name">Ted a Car</span> BLV</p>
+                  </div>
                 </div>
                 <div class="product__price">45.99 <span class="currency">$</span></div>
                 <div class="product__quantity">
@@ -116,11 +122,13 @@
                       </div>
                     </label>
                     <label class="common-quantity">4</label>
-                    <label class="common-price">90.57 <span class="currency">$</span></label>
+                    <label class="common-price">90.57 <span class="currency">$</span>
+                      <div class="delivery-label">(Delivery costs included)</div>
+                    </label>
                   </div>
                 </div>
                 <div class="buttons-links"><a class="cart-prev-btn" href="shop.html">
-                    <p><span class="triangle"></span> RETURN TO shop</p></a><a class="cart-next-btn" href="payment.html">
+                    <p><span class="triangle"></span> RETURN</p></a><a class="cart-next-btn" href="payment.html">
                     <p>CONTINUE <span class="triangle"></span></p></a></div>
                 <div class="ted-fon"><img src="img/TED EBASOS.svg"></div>
               </div>
@@ -138,9 +146,56 @@
           </div>
         </div>
       </div>
+      <div class="cookies-bar" #catapult-cookie-bar>
+        <div class="cookies-bar-inner">
+          <div class="cookies-bar-inner__text">
+            <p>Nasza strona internetowa używa plików cookies (tzw. ciasteczka) w celach statystycznych, reklamowych oraz funkcjonalnych. Dzięki nim możemy indywidualnie dostosować stronę do twoich potrzeb. Każdy może zaakceptować pliki cookies albo ma możliwość wyłączenia ich w przeglądarce, dzięki czemu nie będą zbierane żadne informacje. </p>
+          </div>
+          <div class="cookies-bar-inner__btn">
+            <button id="catapultCookie">OK</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="wrapper">
+          <div class="footer-outer">
+            <div class="footer-headers"></div>
+            <div class="footer-info-inner">
+              <div class="footer-info">
+                <div class="footer-info__header-item">
+                  <h4>Contact <span>Information</span></h4>
+                </div>
+                <div class="footer-info__mail"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+                <div class="footer-info__title"> 
+                  <p><span>Social</span> media:</p>
+                </div>
+                <div class="footer-info__icons"><a href="https://t.me/ted_a_car" target="_blank"><img src="img/telega.svg"></a><a href="https://www.instagram.com/tedacar.eu/" target="_blank"> <img src="img/insta.svg"></a><a href="https://www.facebook.com/pg/TEDACAREU/shop/?ref=page_internal" target="_blank"><img src="img/facebook.svg"></a></div>
+              </div>
+              <div class="footer-phones">
+                <div class="footer-phones__header-item">
+                  <h4>Cooperation and<br> <span>wholsale purchase</span></h4>
+                </div>
+                <div class="footer-phones__item"><img src="img/phone.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/whatsapp.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+              </div>
+              <div class="footer-payments">
+                <div class="footer-payments__header-item">
+                  <h4><span>Payment</span> options</h4>
+                </div>
+                <div class="footer-payments__img-item"><img src="img/PayPal.svg"><img src="img/PayU.svg"><img src="img/applepay.svg"></div>
+              </div>
+              <div class="footer-copy">
+                <p>&#169 TED A CAR EU</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
   <script src="js/main.js"></script>
+  <script id="revealator" src="js/fm.revealator.jquery.min.js"></script>
 </html>

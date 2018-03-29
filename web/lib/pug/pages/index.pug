@@ -6,15 +6,19 @@ block variables
 
 block content
     .main-container
-        .main-slider
+        //.main-slider
             .main-slider__item(style={background: 'url(img/slide1.JPG)'})
             .main-slider__item(style={background: 'url(img/slide2.JPG)'})
             .main-slider__item(style={background: 'url(img/slide3.JPG)'})
         .wrapper
             .main-container__inner
                 .main-container__content
-                    img.main-page__logo(src='img/1.png')
-                    a.start-button(href="shop.html") Start
+                    img.main-page__logo.revealator-slideup.revealator-delay4(src='img/start1.svg')
+                    a.start-button.revealator-slideup.revealator-delay7(href="shop.html") Start
+        video(id="video" loop preload="auto" autoplay  poster="video/mob.gif" )
+            //playsinline controls="true"  muted
+            source(src="video/555.mp4" type='video/mp4' codecs="avc1.42E01E, H.264")
+            source(src="video/555.webm" type="video/webm")
 
 
 

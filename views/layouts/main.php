@@ -16,8 +16,14 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#333333ff">
+    <title>TED a car</title>
+    <link rel="icon" href="<?=Yii::getAlias("@web")?>/img/favicon.png" type="image/x-icon">
+    <meta name="format-detection" content="telephone=no">
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width">
     <meta name="theme-color" content="#333333ff">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -26,9 +32,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<!--<div class="preloader">-->
-<!--    <div class="loading-indicator"></div>-->
-<!--</div>-->
+<div class="preloader">
+    <div class="loading-indicator"></div>
+</div>
 
 <?= $content ?>
 

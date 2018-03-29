@@ -1,6 +1,10 @@
 .main-container
-    display block
     position relative
+    display block
+    width 100%
+    height 100vh
+    padding-top 80px
+    overflow hidden
     
     .wrapper
         position absolute
@@ -8,6 +12,7 @@
         bottom 0
         right 0
         left: 0
+        z-index: 99
     
     &__inner
         width 100%
@@ -16,7 +21,7 @@
         flex-direction row
         justify-content center
         align-items center
-        z-index: 99999999999999999
+        
         
     &__content
         display flex
@@ -49,15 +54,16 @@
             line-height 50 px
             cursor: pointer
             letter-spacing .4px
-            opacity .6
+            opacity .6 !important
             margin-top 50px
             
             &:hover
-                opacity .85
+                opacity .85 !important
                 
                 +below(tb)
                     opacity .6
                 
+/*
 .main-slider
     display block
     position relative
@@ -65,6 +71,9 @@
     width 100%
     height 100vh
     padding-top 80px
+    
+    +below(tb)
+        padding-top 50px
     
     &__item
         display block
@@ -74,6 +83,10 @@
         width 100%
         height calc(100vh - 80px)
         margin 0 auto
+        
+        +below(tb)
+            height calc(100vh - 50px)
+
         
 .slick-dots
     position absolute
@@ -102,3 +115,21 @@
         
     .slick-active button
             background orange
+            
+*/
+
+#video
+    position: absolute
+    top 50%
+    // left 0
+    min-width 100%
+    min-height 100%
+    height 100%
+    z-index 1
+    transform translateY(-50%)
+    /* filter: opacity(75%); */
+    filter: grayscale(50%);
+    z-index -10
+
+
+

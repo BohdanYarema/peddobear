@@ -13,13 +13,14 @@ block content
                 .payment-content__personal-info
                     .ted-fon-payment
                         img(src="img/TED EBASOS.svg")
-                    .ted-info
+                    form.ted-info(action="" method="post")
                         .input-wrapp
                             input#name(
                                 type="input"
                                 name="name"
                                 placeholder="Your Name"
                                 autocomplete="off"
+                                required
                                 )
                         .input-wrapp
                             input#email(
@@ -27,6 +28,7 @@ block content
                                 name="email"
                                 placeholder="Email"
                                 autocomplete="off"
+                                required
                                 )
                         .input-wrapp
                             input#phone(
@@ -34,6 +36,7 @@ block content
                                 name="phone"
                                 placeholder="Phone"
                                 autocomplete="off"
+                                required
                                 )
                         .input-wrapp
                             input#adress(
@@ -41,6 +44,7 @@ block content
                                 name="adress"
                                 placeholder="Country"
                                 autocomplete="off"
+                                required
                                 )
                         .input-wrapp
                             input#street(
@@ -48,6 +52,7 @@ block content
                                 name="street"
                                 placeholder="Address"
                                 autocomplete="off"
+                                required
                                 )
                         .input-wrapp
                             input#zipcode(
@@ -55,12 +60,14 @@ block content
                                 name="zipcode"
                                 placeholder="Zip code"
                                 autocomplete="off"
+                                required
                                 )
                             input#city(
                                 type="text"
                                 name="city"
                                 placeholder="City"
                                 autocomplete="off"
+                                required
                                 )
                         .ted-info-payment
                             .ted-info-payment__item
@@ -72,7 +79,7 @@ block content
                                     )
                                 label(for="pay") PayPal
                                 .payment-btn
-                                    img(src="img/PAYPAL.png")
+                                    img(src="img/PayPal.svg")
                             .ted-info-payment__item
                                 input#pay(
                                     type="radio"
@@ -81,7 +88,7 @@ block content
                                     )
                                 label(for="pay") PayU
                                 .payment-btn
-                                    img(src="img/PAYU.png")
+                                    img(src="img/PayU.svg")
                             .ted-info-payment__item
                                 input#pay(
                                     type="radio"
@@ -90,10 +97,9 @@ block content
                                     )
                                 label(for="pay") Apple Pay
                                 .payment-btn
-                                    img(src="img/APPLEPAY.png")
-                .links-btns
-                    a.pay-prev-btn(href="cart.html")
-                        p #[span.triangle] back
-                    a.pay-next-btn(href="#")
-                        p pay #[span.triangle]
+                                    img(src="img/applepay.svg")
+                        .links-btns
+                            a.pay-prev-btn(href="cart.html")
+                                p #[span.triangle] Back
+                            input(type="submit" value="PAY")
 

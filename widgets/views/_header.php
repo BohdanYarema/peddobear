@@ -10,6 +10,7 @@ use yii\helpers\Url;
 
 ?>
 
+
 <div class="header">
     <div class="header-wraper">
         <div class="header-inner">
@@ -22,11 +23,10 @@ use yii\helpers\Url;
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="cart-page"      href="<?=Url::to('/cart')?>"> <span>Shoping Cart</span></a></li>
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="contact-page"   href="<?=Url::to('/contacts')?>"> <span>Contacts</span></a></li>
                 </ul>
-                <div class="total-cart"><a class="cart-button" href="#">
-                        <div class="total-cart__cart"><img src="<?=Yii::getAlias("@web")?>/img/cart.png"></div>
+                <div class="total-cart"><a class="cart-button" href="<?=Url::to('/cart')?>">
+                        <div class="total-cart__cart"><img src="<?=Yii::getAlias("@web")?>/img/basket.svg"></div>
                         <div class="total-cart__total">
-                            <div class="total-price"><span class="cart-amount">100</span></div>
-                            <div class="total-price"><img src="<?=Yii::getAlias("@web")?>/img/dollar.png"></div>
+                            <div class="total-price"><span class="cart-amount">100<span class="currency">$</span></span></div>
                         </div></a></div>
                 <div class="header-lang">
                     <?php foreach (Yii::$app->params['availableLocales'] as $key =>  $lang):?>
@@ -38,16 +38,17 @@ use yii\helpers\Url;
                             </div>
                         <?php endif;?>
                     <?php endforeach;?>
-                    <span></span>
+                    <span>
+                    </span>
                     <?php foreach (Yii::$app->params['availableLocales'] as $key =>  $lang):?>
                         <?php if ($key != Yii::$app->language):?>
                             <div class="header-lang__select lang-<?=$lang?>">
                                 <?php
-                                    echo \yii\helpers\Html::a('<p>'.$lang.'</p>', array_merge(
-                                        \Yii::$app->request->get(),
-                                        [\Yii::$app->controller->route, 'language' => $lang]), [
-                                        'class' => 'header-lang__link'
-                                    ]);
+                                echo \yii\helpers\Html::a('<p>'.$lang.'</p>', array_merge(
+                                    \Yii::$app->request->get(),
+                                    [\Yii::$app->controller->route, 'language' => $lang]), [
+                                    'class' => 'header-lang__link'
+                                ]);
                                 ?>
                             </div>
                         <?php endif;?>

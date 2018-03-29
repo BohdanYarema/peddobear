@@ -2,12 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#333333ff">
     <title>TED a car</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
-    <link rel="stylesheet" href="css/style.css"><link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"><link id="revealatorCss" rel="stylesheet" href="css/fm.revealator.jquery.min.css">
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<meta name="format-detection" content="telephone=no">
   </head>
   <body>
     <div class="preloader">
@@ -27,7 +30,7 @@
                 <li class="header-nav__item"><a class="header-nav__link" href="contacts.html"> <span>Contacts</span></a></li>
               </ul>
               <div class="total-cart"><a class="cart-button" href="cart.html">
-                  <div class="total-cart__cart"><img src="img/cart.png"></div>
+                  <div class="total-cart__cart"><img src="img/basket.svg"></div>
                   <div class="total-cart__total">
                     <div class="total-price"><span class="cart-amount">100<span class="currency">$</span></span></div>
                   </div></a></div>
@@ -43,14 +46,29 @@
         </div>
       </div>
       <div class="main-container">
-        <div class="main-slider">
-          <div class="main-slider__item" style="background:url(img/slide1.JPG);"></div>
-          <div class="main-slider__item" style="background:url(img/slide2.JPG);"></div>
-          <div class="main-slider__item" style="background:url(img/slide3.JPG);"></div>
-        </div>
+        <!--.main-slider
+        .main-slider__item(style={background: 'url(img/slide1.JPG)'})
+        .main-slider__item(style={background: 'url(img/slide2.JPG)'})
+        .main-slider__item(style={background: 'url(img/slide3.JPG)'})
+        -->
         <div class="wrapper">
           <div class="main-container__inner">
-            <div class="main-container__content"><img class="main-page__logo" src="img/1.png"><a class="start-button" href="shop.html">Start</a></div>
+            <div class="main-container__content"><img class="main-page__logo revealator-slideup revealator-delay4" src="img/start1.svg"><a class="start-button revealator-slideup revealator-delay7" href="shop.html">Start</a></div>
+          </div>
+        </div>
+        <video id="video" loop preload="auto" autoplay poster="video/mob.gif">
+          <!--playsinline controls="true"  muted-->
+          <source src="video/555.mp4" type="video/mp4" codecs="avc1.42E01E, H.264">
+          <source src="video/555.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="cookies-bar" #catapult-cookie-bar>
+        <div class="cookies-bar-inner">
+          <div class="cookies-bar-inner__text">
+            <p>Nasza strona internetowa używa plików cookies (tzw. ciasteczka) w celach statystycznych, reklamowych oraz funkcjonalnych. Dzięki nim możemy indywidualnie dostosować stronę do twoich potrzeb. Każdy może zaakceptować pliki cookies albo ma możliwość wyłączenia ich w przeglądarce, dzięki czemu nie będą zbierane żadne informacje. </p>
+          </div>
+          <div class="cookies-bar-inner__btn">
+            <button id="catapultCookie">OK</button>
           </div>
         </div>
       </div>
@@ -59,4 +77,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
   <script src="js/main.js"></script>
+  <script id="revealator" src="js/fm.revealator.jquery.min.js"></script>
 </html>

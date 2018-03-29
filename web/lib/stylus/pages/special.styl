@@ -1,32 +1,66 @@
-.main-container-shop
+.special-page
+    gradient()
+
+.main-container-special
     position: relative
     display block
     width 100%
     min-height 100vh
     overflow hidden
-    gradient()
     
-.shop-item
+    +below(tb)
+        min-height auto
+    
+.special-item
     padding 80px 20px 0 20px
 
-.shop-item-wrap
+    +below(tb)
+        padding 50px 35px 0 35px
+        
+    +below(mb) 
+        padding 50px 10px 0 10px
+        
+.special-item-wrap
     display flex !important
     flex-direction row
     justify-content space-between
+    position relative
+    
+    +below(tb)
+        padding 10px
+    
+    +below(mb)
+        flex-direction column
+        padding 0
     
     &__description
         display flex
         flex-direction column
         width 350px
         
-        .shop-header
+        +below(mb)
+            width 100%
+            padding 5px
+        
+        .special-header
             display block
+            
+            +below(tb)
+                margin-top 15px
+            
+            +below(mb)
+                width 200px
+                margin-top 10px
             
             h1
                 title-40()
                 color #fff
                 text-transform uppercase
                 position relative
+                
+                +below(tb)
+                    title-30()
+                    color #fff
                 
                 span
                     font-weight 300
@@ -39,14 +73,26 @@
                     width: 100px;
                     height: 4px;
                     background-color: #fff;
+                    
+                    +below(mb)
+                        height 2px
                 
-        .shop-text
+        .special-text
             display block
             margin-top 15px
+            
+            +below(mb)
+                width 185px
 
             p
                 regular-14()
                 color #fff
+                
+                +below(mb)
+                    regular-18()
+                    
+                +below(mb)
+                    regular-14()
                 
     &__price
         display flex
@@ -54,6 +100,13 @@
         justify-content space-between
         height 250px
         align-items center
+        
+        +below(tb)
+            margin 0 50px
+            
+        +below(mb)
+            height 160px
+            justify-content center
         
         .price-amount
             display block
@@ -67,20 +120,36 @@
                 bottom 20px
                 width 140px
                 height 1px
-                background-color #fff
+                background-color #afe9c6ff
+                
+                +below(mb)
+                    width 100%
+                    bottom 0
             
             p
                 display block
                 min-width 200px
                 regular-30()
-                color #fff
+                color #afe9c6ff
                 min-width 140px
+                
+                +below(mb)
+                    min-width auto
+                    margin 5px 0
+                    regular-24()
+                    color #afe9c6ff
+                
+                span
+                    color #afe9c6ff
                 
         .item-quantity
             text-align center
             display flex
             margin auto
             font-family Verdana,sans-serif
+            
+            +below(mb)
+                margin 20px auto
 
             input
                 border none
@@ -120,23 +189,49 @@
             text-align center
             justify-content center
             regular-16()
-            color #A0A0A0FF
+            color #808080
             text-transform uppercase
-            //background-color #494949D4
-            gradient()
+            background-color #333
             border none
             box-sizing border-box
             
             &:active
-            &:hover
             &:focus
                 outline none
+                
+            &:hover
+                background-color #171717
+                color #fff
+                -webkit-transition: 0.6s ease
+                -moz-transition: 0.6s ease
+                -o-transition: 0.6s ease
+                transition: 0.6s ease
+                
+                +below(tb)
+                    background-color #333
+                    color #808080
                 
     &__img 
         display flex
         width 160px
         margin-top 35px
         margin-right 70px
+        
+        +below(tb)
+            margin-right 0
+        
+        +below(mb)
+            position absolute
+            right 5px
+            width auto
+        
+        img
+            width 155px
+            height 404px
+            
+            +below(mb)
+                width 90px
+                height 250px
         
 .slider-btn-wrap
     display flex !important
@@ -145,13 +240,39 @@
     position relative
     flex-direction row
     align-items center
-    margin-top 50px
+    margin-top 22px
+    
+    +below(tb)
+        justify-content center
     
 .ted-fon-slider
     position absolute
     left 0
-    top -70px
+    top -140px
     
+    img
+        +below(mb)
+            width 295px
+
+    +below(tb)
+        left 30px
+        top 100px
+
+    +below(mb)
+        left 20px
+        top 50px
+        
+        
+.ted-fon-slider-pl
+    position absolute
+    left 0
+    top -140px
+    display none
+
+    +below(tb)
+        left 30px
+        top 82px
+        
 .slider-nav
     display flex !important
     width 350px
@@ -174,6 +295,9 @@
         outline 0 !important
         cursor pointer
         
+        +below(mb)
+            display none !important
+        
         &.slick-current
             filter grayscale(0%)
             outline 0 !important
@@ -194,7 +318,7 @@
     display flex !important
     height 50px
     width 30px
-    gradient()
+    background-color #333
     align-items center
     justify-content center
     cursor pointer
@@ -223,11 +347,28 @@
     display flex
     width 100%
     justify-content flex-end
-    margin-top 40px
+    margin-top 10px
+    
+    +below(tb)
+        margin-top 200px
     
 .cart-next-btn
     next-btn()
+    
+    p
+        +below(mb)
+            regular-14()
+            color #fff
 
 .cart-prev-btn
     previous-btn()
     margin-right 58px
+    
+    +below(mb)
+        margin-right 40px
+    
+    p
+        +below(mb)
+            regular-14()
+            color #fff
+    

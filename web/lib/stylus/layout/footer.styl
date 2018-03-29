@@ -1,0 +1,237 @@
+.footer
+    width 100%
+    display block
+    height auto
+    //gradient()
+    
+.wrapper
+    max-width 984px
+    
+.footer-outer
+    display flex
+    flex-direction column
+    justify-content center
+    
+.footer-headers
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    position relative
+    margin-top 30px
+    
+    +below(mb)
+        display none
+        
+    
+    &:before
+    &:after
+        content ""
+        display block
+        position absolute
+        width 100%
+        height 1px
+        background #808080
+        bottom 0
+    
+    &:before
+        top 75px
+
+.footer-info-inner
+    display flex
+    flex-direction row
+    justify-content space-between
+    position relative
+    
+    +below(mb)
+        flex-direction column
+
+.footer-info
+    display flex
+    flex-direction column
+    
+    &__header-item
+        display block
+        margin-bottom 20px
+        
+        +below(tb)
+            margin-left 20px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            +below(mb)
+                regular-20()
+                color #808080
+            
+            span
+                font-weight 700
+    
+    &__mail
+        display flex
+        justify-content row
+        margin-top 10px
+        
+        a
+            regular-16()
+            color #fff
+        
+        img 
+            margin 0 15px
+            
+            +below(mb)
+                margin 0 15px 0 30px 
+        
+    &__title
+        display block
+        
+        +below(mb)
+            margin-left 30px
+            
+        +below(tb)
+            margin-left 20px
+        
+        p
+            regular-16()
+            color #808080 !important
+            
+            span
+                font-weight 700 !important
+    
+    &__icons
+        img
+            margin 0 15px 20px 15px
+            
+            +below(mb)
+                margin 0 5px 0 5px
+            
+        +below(mb)
+            margin-left 25px
+
+.footer-phones
+    display flex
+    flex-direction column
+    
+    &__header-item
+        display block
+        line-height 20px
+        margin-bottom 20px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            span
+                font-weight 700
+    
+    &__item
+        display flex
+        align-items center
+        margin-top 10px
+        
+        +below(mb)
+            margin-left 10px
+        
+        a
+            regular-16()
+            color #fff
+            
+        img
+            margin 0 20px
+            
+.footer-payments
+    display flex
+    flex-direction column
+    
+    &__img-item
+        display flex
+        align-items center
+        
+        +below(mb)
+            margin 10px 0 30px 17px
+    
+        img
+            margin-right 15px
+
+    &__header-item
+        display block
+        margin-bottom 60px
+        
+        +below(mb)
+            margin 0 0 0 30px
+            position relative
+            
+            &:after
+                content ""
+                position absolute
+                left -14px
+                bottom 15px
+                background-color #808080
+                width 100%
+                height 1px
+                display block
+        
+        &:nth-child(2)
+            margin-left 100px
+        
+        &:nth-child(3)
+            width 300px
+            
+        h4
+            regular-16()
+            color #808080
+            
+            span
+                font-weight 700
+                
+.footer-copy
+    display block
+    position absolute
+    bottom 0
+    right 0
+    margin 5px  
+    
+    p
+        regular-8()
+        color #808080

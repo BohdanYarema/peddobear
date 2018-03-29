@@ -2,12 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#333333ff">
     <title>TED a car</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
-    <link rel="stylesheet" href="css/style.css"><link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"><link id="revealatorCss" rel="stylesheet" href="css/fm.revealator.jquery.min.css">
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<meta name="format-detection" content="telephone=no">
   </head>
   <body>
     <div class="preloader">
@@ -27,7 +30,7 @@
                 <li class="header-nav__item"><a class="header-nav__link" href="contacts.html"> <span>Contacts</span></a></li>
               </ul>
               <div class="total-cart"><a class="cart-button" href="cart.html">
-                  <div class="total-cart__cart"><img src="img/cart.png"></div>
+                  <div class="total-cart__cart"><img src="img/basket.svg"></div>
                   <div class="total-cart__total">
                     <div class="total-price"><span class="cart-amount">100<span class="currency">$</span></span></div>
                   </div></a></div>
@@ -47,13 +50,59 @@
           <div class="failed-wrap">
             <div class="failed">
               <div class="failed__header">
-                <h1>thank you!</h1>
+                <h1>payment failed </h1>
               </div>
               <div class="failed__logo"><img src="img/MIDDLETED.png"></div>
               <div class="failed__subtext">
-                <p>your payment was <br> proccesed successfully</p>
-              </div><a class="failed__btn" href="gallery.html">
-                <p>buy some more ted'<span>s</span></p></a>
+                <p>don't panic! try again</p>
+              </div><a class="failed__btn" href="shop.html">
+                <p>Return to shop</p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cookies-bar" #catapult-cookie-bar>
+        <div class="cookies-bar-inner">
+          <div class="cookies-bar-inner__text">
+            <p>Nasza strona internetowa używa plików cookies (tzw. ciasteczka) w celach statystycznych, reklamowych oraz funkcjonalnych. Dzięki nim możemy indywidualnie dostosować stronę do twoich potrzeb. Każdy może zaakceptować pliki cookies albo ma możliwość wyłączenia ich w przeglądarce, dzięki czemu nie będą zbierane żadne informacje. </p>
+          </div>
+          <div class="cookies-bar-inner__btn">
+            <button id="catapultCookie">OK</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="wrapper">
+          <div class="footer-outer">
+            <div class="footer-headers"></div>
+            <div class="footer-info-inner">
+              <div class="footer-info">
+                <div class="footer-info__header-item">
+                  <h4>Contact <span>Information</span></h4>
+                </div>
+                <div class="footer-info__mail"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+                <div class="footer-info__title"> 
+                  <p><span>Social</span> media:</p>
+                </div>
+                <div class="footer-info__icons"><a href="https://t.me/ted_a_car" target="_blank"><img src="img/telega.svg"></a><a href="https://www.instagram.com/tedacar.eu/" target="_blank"> <img src="img/insta.svg"></a><a href="https://www.facebook.com/pg/TEDACAREU/shop/?ref=page_internal" target="_blank"><img src="img/facebook.svg"></a></div>
+              </div>
+              <div class="footer-phones">
+                <div class="footer-phones__header-item">
+                  <h4>Cooperation and<br> <span>wholsale purchase</span></h4>
+                </div>
+                <div class="footer-phones__item"><img src="img/phone.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/whatsapp.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+              </div>
+              <div class="footer-payments">
+                <div class="footer-payments__header-item">
+                  <h4><span>Payment</span> options</h4>
+                </div>
+                <div class="footer-payments__img-item"><img src="img/PayPal.svg"><img src="img/PayU.svg"><img src="img/applepay.svg"></div>
+              </div>
+              <div class="footer-copy">
+                <p>&#169 TED A CAR EU</p>
+              </div>
             </div>
           </div>
         </div>
@@ -63,4 +112,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
   <script src="js/main.js"></script>
+  <script id="revealator" src="js/fm.revealator.jquery.min.js"></script>
 </html>

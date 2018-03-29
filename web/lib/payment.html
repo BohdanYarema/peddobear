@@ -2,12 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#333333ff">
     <title>TED a car</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css">
-    <link rel="stylesheet" href="css/style.css"><link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"><link id="revealatorCss" rel="stylesheet" href="css/fm.revealator.jquery.min.css">
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
+<meta name="format-detection" content="telephone=no">
   </head>
   <body>
     <div class="preloader">
@@ -27,7 +30,7 @@
                 <li class="header-nav__item"><a class="header-nav__link" href="contacts.html"> <span>Contacts</span></a></li>
               </ul>
               <div class="total-cart"><a class="cart-button" href="cart.html">
-                  <div class="total-cart__cart"><img src="img/cart.png"></div>
+                  <div class="total-cart__cart"><img src="img/basket.svg"></div>
                   <div class="total-cart__total">
                     <div class="total-price"><span class="cart-amount">100<span class="currency">$</span></span></div>
                   </div></a></div>
@@ -50,48 +53,95 @@
             </div>
             <div class="payment-content__personal-info">
               <div class="ted-fon-payment"><img src="img/TED EBASOS.svg"></div>
-              <div class="ted-info">
+              <form class="ted-info" action="" method="post">
                 <div class="input-wrapp">
-                  <input id="name" type="input" name="name" placeholder="Your Name" autocomplete="off">
+                  <input id="name" type="input" name="name" placeholder="Your Name" autocomplete="off" required>
                 </div>
                 <div class="input-wrapp">
-                  <input id="email" type="email" name="email" placeholder="Email" autocomplete="off">
+                  <input id="email" type="email" name="email" placeholder="Email" autocomplete="off" required>
                 </div>
                 <div class="input-wrapp">
-                  <input id="phone" type="text" name="phone" placeholder="Phone" autocomplete="off">
+                  <input id="phone" type="text" name="phone" placeholder="Phone" autocomplete="off" required>
                 </div>
                 <div class="input-wrapp">
-                  <input id="adress" type="text" name="adress" placeholder="Country" autocomplete="off">
+                  <input id="adress" type="text" name="adress" placeholder="Country" autocomplete="off" required>
                 </div>
                 <div class="input-wrapp">
-                  <input id="street" type="text" name="street" placeholder="Address" autocomplete="off">
+                  <input id="street" type="text" name="street" placeholder="Address" autocomplete="off" required>
                 </div>
                 <div class="input-wrapp">
-                  <input id="zipcode" type="text" name="zipcode" placeholder="Zip code" autocomplete="off">
-                  <input id="city" type="text" name="city" placeholder="City" autocomplete="off">
+                  <input id="zipcode" type="text" name="zipcode" placeholder="Zip code" autocomplete="off" required>
+                  <input id="city" type="text" name="city" placeholder="City" autocomplete="off" required>
                 </div>
                 <div class="ted-info-payment">
                   <div class="ted-info-payment__item">
                     <input id="pay" type="radio" name="paytype" value="paypal" checked>
                     <label for="pay">PayPal</label>
-                    <div class="payment-btn"><img src="img/PAYPAL.png"></div>
+                    <div class="payment-btn"><img src="img/PayPal.svg"></div>
                   </div>
                   <div class="ted-info-payment__item">
                     <input id="pay" type="radio" name="paytype" value="payu">
                     <label for="pay">PayU</label>
-                    <div class="payment-btn"><img src="img/PAYU.png"></div>
+                    <div class="payment-btn"><img src="img/PayU.svg"></div>
                   </div>
                   <div class="ted-info-payment__item">
                     <input id="pay" type="radio" name="paytype" value="applepay">
                     <label for="pay">Apple Pay</label>
-                    <div class="payment-btn"><img src="img/APPLEPAY.png"></div>
+                    <div class="payment-btn"><img src="img/applepay.svg"></div>
                   </div>
                 </div>
+                <div class="links-btns"><a class="pay-prev-btn" href="cart.html">
+                    <p><span class="triangle"></span> Back</p></a>
+                  <input type="submit" value="PAY">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cookies-bar" #catapult-cookie-bar>
+        <div class="cookies-bar-inner">
+          <div class="cookies-bar-inner__text">
+            <p>Nasza strona internetowa używa plików cookies (tzw. ciasteczka) w celach statystycznych, reklamowych oraz funkcjonalnych. Dzięki nim możemy indywidualnie dostosować stronę do twoich potrzeb. Każdy może zaakceptować pliki cookies albo ma możliwość wyłączenia ich w przeglądarce, dzięki czemu nie będą zbierane żadne informacje. </p>
+          </div>
+          <div class="cookies-bar-inner__btn">
+            <button id="catapultCookie">OK</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="wrapper">
+          <div class="footer-outer">
+            <div class="footer-headers"></div>
+            <div class="footer-info-inner">
+              <div class="footer-info">
+                <div class="footer-info__header-item">
+                  <h4>Contact <span>Information</span></h4>
+                </div>
+                <div class="footer-info__mail"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+                <div class="footer-info__title"> 
+                  <p><span>Social</span> media:</p>
+                </div>
+                <div class="footer-info__icons"><a href="https://t.me/ted_a_car" target="_blank"><img src="img/telega.svg"></a><a href="https://www.instagram.com/tedacar.eu/" target="_blank"> <img src="img/insta.svg"></a><a href="https://www.facebook.com/pg/TEDACAREU/shop/?ref=page_internal" target="_blank"><img src="img/facebook.svg"></a></div>
+              </div>
+              <div class="footer-phones">
+                <div class="footer-phones__header-item">
+                  <h4>Cooperation and<br> <span>wholsale purchase</span></h4>
+                </div>
+                <div class="footer-phones__item"><img src="img/phone.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/whatsapp.svg"><a href="tel: +48 533 757 777">+48 533 757 777</a></div>
+                <div class="footer-phones__item"><img src="img/mail.svg"><a href="mailto: shop@tedacar.eu">shop@tedacar.eu</a></div>
+              </div>
+              <div class="footer-payments">
+                <div class="footer-payments__header-item">
+                  <h4><span>Payment</span> options</h4>
+                </div>
+                <div class="footer-payments__img-item"><img src="img/PayPal.svg"><img src="img/PayU.svg"><img src="img/applepay.svg"></div>
+              </div>
+              <div class="footer-copy">
+                <p>&#169 TED A CAR EU</p>
               </div>
             </div>
-            <div class="links-btns"><a class="pay-prev-btn" href="cart.html">
-                <p><span class="triangle"></span> back</p></a><a class="pay-next-btn" href="#">
-                <p>pay <span class="triangle"></span></p></a></div>
           </div>
         </div>
       </div>
@@ -100,4 +150,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
   <script src="js/main.js"></script>
+  <script id="revealator" src="js/fm.revealator.jquery.min.js"></script>
 </html>

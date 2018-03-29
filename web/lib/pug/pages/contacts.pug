@@ -1,0 +1,51 @@
+extends ../components/layout.pug
+
+block variables
+
+  - var pageName = 'contacts'
+
+block content
+    .main-container-contacts
+        .wrapper
+            .contacts-inner
+                .contacts-inner__header.revealator-slideright.revealator-delay6.revealator-duration2
+                    h1 #[span contact] information
+                .contact-info-inner
+                    .contact-info.revealator-zoomin.revealator-delay10.revealator-duration7
+                        .contact-info__header-item
+                            h4 Contact #[span Information]
+                        .contact-info__mail
+                            img(src="img/mail.svg")
+                            a(href="mailto: shop@tedacar.eu") shop@tedacar.eu
+                        .contact-info__title 
+                            p #[span Social] media:
+                        .contact-info__icons
+                            a(href="#")
+                                img(src="img/telega.svg")
+                            a(href="#") 
+                                img(src="img/insta.svg")
+                            a(href="#")
+                                img(src="img/facebook.svg")
+                    .contact-phones.revealator-zoomin.revealator-delay10.revealator-duration7
+                        .contact-phones__header-item
+                            h4 Cooperation and<br> #[span wholsale purchase]
+                        .contact-phones__item
+                            img(src="img/phone.svg")
+                            a(href="tel: +48 533 757 777") +48 533 757 777
+                        .contact-phones__item
+                            img(src="img/whatsapp.svg")
+                            a(href="tel: +48 533 757 777") +48 533 757 777
+                        .contact-phones__item
+                            img(src="img/mail.svg")
+                            a(href="mailto: shop@tedacar.eu") shop@tedacar.eu
+                    .contact-payments.revealator-zoomin.revealator-delay10.revealator-duration7
+                        .contact-payments__header-item
+                            h4 #[span Payment] options
+                        .contact-payments__img-item
+                            img(src="img/PayPal.svg")
+                            img(src="img/PayU.svg")
+                            img(src="img/applepay.svg")
+                    .contact-copy.revealator-zoomin.revealator-delay10.revealator-duration7
+                        p &#169 TED A CER EU
+                .contacts-inner__ebasos.revealator-zoomin.revealator-delay10.revealator-duration7
+                    img(src="img/SMILETED.png")
