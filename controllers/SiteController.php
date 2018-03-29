@@ -67,6 +67,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays contactpage.
+     *
+     * @return string
+     */
+    public function actionContacts()
+    {
+        return $this->render('contacts');
+    }
+
+    /**
      * Displays aboutpage.
      *
      * @return string

@@ -17,6 +17,8 @@ use yii\behaviors\SluggableBehavior;
  * @property double $special_price
  * @property double $sale
  * @property int $status
+ * @property int $count
+ * @property float $summary
  * @property int $created_at
  * @property int $updated_at
  *
@@ -42,6 +44,8 @@ class Shop extends \yii\db\ActiveRecord
      */
     public $i18n;
     public $image;
+    public $summary;
+    public $count;
 
 
     /**
@@ -62,7 +66,7 @@ class Shop extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['slug'], 'string', 'max' => 32],
             [['image_base_url', 'image_path'], 'string', 'max' => 1024],
-            [['i18n', 'image'], 'safe']
+            [['i18n', 'image', 'summary', 'count'], 'safe']
         ];
     }
 
@@ -119,6 +123,18 @@ class Shop extends \yii\db\ActiveRecord
         return $this->hasOne(ShopI18n::className(), ['shop_id' => 'id'])->andWhere([
             'i18n' => Yii::$app->language
         ]);
+    }
+
+    /**
+     * @return float
+     */
+    public function getEndPrice()
+    {
+        if ($this->status == 1){
+            return $this->price;
+        } else {
+            return $this->special_price;
+        }
     }
 
     /**
