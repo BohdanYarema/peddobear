@@ -8,6 +8,8 @@ use app\models\CartModel;
 
 $this->title = 'My Yii Application';
 $cart = CartModel::getCart();
+$poland = Yii::$app->params['delivery'][Yii::$app->language]['poland'];
+$world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
 ?>
 
 <main class="cart-page">
@@ -80,13 +82,13 @@ $cart = CartModel::getCart();
                                     </div>
                                 </label>
                                 <label class="common-quantity"><?=$count?></label>
-                                <label class="common-price db_price"><?=CartModel::getSumm()?> <span class="currency">$</span>
+                                <label class="common-price db_price"><?=CartModel::getSumm() + $poland?> <span class="currency">$</span>
                                     <div class="delivery-label">(Delivery costs included)</div>
                                 </label>
                             </div>
                         </div>
                         <div class="buttons-links"><a class="cart-prev-btn" href="shop.html">
-                                <p><span class="triangle"></span> RETURN</p></a><a class="cart-next-btn" href="payment.html">
+                                <p><span class="triangle"></span> RETURN</p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
                                 <p>CONTINUE <span class="triangle"></span></p></a></div>
                         <div class="ted-fon"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     </div>
@@ -109,3 +111,24 @@ $cart = CartModel::getCart();
     <?php echo CookieWidget::widget(['model' => null]); ?>
     <?php echo FooterWidget::widget(['model' => null]); ?>
 </main>
+
+<?php
+$script = <<< JS
+    var poland  = $poland;
+    var world   = $world;
+    var add     = 0
+    
+    function getDelivery() {
+        var data_name = $("input[name='dilivery']:checked").val();
+        
+        if(data_name === 'world'){
+            add = world;
+        } else {
+            add = poland;
+        }
+        return add;
+    }
+JS;
+//маркер конца строки, обязательно сразу, без пробелов и табуляции
+$this->registerJs($script, yii\web\View::POS_END);
+?>

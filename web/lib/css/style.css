@@ -805,6 +805,12 @@ main.loading {
 .menu-icon.active:after {
   width: 30px;
 }
+.cart-amount:after {
+  content: " $";
+  color: #a4a4a4;
+  font-weight: 600;
+  font-family: Verdana, sans-serif !important;
+}
 @media (min-aspect-ratio: 16/9) {
   #video {
     height: 300%;
@@ -831,16 +837,6 @@ main.loading {
   background: #000;
   background: -webkit-linear-gradient(135deg, #434343, #000);
   background: linear-gradient(135deg, #434343, #000);
-}
-@media screen and (max-width: 1023px) {
-  .about-page {
-    height: 100vh;
-  }
-}
-@media screen and (max-width: 765px) {
-  .about-page {
-    height: auto;
-  }
 }
 @media screen and (min-height: 767px) {
   .about-page {
@@ -1157,6 +1153,7 @@ main.loading {
   align-items: center;
   flex-direction: column;
   width: 200px;
+  outline: none !important;
 }
 @media screen and (max-width: 765px) {
   .text-icon-column {
@@ -1479,6 +1476,11 @@ main.loading {
     min-height: 100vh;
   }
 }
+@media screen and (min-height: 767px) {
+  .cart-page {
+    min-height: 100vh;
+  }
+}
 .main-container-cart {
   position: relative;
   display: block;
@@ -1489,6 +1491,12 @@ main.loading {
 @media screen and (max-width: 1023px) {
   .main-container-cart {
     min-height: auto;
+  }
+}
+@media screen and (min-height: 767px) {
+  .main-container-cart {
+    min-height: auto;
+    overflow: auto;
   }
 }
 .cart-block {
@@ -1963,6 +1971,7 @@ main.loading {
   text-transform: none;
   width: 150px;
   color: #fff;
+  left: -38px;
 }
 .totals .buttons-links {
   display: flex;
@@ -2227,6 +2236,14 @@ main.loading {
   color: #fff;
   color: #fff;
   text-transform: uppercase;
+}
+.product__price:after,
+.product__line-price:after,
+.common-price:after {
+  content: " $";
+  color: #a4a4a4;
+  font-weight: 600;
+  font-family: Verdana, sans-serif !important;
 }
 .main-container-contacts {
   position: relative;
@@ -2643,7 +2660,7 @@ main.loading {
   margin-top: 50px;
 }
 .main-container__content .start-button:hover {
-  opacity: 0.85 !important;
+  opacity: 1 !important;
 }
 @media screen and (max-width: 1023px) {
   .main-container__content .start-button:hover {
@@ -2658,8 +2675,7 @@ main.loading {
   height: 100%;
   z-index: 1;
   transform: translateY(-50%);
-/* filter: opacity(75%); */
-  filter: grayscale(50%);
+  filter: opacity(85%);
   z-index: -10;
 }
 .payment-page {
@@ -2668,6 +2684,11 @@ main.loading {
   background: linear-gradient(135deg, #434343, #000);
 }
 @media screen and (max-width: 1023px) {
+  .payment-page {
+    min-height: 100vh;
+  }
+}
+@media screen and (min-height: 767px) {
   .payment-page {
     min-height: 100vh;
   }
@@ -2682,6 +2703,12 @@ main.loading {
 @media screen and (max-width: 1023px) {
   .main-container-payment {
     min-height: auto;
+  }
+}
+@media screen and (min-height: 767px) {
+  .main-container-payment {
+    min-height: auto;
+    overflow: auto;
   }
 }
 .payment-content {
@@ -2864,7 +2891,7 @@ main.loading {
     margin-bottom: 30px;
   }
 }
-.payment-content input {
+.payment-content #pay {
   background-color: #333;
   width: 150px;
   height: 50px;
@@ -2879,7 +2906,7 @@ main.loading {
   cursor: pointer;
   outline: none;
 }
-.payment-content input:hover {
+.payment-content #pay:hover {
   background-color: #171717;
   -webkit-transition: 0.6s ease;
   -moz-transition: 0.6s ease;
@@ -2887,7 +2914,7 @@ main.loading {
   transition: 0.6s ease;
 }
 @media screen and (max-width: 1023px) {
-  .payment-content input:hover {
+  .payment-content #pay:hover {
     background-color: #333;
     border: none;
   }
@@ -2935,12 +2962,23 @@ main.loading {
   background: -webkit-linear-gradient(135deg, #434343, #000);
   background: linear-gradient(135deg, #434343, #000);
 }
+@media screen and (min-height: 767px) {
+  .shop-page {
+    min-height: 100vh;
+  }
+}
 .main-container-shop {
   position: relative;
   display: block;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
+}
+@media screen and (min-height: 767px) {
+  .main-container-shop {
+    min-height: auto;
+    overflow: auto;
+  }
 }
 @media screen and (max-width: 1023px) {
   .main-container-shop {
@@ -3119,6 +3157,12 @@ main.loading {
   font-weight: 300;
   color: #fff;
   min-width: 140px;
+}
+.shop-item-wrap__price .price-amount p:after {
+  content: " $";
+  color: #a4a4a4;
+  font-weight: 600;
+  font-family: Verdana, sans-serif !important;
 }
 @media screen and (max-width: 765px) {
   .shop-item-wrap__price .price-amount p {
@@ -3549,12 +3593,23 @@ main.loading {
   background: -webkit-linear-gradient(135deg, #434343, #000);
   background: linear-gradient(135deg, #434343, #000);
 }
+@media screen and (min-height: 767px) {
+  .special-page {
+    min-height: 100vh;
+  }
+}
 .main-container-special {
   position: relative;
   display: block;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
+}
+@media screen and (min-height: 767px) {
+  .main-container-special {
+    min-height: auto;
+    overflow: auto;
+  }
 }
 @media screen and (max-width: 1023px) {
   .main-container-special {
@@ -3733,6 +3788,12 @@ main.loading {
   font-weight: 300;
   color: #afe9c6;
   min-width: 140px;
+}
+.special-item-wrap__price .price-amount p:after {
+  content: " $";
+  color: #afe9c6;
+  font-weight: 600;
+  font-family: Verdana, sans-serif !important;
 }
 @media screen and (max-width: 765px) {
   .special-item-wrap__price .price-amount p {
@@ -4194,12 +4255,25 @@ main.loading {
   background: -webkit-linear-gradient(135deg, #434343, #000);
   background: linear-gradient(135deg, #434343, #000);
 }
+@media screen and (min-height: 767px) {
+  .success-page,
+  .failed-page {
+    min-height: 100vh;
+  }
+}
 .main-container-success,
 .main-container-failed {
   display: block;
   position: relative;
   width: 100%;
   min-height: 100vh;
+}
+@media screen and (min-height: 767px) {
+  .main-container-success,
+  .main-container-failed {
+    min-height: auto;
+    overflow: auto;
+  }
 }
 .successful-wrap,
 .failed-wrap {

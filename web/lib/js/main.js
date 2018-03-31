@@ -250,3 +250,25 @@ $(document).ready( function() {
         $('#revealatorCss').remove();
     }
 });
+
+//dollars
+var shippingPoland = 3.00;
+var shippingWorld = 5.00;
+var fadeTime = 300;
+//get shiping price from radio button
+var delivery = $('input[name="dilivery"]:checked').val();
+
+$('.product__removal a').click( function() {
+  removeItem(this);
+});
+
+/* Remove item from cart */
+function removeItem(removeButton)
+{
+  /* Remove row from DOM and recalc cart total */
+  var productRow = $(removeButton).parent().parent();
+  productRow.slideUp(fadeTime, function() {
+    productRow.remove();
+    recalculateCart();
+  });
+}

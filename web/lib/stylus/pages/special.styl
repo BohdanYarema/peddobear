@@ -1,5 +1,8 @@
 .special-page
     gradient()
+    
+    +above-h(hz)
+        min-height 100vh
 
 .main-container-special
     position: relative
@@ -7,6 +10,10 @@
     width 100%
     min-height 100vh
     overflow hidden
+    
+    +above-h(hz)
+        min-height auto
+        overflow auto
     
     +below(tb)
         min-height auto
@@ -132,6 +139,12 @@
                 regular-30()
                 color #afe9c6ff
                 min-width 140px
+                
+                &:after
+                    content " $"
+                    color #afe9c6ff
+                    font-weight 600    
+                    font-family Verdana,sans-serif !important
                 
                 +below(mb)
                     min-width auto

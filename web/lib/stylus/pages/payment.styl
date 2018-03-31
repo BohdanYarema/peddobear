@@ -3,6 +3,9 @@
     
     +below(tb)
         min-height 100vh
+        
+    +above-h(hz)
+        min-height 100vh
 
 .main-container-payment
     position: relative
@@ -13,6 +16,10 @@
     
     +below(tb)
         min-height auto
+        
+    +above-h(hz)
+        min-height auto
+        overflow auto
         
 .payment-content
     display flex
@@ -175,7 +182,7 @@
         +below(tb)
             margin-bottom 30px
     
-    input
+    #pay
         background-color #333
         width 150px
         height 50px
@@ -186,6 +193,7 @@
         cursor pointer
         outline none
         
+
         &:hover
             background-color #171717
             -webkit-transition: 0.6s ease

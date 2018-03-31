@@ -3,6 +3,9 @@
     
     +below(tb)
         min-height 100vh
+        
+    +above-h(hz)
+        min-height 100vh
 
 .main-container-cart
     position: relative
@@ -13,6 +16,10 @@
 
     +below(tb)
         min-height auto
+        
+    +above-h(hz)
+        min-height auto
+        overflow auto
         
 .cart-block
     display flex
@@ -401,6 +408,7 @@
             text-transform none
             width 150px
             color #fff
+            left -38px
             
             
     .buttons-links
@@ -486,3 +494,11 @@
             regular-16()
             color #fff
             text-transform uppercase
+            
+.product__price:after
+.product__line-price:after
+.common-price:after
+    content " $"
+    color #a4a4a4ff
+    font-weight 600    
+    font-family Verdana,sans-serif !important

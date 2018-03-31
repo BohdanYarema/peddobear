@@ -96,6 +96,17 @@ class SiteController extends Controller
         return $this->render('cart');
     }
 
+
+    /**
+     * Displays cartpage.
+     *
+     * @return string
+     */
+    public function actionPayment()
+    {
+        return $this->render('payment');
+    }
+
     /**
      * Displays cartpage.
      *
@@ -149,6 +160,21 @@ class SiteController extends Controller
 
             $model = new CartModel();
             return $model->addToCart(Yii::$app->request->post('id'), Yii::$app->request->post('count'));
+        }
+    }
+
+
+    /**
+     * Displays radio.
+     *
+     * @return string
+     */
+    public function actionRadio()
+    {
+        if (Yii::$app->request->isAjax){
+            \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
+
+            return CartModel::getSumm();
         }
     }
 

@@ -1,5 +1,8 @@
 .shop-page
     gradient()
+    
+    +above-h(hz)
+        min-height 100vh
 
 .main-container-shop
     position: relative
@@ -7,6 +10,10 @@
     width 100%
     min-height 100vh
     overflow hidden
+    
+    +above-h(hz)
+        min-height auto
+        overflow auto
     
     +below(tb)
         min-height auto
@@ -132,6 +139,12 @@
                 regular-30()
                 color #fff
                 min-width 140px
+                
+                &:after
+                    content " $"
+                    color #a4a4a4ff
+                    font-weight 600    
+                    font-family Verdana,sans-serif !important
                 
                 +below(mb)
                     min-width auto
@@ -355,3 +368,4 @@
 .cart-prev-btn
     previous-btn()
     margin-right 58px
+    

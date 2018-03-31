@@ -1,0 +1,95 @@
+.success-page
+.failed-page
+    gradient()
+    
+    +above-h(hz)
+        min-height 100vh
+
+.main-container-success
+.main-container-failed
+    display block
+    position relative
+    width 100%
+    min-height 100vh
+    
+    +above-h(hz)
+        min-height auto
+        overflow auto
+    
+
+.successful-wrap
+.failed-wrap
+    display flex
+    align-items center
+    justify-content center
+    align-self center
+    min-height 100vh
+
+.successful
+.failed
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    margin-top 20px
+    
+    &__header
+        display block
+        position relative
+        
+        h1
+            regular-24()
+            color #999
+            text-transform uppercase
+    
+        &:before
+            content ""
+            display block
+            width 90%
+            height 1px
+            background-color #999
+            position absolute
+            left 0
+            right 0
+            margin auto
+            top 0
+            
+    
+    &__logo
+        margin-top 15px
+        
+    &__subtext
+        text-align center
+        
+        p
+            regular-24()
+            color #fff
+            text-transform uppercase
+            
+            span
+                text-transform lowercase
+    
+    &__btn
+        display block
+        background-color #333
+        opacity .8
+        width 250px
+        height 50px
+        text-align center
+        margin-top 10px
+        
+        &:hover
+            background-color #171717
+            -webkit-transition: 0.6s ease
+            -moz-transition: 0.6s ease
+            -o-transition: 0.6s ease
+            transition: 0.6s ease
+            
+            +below(tb)
+                background-color #333
+                
+        
+        p
+            regular-16()
+            color #808080
+            text-transform uppercase

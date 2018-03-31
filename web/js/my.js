@@ -3,22 +3,6 @@ var param = $('meta[name=csrf-param]').attr("content");
 var token = $('meta[name=csrf-token]').attr("content");
 $('*[data-menu='+classname+']').addClass("active");
 
-var data_name = $("input[name='dilivery']:checked").val();
-if(data_name == 'world'){
-    alert(15);
-} else {
-    alert(10)
-}
-
-$(document).on("change", ".qwe", function () {
-    var val = $(this).val();
-    if(val == 'world'){
-        alert(15);
-    } else {
-        alert(10)
-    }
-});
-
 $(document).on("click", ".add-to-cart", function () {
     var selector        = $(this).data('selector');
     var id              = $(this).data('id');
@@ -60,7 +44,7 @@ function addToCart(id, count) {
          data
     ).done(function( response ) {
         $(".db_price").empty();
-        $(".db_price").text(response['summary']);
+        $(".db_price").text(response['summary'] + getDelivery());
     });
 }
 
@@ -74,7 +58,7 @@ function updateCart(id, count) {
         data
     ).done(function( response ) {
         $(".db_price").empty();
-        $(".db_price").text(response['summary']);
+        $(".db_price").text(response['summary'] + getDelivery());
         $(".db_price--single__"+id).empty();
         $(".db_price--single__"+id).text(response['single']);
         $(".common-quantity").empty();
@@ -95,9 +79,29 @@ function deleteFromCart(id) {
             window.location.reload()
         } else {
             $(".db_price").empty();
-            $(".db_price").text(response['summary']);
+            $(".db_price").text(response['summary'] + getDelivery());
             $(".common-quantity").empty();
             $(".common-quantity").text(response['count']);
         }
     });
 }
+
+function updateRadio() {
+    var data = {};
+    data[param]     = token;
+    $.post(
+        "site/radio",
+        data
+    ).done(function( response ) {
+        if(response == 0){
+            window.location.reload()
+        } else {
+            $(".db_price").empty();
+            $(".db_price").text(response + getDelivery());
+        }
+    });
+}
+
+$(document).on("change", ".qwe", function () {
+    updateRadio()
+});
