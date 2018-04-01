@@ -44,5 +44,25 @@ if ( !($res = curl_exec($ch)) ) {
     exit;
 }
 curl_close($ch);
+?>
 
+<?php
+// inspect IPN validation result and act accordingly
+if (strcmp ($res, "VERIFIED") == 0) {
+    // The IPN is verified, process it:
+    // check whether the payment_status is Completed
+    // check that txn_id has not been previously processed
+    // check that receiver_email is your Primary PayPal email
+    // check that payment_amount/payment_currency are correct
+    // process the notification
+    // assign posted variables to local variables
 
+    $model = new \app\modules\models\Log();
+    $model->text = json_encode($_POST);
+    $model->save();
+
+} else if (strcmp ($res, "INVALID") == 0) {
+    // IPN invalid, log for manual investigation
+    echo "The response from IPN was: <b>" .$res ."</b>";
+}
+?>
