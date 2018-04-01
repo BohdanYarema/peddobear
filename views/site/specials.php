@@ -49,7 +49,7 @@ $this->title = 'TED a car';
                 <div class="btn-left" data-slider-logos-prev><span></span></div>
                 <div class="slider-nav" data-slider-logos>
                     <?php foreach ($model as $item):?>
-                        <img src="<?=$item->slide_base_url.'/'.$item->slide_path;?>">
+                        <div class="img-ted-mini"><img src="<?=$item->slide_base_url.'/'.$item->slide_path;?>"></div>
                     <?php endforeach;?>
                 </div>
                 <div class="btn-right" data-slider-logos-next><span></span></div>
