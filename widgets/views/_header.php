@@ -20,9 +20,9 @@ use app\models\CartModel;
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="index-page"     href="<?=Url::to('/')?>"> <span class="none-after">Home</span></a></li>
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="about-page"     href="<?=Url::to('/about')?>"> <span>About us</span></a></li>
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="shop-page"      href="<?=Url::to('/shop')?>"> <span>Shop</span></a></li>
-                    <li class="header-nav__item"><a class="header-nav__link" data-menu="special-page"   href="<?=Url::to('/specials')?>"> <span>Special offers</span></a></li>
+                    <li class="header-nav__item"><a class="header-nav__link" data-menu="special-page"   href="<?=Url::to('/special')?>"> <span>Special offers</span></a></li>
                     <li class="header-nav__item"><a class="header-nav__link" data-menu="cart-page"      href="<?=Url::to('/cart')?>"> <span>Shoping Cart</span></a></li>
-                    <li class="header-nav__item"><a class="header-nav__link" data-menu="contact-page"   href="<?=Url::to('/contacts')?>"> <span>Contacts</span></a></li>
+                    <li class="header-nav__item"><a class="header-nav__link" data-menu="contact-page"   href="<?=Url::to('/contact')?>"> <span>Contacts</span></a></li>
                 </ul>
                 <div class="total-cart"><a class="cart-button" href="<?=Url::to('/cart')?>">
                         <div class="total-cart__cart"><img src="<?=Yii::getAlias("@web")?>/img/basket.svg"></div>

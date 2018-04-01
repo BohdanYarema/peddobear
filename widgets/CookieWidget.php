@@ -20,9 +20,11 @@ class CookieWidget extends Widget{
         parent::init();
     }
     public function run(){
-        return $this->render('_cookie',[
-            'model'             => $this->model
-        ]);
+        if(\app\models\Popup::getPopupStatus()){
+            return $this->render('_cookie',[
+                'model'             => $this->model
+            ]);
+        }
     }
 }
 ?>
