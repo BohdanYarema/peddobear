@@ -14,6 +14,14 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, ['success', 'notify'])) {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
+
     /**
      * {@inheritdoc}
      */
