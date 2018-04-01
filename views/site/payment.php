@@ -5,8 +5,8 @@
     <input type="hidden" name="item_number" value="User123">
     <input type="hidden" name="currency_code" value="USD">
     <input type="hidden" name="amount" value="0.01">
-    <input type="hidden" name="cancel_return" value="http://new.local.test">
-    <input type="hidden" name="return" value="http://new.local.test/success">
-    <input type="hidden" name="notify_url" value="http://new.local.test/notify">
+    <input type="hidden" name="cancel_return" value="http://peddobear.devservice.pro/notify">
+    <input type="hidden" name="return" value="http://peddobear.devservice.pro/success">
+    <input type="hidden" name="notify_url" value="http://peddobear.devservice.pro/notify">
     <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 </form>
