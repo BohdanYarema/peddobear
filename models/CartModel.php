@@ -12,34 +12,41 @@ class CartModel extends Model
         if ($model === null){
             return 0;
         } else {
-            $price = 0;
-            if ($model->status == 1){
-                $price = $model->locale->price;
-            } else {
-                $price = $model->locale->special_price;
+            foreach ($model->shopI18ns as $item){
+                if ($model->status == 1){
+                    $price = $item->price;
+                } else {
+                    $price = $item->special_price;
+                }
+
+                $data[$model->id][$item->i18n] = [
+                    'price'     => $price,
+                    'count'     => $count,
+                    'summary'   => $price * $count
+                ];
             }
 
             $cart = $this->checkCoockie();
             $cart = $this->deleteCoockie($id, $cart);
-            $cart[]    = ['id' => $model->id, 'count' => $count, 'price' => $price * $count];
-
+            $cart[]    = $data;
             $this->setCoockie($cart);
 
-            if (empty($cart)){
-                return 0;
-            } else {
-                $summ   = 0;
-                $total  = 0;
-                foreach ($cart as $item) {
-                    $summ += floatval($item['price']);
-                    $total += $item['count'];
+
+            $summ       = 0;
+            $total      = 0;
+            $single     = 0;
+            foreach ($cart as $item) {
+                foreach ($item as $value){
+                    $summ   += floatval($value[Yii::$app->language]['summary']);
+                    $total  += $value[Yii::$app->language]['count'];
+                    $single = floatval($value[Yii::$app->language]['summary']);
                 }
-                return [
-                    'summary'   => $summ,
-                    'single'    => $count * $price,
-                    'count'     => $total
-                ];
             }
+            return [
+                'summary'   => $summ,
+                'single'    => $single,
+                'count'     => $total
+            ];
         }
     }
 
@@ -76,7 +83,7 @@ class CartModel extends Model
 
     public function deleteCoockie($id, $cart){
         foreach ($cart as $key => $value){
-            if ($value['id'] == $id){
+            if (array_key_exists($id, $value)){
                 unset($cart[$key]);
             }
         }

@@ -44,7 +44,7 @@ function addToCart(id, count) {
          data
     ).done(function( response ) {
         $(".db_price").empty();
-        $(".db_price").text(response['summary'] + getDelivery());
+        $(".db_price").text(response['summary']);
     });
 }
 
@@ -58,7 +58,7 @@ function updateCart(id, count) {
         data
     ).done(function( response ) {
         $(".db_price").empty();
-        $(".db_price").text(response['summary'] + getDelivery());
+        $(".db_price").text(response['summary']);
         $(".db_price--single__"+id).empty();
         $(".db_price--single__"+id).text(response['single']);
         $(".common-quantity").empty();
@@ -79,7 +79,7 @@ function deleteFromCart(id) {
             window.location.reload()
         } else {
             $(".db_price").empty();
-            $(".db_price").text(response['summary'] + getDelivery());
+            $(".db_price").text(response['summary']);
             $(".common-quantity").empty();
             $(".common-quantity").text(response['count']);
         }
@@ -97,7 +97,7 @@ function updateRadio() {
             window.location.reload()
         } else {
             $(".db_price").empty();
-            $(".db_price").text(response + getDelivery());
+            $(".db_price").text(response);
         }
     });
 }
