@@ -6,7 +6,6 @@ use app\models\CartModel;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
 $cart = CartModel::getCart();
 $poland = Yii::$app->params['delivery'][Yii::$app->language]['poland'];
 $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];

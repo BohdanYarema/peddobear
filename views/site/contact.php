@@ -5,7 +5,6 @@ use app\widgets\CookieWidget;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
 ?>
 
 <main class="contacts-page">

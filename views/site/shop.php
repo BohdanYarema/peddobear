@@ -6,7 +6,6 @@ use app\widgets\CookieWidget;
 /* @var $this yii\web\View */
 /* @var $model \app\models\Shop[] */
 
-$this->title = 'TED a car';
 ?>
 <main class="shop-page">
     <?php echo HeaderWidget::widget(['model' => null]); ?>

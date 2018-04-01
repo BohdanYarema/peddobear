@@ -4,8 +4,6 @@ use app\widgets\FooterWidget;
 use app\widgets\CookieWidget;
 
 /* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
 ?>
 
 <main class="about-page">
