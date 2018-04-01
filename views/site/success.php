@@ -7,4 +7,7 @@
  */
 
 
-print_r($_POST);
+$model = \app\modules\models\Log::find()->all();
+foreach ($model as $value){
+    var_dump(json_decode($value->text, true));
+}
