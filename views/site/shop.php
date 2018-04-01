@@ -27,7 +27,7 @@ $this->title = 'TED a car';
                             </div>
                             <div class="shop-item-wrap__price revealator-slidedown revealator-once revealator-delay5">
                                 <div class="price-amount">
-                                    <p>Price: <span class="price-item"><?=$item->price?></span> <span class="currency">$</span></p>
+                                    <p>Price: <span class="price-item"><?=$item->locale->price?></span> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></p>
                                 </div>
                                 <div class="item-quantity">
                                     <button class="minus-btn" type="button" name="button">-</button>
@@ -52,7 +52,7 @@ $this->title = 'TED a car';
                     <div class="slider-nav" data-slider-logos>
                         <?php foreach ($model as $item):?>
                             <div class="img-ted-mini">
-                                <img src="<?=$item->image_base_url.'/'.$item->image_path;?>">
+                                <img src="<?=$item->slide_base_url.'/'.$item->slide_path;?>">
                             </div>
                         <?php endforeach;?>
                     </div>
