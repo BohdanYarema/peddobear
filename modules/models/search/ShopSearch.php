@@ -19,8 +19,7 @@ class ShopSearch extends Shop
     {
         return [
             [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['slug', 'image_base_url', 'image_path'], 'safe'],
-            [['price', 'sale'], 'number'],
+            [['image_base_url', 'image_path'], 'safe'],
         ];
     }
 
@@ -61,15 +60,12 @@ class ShopSearch extends Shop
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'price' => $this->price,
-            'sale' => $this->sale,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'image_base_url', $this->image_base_url])
+        $query->andFilterWhere(['like', 'image_base_url', $this->image_base_url])
             ->andFilterWhere(['like', 'image_path', $this->image_path]);
 
         return $dataProvider;

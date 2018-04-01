@@ -8,14 +8,16 @@ return [
     ],
     'delivery'=>[
         'pl' => [
-            'currency'  => 'pl',
-            'poland'    => 10,
-            'world'     => 15
+            'currency'          => 'PLN',
+            'currency_name'     => 'pl',
+            'poland'            => 10,
+            'world'             => 15
         ],
         'en' => [
-            'currency'  => '$',
-            'poland'    => 3,
-            'world'     => 5
+            'currency'          => 'USD',
+            'currency_name'     => '$',
+            'poland'            => 3,
+            'world'             => 5
         ],
     ],
 ];

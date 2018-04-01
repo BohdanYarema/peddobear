@@ -14,6 +14,10 @@ use app\components\LocaleTrait;
  * @property string $i18n
  * @property string $title
  * @property string $description
+ * @property string $meta_title
+ * @property string $meta_description
+ * @property float $price
+ * @property float $special_price
  * @property int $created_at
  * @property int $updated_at
  *
@@ -56,9 +60,10 @@ class ShopI18n extends \yii\db\ActiveRecord
     {
         return [
             [['shop_id', 'created_at', 'updated_at'], 'integer'],
-            [['description'], 'string'],
+            [['price', 'special_price'], 'number'],
+            [['description', 'meta_description'], 'string'],
             [['i18n'], 'string', 'max' => 45],
-            [['title'], 'string', 'max' => 1024],
+            [['title', 'meta_title'], 'string', 'max' => 1024],
             [['shop_id'], 'exist', 'skipOnError' => true, 'targetClass' => Shop::className(), 'targetAttribute' => ['shop_id' => 'id']],
         ];
     }
@@ -69,13 +74,17 @@ class ShopI18n extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'shop_id' => 'Shop ID',
-            'i18n' => 'I18n',
-            'title' => 'Title',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id'                => 'ID',
+            'shop_id'           => 'Shop ID',
+            'i18n'              => 'I18n',
+            'title'             => 'Title',
+            'description'       => 'Description',
+            'meta_title'        => 'Meta Title',
+            'meta_description'  => 'Meta Description',
+            'price'             => 'Price',
+            'special_price'     => 'Special price',
+            'created_at'        => 'Created At',
+            'updated_at'        => 'Updated At',
         ];
     }
 

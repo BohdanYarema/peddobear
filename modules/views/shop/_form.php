@@ -27,15 +27,17 @@ use yii\widgets\ActiveForm;
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
 
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
+
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
+
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][price]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Price')) ?>
+
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][special_price]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Special price')) ?>
+
             </div>
         <?php endforeach; ?>
     </div>
-
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'special_price')->textInput() ?>
-
-    <?= $form->field($model, 'sale')->textInput() ?>
 
     <?= $form->field($model, 'status')->dropDownList([
         '0' => 'Отключен',
@@ -50,6 +52,15 @@ use yii\widgets\ActiveForm;
             'maxFileSize' => 5000000, // 5 MiB
         ])
         ->label($model->getAttributeLabel("image"));
+    ?>
+
+    <?php echo $form->field($model, 'slide')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'maxFileSize' => 5000000, // 5 MiB
+        ])
+        ->label($model->getAttributeLabel("slide"));
     ?>
 
     <div class="form-group">

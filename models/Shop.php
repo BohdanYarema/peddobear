@@ -4,18 +4,15 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "shop".
  *
  * @property int $id
- * @property string $slug
  * @property string $image_base_url
  * @property string $image_path
- * @property double $price
- * @property double $special_price
- * @property double $sale
+ * @property string $slide_path
+ * @property string $slide_base_url
  * @property int $status
  * @property int $count
  * @property float $summary
@@ -36,6 +33,12 @@ class Shop extends \yii\db\ActiveRecord
                 'pathAttribute' => 'image_path',
                 'baseUrlAttribute' => 'image_base_url',
             ],
+            'slide' => [
+                'class' => 'trntv\filekit\behaviors\UploadBehavior',
+                'attribute' => 'slide',
+                'pathAttribute' => 'slide_path',
+                'baseUrlAttribute' => 'slide_base_url',
+            ],
         ];
     }
 
@@ -44,6 +47,7 @@ class Shop extends \yii\db\ActiveRecord
      */
     public $i18n;
     public $image;
+    public $slide;
     public $summary;
     public $count;
 
@@ -62,11 +66,9 @@ class Shop extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'sale', 'special_price'], 'number'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['slug'], 'string', 'max' => 32],
-            [['image_base_url', 'image_path'], 'string', 'max' => 1024],
-            [['i18n', 'image', 'summary', 'count'], 'safe']
+            [['image_base_url', 'image_path', 'slide_base_url', 'slide_path'], 'string', 'max' => 1024],
+            [['i18n', 'image', 'summary', 'count', 'slide'], 'safe']
         ];
     }
 
@@ -76,16 +78,17 @@ class Shop extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'slug' => 'Slug',
-            'image_base_url' => 'Image Base Url',
-            'image_path' => 'Image Path',
-            'price' => 'Price',
-            'special_price' => 'Special Price',
-            'sale' => 'Sale',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id'                => 'ID',
+            'slug'              => 'Slug',
+            'image_base_url'    => 'Image Base Url',
+            'image_path'        => 'Image Path',
+            'slide_base_url'    => 'Slide Base Url',
+            'slide_path'        => 'Slide Path',
+            'status'            => 'Status',
+            'created_at'        => 'Created At',
+            'updated_at'        => 'Updated At',
+            'image'             => 'Image',
+            'slide'             => 'Slide',
         ];
     }
 
