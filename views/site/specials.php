@@ -26,7 +26,7 @@ $this->title = 'TED a car';
                             </div>
                             <div class="special-item-wrap__price revealator-slidedown revealator-once revealator-delay5">
                                 <div class="price-amount">
-                                    <p>Price: <span class="price-item"><?=$item->special_price?></span> <span class="currency">$</span></p>
+                                    <p>Price: <span class="price-item"><?=$item->locale->special_price?></span> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></p>
                                 </div>
                                 <div class="item-quantity">
                                     <button class="minus-btn" type="button" name="button">-</button>
@@ -44,22 +44,21 @@ $this->title = 'TED a car';
             <?php endif;?>
 
             <div class="slider-btn-wrap revealator-slideup revealator-delay5 revealator-once revealator-duration10">
-                <div class="ted-fon-slider"><img src="img/Charity.svg"></div>
-                <div class="ted-fon-slider-pl"><img src="img/blagotworitelnost.svg"></div>
+                <div class="ted-fon-slider"><img src="<?=Yii::getAlias("@web")?>/img/Charity.svg"></div>
+                <div class="ted-fon-slider-pl"><img src="<?=Yii::getAlias("@web")?>/img/blagotworitelnost.svg"></div>
                 <div class="btn-left" data-slider-logos-prev><span></span></div>
                 <div class="slider-nav" data-slider-logos>
-                    <div class="img-ted-mini"><img src="img/FullSizeRender 2.jpg"></div>
-                    <div class="img-ted-mini"><img src="img/FullSizeRender 3.jpg"></div>
-                    <div class="img-ted-mini"><img src="img/FullSizeRender 4.jpg"></div>
-                    <div class="img-ted-mini"><img src="img/FullSizeRender 2.jpg"></div>
+                    <?php foreach ($model as $item):?>
+                        <img src="<?=$item->slide_base_url.'/'.$item->slide_path;?>">
+                    <?php endforeach;?>
                 </div>
                 <div class="btn-right" data-slider-logos-next><span></span></div>
             </div>
 
             <div class="buttons-links">
-                <a class="cart-prev-btn" href="shop.html">
+                <a class="cart-prev-btn" href="<?=\yii\helpers\Url::to(['/shop'])?>">
                     <p><span class="triangle"></span> RETURN TO shop</p>
-                </a><a class="cart-next-btn" href="cart.html">
+                </a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/cart'])?>">
                     <p>CONTINUE <span class="triangle"></span></p>
                 </a>
             </div>
