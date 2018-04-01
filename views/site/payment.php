@@ -3,7 +3,7 @@
     <input type="hidden" name="business" value="bohdanyarema1992-facilitator@gmail.com">
     <input type="hidden" name="item_name" value="Peddobear item">
     <input type="hidden" name="item_number" value="User123">
-    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="currency_code" value="PLN">
     <input type="hidden" name="amount" value="0.01">
     <input type="hidden" name="cancel_return" value="http://peddobear.devservice.pro/cancel">
     <input type="hidden" name="return" value="http://peddobear.devservice.pro/success">
