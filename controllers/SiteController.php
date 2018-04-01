@@ -42,6 +42,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $page = Page::find()->where(['slug' => 'index'])->one();
+        $this->getMeta($page);
         return $this->render('index', [
             'page' => $page
         ]);
@@ -52,9 +53,13 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionContacts()
+    public function actionContact()
     {
-        return $this->render('contacts');
+        $page = Page::find()->where(['slug' => 'contact'])->one();
+        $this->getMeta($page);
+        return $this->render('contact', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -64,7 +69,11 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $page = Page::find()->where(['slug' => 'about'])->one();
+        $this->getMeta($page);
+        return $this->render('about', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -74,7 +83,11 @@ class SiteController extends Controller
      */
     public function actionCart()
     {
-        return $this->render('cart');
+        $page = Page::find()->where(['slug' => 'cart'])->one();
+        $this->getMeta($page);
+        return $this->render('cart', [
+            'page' => $page
+        ]);
     }
 
 
@@ -85,7 +98,11 @@ class SiteController extends Controller
      */
     public function actionPayment()
     {
-        return $this->render('payment');
+        $page = Page::find()->where(['slug' => 'payment'])->one();
+        $this->getMeta($page);
+        return $this->render('payment', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -95,7 +112,11 @@ class SiteController extends Controller
      */
     public function actionNotify()
     {
-        return $this->render('notify');
+        $page = Page::find()->where(['slug' => 'notify'])->one();
+        $this->getMeta($page);
+        return $this->render('notify', [
+            'page' => $page
+        ]);
     }
 
 
@@ -106,7 +127,11 @@ class SiteController extends Controller
      */
     public function actionSuccess()
     {
-        return $this->render('success');
+        $page = Page::find()->where(['slug' => 'success'])->one();
+        $this->getMeta($page);
+        return $this->render('success', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -117,8 +142,11 @@ class SiteController extends Controller
     public function actionShop()
     {
         $model = Shop::find()->where(['status' => 1])->all();
+        $page = Page::find()->where(['slug' => 'shop'])->one();
+        $this->getMeta($page);
         return $this->render('shop', [
-            'model' => $model
+            'model' => $model,
+            'page' => $page
         ]);
     }
 
@@ -127,28 +155,16 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionSpecials()
+    public function actionSpecial()
     {
         $model = Shop::find()->where(['status' => 2])->all();
-        return $this->render('specials', [
-            'model' => $model
+        $page = Page::find()->where(['slug' => 'special'])->one();
+        $this->getMeta($page);
+        return $this->render('special', [
+            'model' => $model,
+            'page' => $page
         ]);
     }
-
-    /**
-     * Displays testpage.
-     *
-     * @return string
-     */
-    public function actionTest()
-    {
-        $cart = new CartModel();
-
-        return $this->render('test', [
-            'cart' => $cart->getCookie()
-        ]);
-    }
-
 
     /**
      * Displays addpage.
@@ -215,23 +231,25 @@ class SiteController extends Controller
      */
     public function getMeta($model)
     {
-        \Yii::$app->view->title = $model->locale->title;
-        \Yii::$app->view->registerMetaTag(['name'       => 'title', 'content'           => $model->locale->meta_title]);
-        \Yii::$app->view->registerMetaTag(['name'       => 'description', 'content'     => $model->locale->meta_description]);
-        \Yii::$app->view->registerMetaTag(['name'       => 'keywords', 'content'        => $model->locale->meta_keywords]);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:title', 'content'        => $model->locale->meta_title]);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->locale->meta_image_base_url.'/'.$model->locale->meta_image_path]);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Peddobear']);
-        \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
+        if($model !== null){
+            \Yii::$app->view->title = $model->locale->title;
+            \Yii::$app->view->registerMetaTag(['name'       => 'title', 'content'           => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['name'       => 'description', 'content'     => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['name'       => 'keywords', 'content'        => $model->locale->meta_keywords]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:title', 'content'        => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->meta_image_base_url.'/'.$model->meta_image_path]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Peddobear']);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
 
 
-        \Yii::$app->view->registerMetaTag(['name' => 'twitter:url', 'content'           => Url::canonical()]);
-        \Yii::$app->view->registerMetaTag(['name' => 'twitter:card', 'content'          => 'summary']);
-        \Yii::$app->view->registerMetaTag(['name' => 'twitter:title', 'content'         => $model->locale->meta_title]);
-        \Yii::$app->view->registerMetaTag(['name' => 'twitter:description', 'content'   => $model->locale->meta_description]);
-        \Yii::$app->view->registerMetaTag(['name' => 'twitter:image', 'content'         => $model->locale->meta_image_base_url.'/'.$model->locale->meta_image_path]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:url', 'content'           => Url::canonical()]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:card', 'content'          => 'summary']);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:title', 'content'         => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:description', 'content'   => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:image', 'content'         => $model->meta_image_base_url.'/'.$model->meta_image_path]);
+        }
 
         return true;
     }

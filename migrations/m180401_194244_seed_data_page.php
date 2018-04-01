@@ -75,13 +75,28 @@ class m180401_194244_seed_data_page extends Migration
             'updated_at'    => time(),
         ]);
 
-        for ($i=1; $i<=9; $i++){
+        $this->insert('{{%page}}', [
+            'slug'          => 'payment',
+            'status'        => 1,
+            'created_at'    => time(),
+            'updated_at'    => time(),
+        ]);
+
+        $this->insert('{{%page}}', [
+            'slug'          => 'notify',
+            'status'        => 1,
+            'created_at'    => time(),
+            'updated_at'    => time(),
+        ]);
+
+        for ($i=1; $i<=11; $i++){
             $this->insert('{{%page_i18n}}', [
                 'page_id'               => $i,
                 'i18n'                  => 'pl',
                 'title'                 => 'Coockie',
                 'description'           => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'meta_title'            => 'Coockie',
+                'meta_keywords'         => 'Coockie',
                 'meta_description'      => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'created_at'            => time(),
                 'updated_at'            => time(),
@@ -93,6 +108,7 @@ class m180401_194244_seed_data_page extends Migration
                 'title'                 => 'Coockie',
                 'description'           => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'meta_title'            => 'Coockie',
+                'meta_keywords'         => 'Coockie',
                 'meta_description'      => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'created_at'            => time(),
                 'updated_at'            => time(),
@@ -139,6 +155,14 @@ class m180401_194244_seed_data_page extends Migration
 
         $this->delete('{{%page}}', [
             'slug'          => 'index'
+        ]);
+
+        $this->delete('{{%page}}', [
+            'slug'          => 'payment'
+        ]);
+
+        $this->delete('{{%page}}', [
+            'slug'          => 'notify'
         ]);
     }
 }
