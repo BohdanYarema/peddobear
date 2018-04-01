@@ -10,6 +10,7 @@ RewriteRule ^img/(.*)$ web/img/$1 [L]
 RewriteRule ^lib/(.*)$ web/lib/$1 [L]
 RewriteRule ^fonts/(.*)$ web/fonts/$1 [L]
 RewriteRule ^source/(.*)$ web/source/$1 [L]
+RewriteRule ^video/(.*)$ web/video/$1 [L]
 RewriteRule (.*) /web/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
