@@ -3,6 +3,9 @@
 // Reading POSTed data directly from $_POST causes serialization issues with array data in the POST.
 // Instead, read raw POST data from the input stream.
 $raw_post_data = file_get_contents('php://input');
+$model = new \app\modules\models\Log();
+$model->text = json_encode($_POST);
+$model->save();
 $raw_post_array = explode('&', $raw_post_data);
 $myPost = array();
 foreach ($raw_post_array as $keyval) {
