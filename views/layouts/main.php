@@ -20,7 +20,6 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#333333ff">
-    <title>TED a car</title>
     <link rel="icon" href="<?=Yii::getAlias("@web")?>/img/favicon.png" type="image/x-icon">
     <meta name="format-detection" content="telephone=no">
     <meta charset="<?= Yii::$app->charset ?>">
