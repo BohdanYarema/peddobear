@@ -17,6 +17,7 @@ return [
         ['pattern'=>'/test',        'route'=>'site/test'],
         ['pattern'=>'/contacts',    'route'=>'site/contacts'],
         ['pattern'=>'/payment',     'route'=>'site/payment'],
+        ['pattern'=>'/success',     'route'=>'site/success'],
     ],
     // Ignore / Filter route pattern's
     'ignoreLanguageUrlPatterns' => [

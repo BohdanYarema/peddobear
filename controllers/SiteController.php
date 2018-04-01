@@ -112,6 +112,27 @@ class SiteController extends Controller
      *
      * @return string
      */
+    public function actionNotify()
+    {
+        return $this->render('notify');
+    }
+
+
+    /**
+     * Displays cartpage.
+     *
+     * @return string
+     */
+    public function actionSuccess()
+    {
+        return $this->render('success');
+    }
+
+    /**
+     * Displays cartpage.
+     *
+     * @return string
+     */
     public function actionShop()
     {
         $model = Shop::find()->where(['status' => 1])->all();

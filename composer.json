@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "codemix/yii2-localeurls": "dev-master",
-        "trntv/yii2-file-kit": "dev-master"
+        "trntv/yii2-file-kit": "dev-master",
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
