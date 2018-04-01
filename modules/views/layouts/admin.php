@@ -37,6 +37,8 @@ AdmiAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/admin/default/index']],
+                ['label' => 'Shop', 'url' => ['/admin/shop/index']],
+                ['label' => 'Page', 'url' => ['/admin/page/index']],
                 ['label' => 'Keys', 'url' => ['/admin/i18n-source-message/index']],
                 ['label' => 'Translate for keys', 'url' => ['/admin/i18n-message/index']],
                 Yii::$app->user->isGuest ? (
