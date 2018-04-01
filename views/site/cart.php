@@ -107,7 +107,7 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
             </div>
         </div>
     </div>
-    <?php echo CookieWidget::widget(['model' => null]); ?>
+    <?php echo CookieWidget::widget(); ?>
     <?php echo FooterWidget::widget(['model' => null]); ?>
 </main>
 

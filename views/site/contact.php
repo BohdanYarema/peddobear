@@ -48,5 +48,5 @@ use app\widgets\CookieWidget;
             </div>
         </div>
     </div>
-    <?php echo CookieWidget::widget(['model' => null]); ?>
+    <?php echo CookieWidget::widget(); ?>
 </main>
