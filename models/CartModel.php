@@ -14,9 +14,9 @@ class CartModel extends Model
         } else {
             $price = 0;
             if ($model->status == 1){
-                $price = $model->price;
+                $price = $model->locale->price;
             } else {
-                $price = $model->special_price;
+                $price = $model->locale->special_price;
             }
 
             $cart = $this->checkCoockie();
