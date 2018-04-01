@@ -134,9 +134,9 @@ class Shop extends \yii\db\ActiveRecord
     public function getEndPrice()
     {
         if ($this->status == 1){
-            return $this->price;
+            return $this->locale->price;
         } else {
-            return $this->special_price;
+            return $this->locale->special_price;
         }
     }
 
