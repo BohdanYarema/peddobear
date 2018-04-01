@@ -15,23 +15,26 @@ class m180401_194036_add_table_page extends Migration
         }
 
         $this->createTable('{{%page}}', [
-            'id'                => $this->primaryKey(),
-            'slug'              => $this->string(32),
-            'status'            => $this->integer(),
-            'created_at'        => $this->integer(),
-            'updated_at'        => $this->integer()
+            'id'                    => $this->primaryKey(),
+            'slug'                  => $this->string(32),
+            'status'                => $this->integer(),
+            'meta_image_path'       => $this->string(1024),
+            'meta_image_base_url'   => $this->string(1024),
+            'created_at'            => $this->integer(),
+            'updated_at'            => $this->integer()
         ], $tableOptions);
 
         $this->createTable('{{%page_i18n}}', [
-            'id'                => $this->primaryKey(),
-            'page_id'           => $this->integer(),
-            'i18n'              => $this->string(45),
-            'title'             => $this->string(1024),
-            'description'       => $this->text(),
-            'meta_title'        => $this->string(1024),
-            'meta_description'  => $this->text(),
-            'created_at'        => $this->integer(),
-            'updated_at'        => $this->integer(),
+            'id'                    => $this->primaryKey(),
+            'page_id'               => $this->integer(),
+            'i18n'                  => $this->string(45),
+            'title'                 => $this->string(1024),
+            'description'           => $this->text(),
+            'meta_title'            => $this->string(1024),
+            'meta_keywords'         => $this->string(1024),
+            'meta_description'      => $this->text(),
+            'created_at'            => $this->integer(),
+            'updated_at'            => $this->integer(),
         ], $tableOptions);
 
         $this->addForeignKey('fk_page_i18n', '{{%page_i18n}}', 'page_id', '{{%page}}', 'id', 'cascade', 'cascade');

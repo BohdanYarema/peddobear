@@ -4,13 +4,13 @@ namespace app\controllers;
 
 use app\models\CartModel;
 use app\models\Shop;
+use app\modules\models\Page;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -25,41 +25,11 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function actions()
     {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -71,7 +41,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $page = Page::find()->where(['slug' => 'index'])->one();
+        return $this->render('index', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -234,5 +207,32 @@ class SiteController extends Controller
             \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
             print_r(CartModel::getCookie());
         }
+    }
+
+
+    /**
+     * @return boolean
+     */
+    public function getMeta($model)
+    {
+        \Yii::$app->view->title = $model->locale->title;
+        \Yii::$app->view->registerMetaTag(['name'       => 'title', 'content'           => $model->locale->meta_title]);
+        \Yii::$app->view->registerMetaTag(['name'       => 'description', 'content'     => $model->locale->meta_description]);
+        \Yii::$app->view->registerMetaTag(['name'       => 'keywords', 'content'        => $model->locale->meta_keywords]);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:title', 'content'        => $model->locale->meta_title]);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->locale->meta_image_base_url.'/'.$model->locale->meta_image_path]);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Peddobear']);
+        \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
+
+
+        \Yii::$app->view->registerMetaTag(['name' => 'twitter:url', 'content'           => Url::canonical()]);
+        \Yii::$app->view->registerMetaTag(['name' => 'twitter:card', 'content'          => 'summary']);
+        \Yii::$app->view->registerMetaTag(['name' => 'twitter:title', 'content'         => $model->locale->meta_title]);
+        \Yii::$app->view->registerMetaTag(['name' => 'twitter:description', 'content'   => $model->locale->meta_description]);
+        \Yii::$app->view->registerMetaTag(['name' => 'twitter:image', 'content'         => $model->locale->meta_image_base_url.'/'.$model->locale->meta_image_path]);
+
+        return true;
     }
 }

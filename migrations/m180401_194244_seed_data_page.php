@@ -68,7 +68,14 @@ class m180401_194244_seed_data_page extends Migration
             'updated_at'    => time(),
         ]);
 
-        for ($i=1; $i<=8; $i++){
+        $this->insert('{{%page}}', [
+            'slug'          => 'index',
+            'status'        => 1,
+            'created_at'    => time(),
+            'updated_at'    => time(),
+        ]);
+
+        for ($i=1; $i<=9; $i++){
             $this->insert('{{%page_i18n}}', [
                 'page_id'               => $i,
                 'i18n'                  => 'pl',
@@ -128,6 +135,10 @@ class m180401_194244_seed_data_page extends Migration
 
         $this->delete('{{%page}}', [
             'slug'          => 'fail'
+        ]);
+
+        $this->delete('{{%page}}', [
+            'slug'          => 'index'
         ]);
     }
 }

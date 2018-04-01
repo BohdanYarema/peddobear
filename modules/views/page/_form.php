@@ -31,13 +31,23 @@ use yii\widgets\ActiveForm;
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
 
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_keywords]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Ключевые слова')) ?>
+
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
-
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php echo $form->field($model, 'meta_image')->widget(
+        \trntv\filekit\widget\Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'maxFileSize' => 5000000, // 5 MiB
+        ])
+        ->label($model->getAttributeLabel("meta_image"));
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

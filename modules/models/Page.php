@@ -13,6 +13,9 @@ use yii\behaviors\TimestampBehavior;
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ * @property string $meta_image
+ * @property string $meta_image_base_url
+ * @property string $meta_image_path
  *
  * @property PageI18n[] $i18n
  */
@@ -22,6 +25,7 @@ class Page extends \yii\db\ActiveRecord
      * @var array
      */
     public $i18n;
+    public $meta_image;
 
     /**
      * {@inheritdoc}
@@ -35,6 +39,12 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::className(),
+            'meta_image' => [
+                'class' => 'trntv\filekit\behaviors\UploadBehavior',
+                'attribute' => 'meta_image',
+                'pathAttribute' => 'meta_image_path',
+                'baseUrlAttribute' => 'meta_image_base_url',
+            ],
         ];
     }
 
@@ -45,8 +55,9 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['i18n'], 'safe'],
+            [['i18n', 'meta_image'], 'safe'],
             [['slug'], 'string', 'max' => 32],
+            [['meta_image_base_url', 'meta_image_path'], 'string', 'max' => 1024],
         ];
     }
 
@@ -61,6 +72,9 @@ class Page extends \yii\db\ActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'meta_image_base_url'   => 'Meta Image Base Url',
+            'meta_image_path'       => 'Meta Path',
+            'meta_image'            => 'Meta Image',
         ];
     }
 
