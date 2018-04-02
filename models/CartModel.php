@@ -42,8 +42,11 @@ class CartModel extends Model
                     $single = floatval($value[Yii::$app->language]['summary']);
                 }
             }
+
+            $shiping = self::getShiping();
+
             return [
-                'summary'   => $summ,
+                'summary'   => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
                 'single'    => $single,
                 'count'     => $total
             ];
@@ -69,8 +72,11 @@ class CartModel extends Model
                     $single = floatval($value[Yii::$app->language]['summary']);
                 }
             }
+
+            $shiping = self::getShiping();
+
             return [
-                'summary'   => $summ,
+                'summary'   => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
                 'single'    => $single,
                 'count'     => $total
             ];
@@ -106,6 +112,20 @@ class CartModel extends Model
         return $cart;
     }
 
+
+    public static function checkShiping(){
+        $cookies = Yii::$app->request->cookies;
+        if (($cookie = $cookies->get('ship')) !== null) {
+            $cart      = $cookie->value;
+        } else {
+            $cart = [];
+        }
+
+        return $cart;
+    }
+
+
+
     public static function getSumm(){
         $summ = 0;
         $cart = self::checkCoockie();
@@ -120,7 +140,6 @@ class CartModel extends Model
                     }
                 }
             }
-
             return $summ;
         }
     }
@@ -144,5 +163,37 @@ class CartModel extends Model
             }
             return $response;
         }
+    }
+
+    public static function getShiping(){
+        $ship = self::checkShiping();
+        if (empty($ship)){
+            return 'poland';
+        } else {
+            return $ship;
+        }
+    }
+
+    public function setCoockieShiping($data){
+        $set_cookies = Yii::$app->response->cookies;
+        $set_cookies->add(new \yii\web\Cookie([
+            'name'  => 'ship',
+            'value' => $data,
+        ]));
+    }
+
+    public function setShiping($name){
+        $data = $name;
+        $this->setCoockieShiping($data);
+        $summ = self::getSumm();
+        return $summ+Yii::$app->params['delivery'][Yii::$app->language][$data];
+    }
+
+    public static function setNull(){
+        $set_cookies = Yii::$app->response->cookies;
+        $set_cookies->add(new \yii\web\Cookie([
+            'name'  => 'ship',
+            'value' => '',
+        ]));
     }
 }

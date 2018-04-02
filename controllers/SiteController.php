@@ -192,7 +192,8 @@ class SiteController extends Controller
         if (Yii::$app->request->isAjax){
             \Yii::$app->getResponse()->format = Response::FORMAT_JSON;
 
-            return CartModel::getSumm();
+            $model = new CartModel();
+            return $model->setShiping(Yii::$app->request->post('name'));
         }
     }
 

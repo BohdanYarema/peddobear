@@ -86,22 +86,18 @@ function deleteFromCart(id) {
     });
 }
 
-function updateRadio() {
-    var data = {};
+function updateRadio(value) {
+    var data = {'name': value};
     data[param]     = token;
     $.post(
         "site/radio",
         data
     ).done(function( response ) {
-        if(response == 0){
-            window.location.reload()
-        } else {
-            $(".db_price").empty();
-            $(".db_price").text(response);
-        }
+        $(".db_price").empty();
+        $(".db_price").text(response);
     });
 }
 
 $(document).on("change", ".qwe", function () {
-    updateRadio()
+    updateRadio($(this).val())
 });

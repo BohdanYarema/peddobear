@@ -7,8 +7,7 @@ use app\models\CartModel;
 /* @var $this yii\web\View */
 
 $cart = CartModel::getCart();
-$poland = Yii::$app->params['delivery'][Yii::$app->language]['poland'];
-$world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
+$shiping = CartModel::getShiping();
 ?>
 
 <main class="cart-page">
@@ -68,8 +67,8 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
                             <div class="values-wrapp">
                                 <label class="radio-delivery">
                                     <div class="radio-wrapp">
-                                        <input class="qwe" id="qwe" type="radio" name="dilivery" value="poland" checked>
-                                        <input class="qwe" id="qwe" type="radio" name="dilivery" value="world">
+                                        <input class="qwe" id="qwe" type="radio" name="dilivery" value="poland" <?php if($shiping == 'poland'){echo 'checked';}?> >
+                                        <input class="qwe" id="qwe" type="radio" name="dilivery" value="world" <?php if($shiping == 'world'){echo 'checked';}?>>
                                     </div>
                                     <div class="radio-labeles-wrapp">
                                         <div class="radio-labeles-wrapp__label">
@@ -81,7 +80,7 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
                                     </div>
                                 </label>
                                 <label class="common-quantity"><?=$count?></label>
-                                <label class="common-price db_price"><?=CartModel::getSumm() + $poland?> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span>
+                                <label class="common-price db_price"><?=CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping]?> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span>
                                     <div class="delivery-label">(Delivery costs included)</div>
                                 </label>
                             </div>
@@ -110,24 +109,3 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
     <?php echo CookieWidget::widget(); ?>
     <?php echo FooterWidget::widget(['model' => null]); ?>
 </main>
-
-<?php
-$script = <<< JS
-    var poland  = $poland;
-    var world   = $world;
-    var add     = 0
-    
-    function getDelivery() {
-        var data_name = $("input[name='dilivery']:checked").val();
-        
-        if(data_name === 'world'){
-            add = world;
-        } else {
-            add = poland;
-        }
-        return add;
-    }
-JS;
-//маркер конца строки, обязательно сразу, без пробелов и табуляции
-$this->registerJs($script, yii\web\View::POS_END);
-?>
