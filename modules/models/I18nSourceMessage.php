@@ -20,7 +20,7 @@ class I18nSourceMessage extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%i18n_source_message}}';
+        return '{{%source_message}}';
     }
 
     /**

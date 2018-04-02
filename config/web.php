@@ -71,14 +71,7 @@ $config = [
         'urlManager' => require(__DIR__.'/_urlManager.php'),
         'i18n' => [
             'translations' => [
-                '*'=> [
-                    'class'                 => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'    =>'{{%i18n_source_message}}',
-                    'messageTable'          =>'{{%i18n_message}}',
-                    'enableCaching'         => YII_ENV_DEV,
-                    'cachingDuration'       => 3600,
-                ],
-
+                '*' => ['class' => 'yii\i18n\DbMessageSource']
             ],
         ],
     ],
