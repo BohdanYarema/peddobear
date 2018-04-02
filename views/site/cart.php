@@ -40,13 +40,13 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
                                     </p>
                                 </div>
                             </div>
-                            <div class="product__price"><?=$item->getEndPrice()?> <span class="currency">$</span></div>
+                            <div class="product__price"><?=$item->getEndPrice()?> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></div>
                             <div class="product__quantity">
                                 <button class="minus-btn minus-btn--db" data-id="<?=$item->id?>" data-selector="item__<?=$item->id?>" type="button" name="button">-</button>
                                 <input type="text" value="<?=$item->count?>" min="1" id="item__<?=$item->id?>">
                                 <button class="plus-btn plus-btn--db"  data-id="<?=$item->id?>" data-selector="item__<?=$item->id?>" type="button" name="button">+</button>
                             </div>
-                            <div class="product__line-price db_price--single__<?=$item->id?>"><?=$item->summary?> <span class="currency">$</span></div>
+                            <div class="product__line-price db_price--single__<?=$item->id?>"><?=$item->summary?> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></div>
                             <div class="product__removal"><a class="remove-product"><img class="remove-krest" data-id="<?=$item->id?>" src="<?=Yii::getAlias("@web")?>/img/Krest.svg"></a></div>
                         </div>
                     <?php endforeach;?>
@@ -81,7 +81,7 @@ $world  = Yii::$app->params['delivery'][Yii::$app->language]['world'];
                                     </div>
                                 </label>
                                 <label class="common-quantity"><?=$count?></label>
-                                <label class="common-price db_price"><?=CartModel::getSumm() + $poland?> <span class="currency">$</span>
+                                <label class="common-price db_price"><?=CartModel::getSumm() + $poland?> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span>
                                     <div class="delivery-label">(Delivery costs included)</div>
                                 </label>
                             </div>

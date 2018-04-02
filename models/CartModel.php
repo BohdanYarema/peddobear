@@ -26,9 +26,9 @@ class CartModel extends Model
                 ];
             }
 
-            $cart = $this->checkCoockie();
+            $cart = self::checkCoockie();
             $cart = $this->deleteCoockie($id, $cart);
-            $cart[]    = $data;
+            $cart[] = $data;
             $this->setCoockie($cart);
 
 
@@ -59,14 +59,19 @@ class CartModel extends Model
         if (empty($cart)){
             return 0;
         } else {
-            $summ   = 0;
-            $total  = 0;
+            $summ       = 0;
+            $total      = 0;
+            $single     = 0;
             foreach ($cart as $item) {
-                $summ += floatval($item['price']);
-                $total += $item['count'];
+                foreach ($item as $value){
+                    $summ   += floatval($value[Yii::$app->language]['summary']);
+                    $total  += $value[Yii::$app->language]['count'];
+                    $single = floatval($value[Yii::$app->language]['summary']);
+                }
             }
             return [
                 'summary'   => $summ,
+                'single'    => $single,
                 'count'     => $total
             ];
         }
@@ -90,7 +95,7 @@ class CartModel extends Model
         return $cart;
     }
 
-    public function checkCoockie(){
+    public static function checkCoockie(){
         $cookies = Yii::$app->request->cookies;
         if (($cookie = $cookies->get('cart')) !== null) {
             $cart      = $cookie->value;
@@ -102,62 +107,42 @@ class CartModel extends Model
     }
 
     public static function getSumm(){
-        $cookies = Yii::$app->request->cookies;
-        // Check the availability of the cookie
-        if ($cookies->has('cart')){
-            $cart = $cookies->getValue('cart');
-        }
+        $summ = 0;
+        $cart = self::checkCoockie();
         if (empty($cart)){
             return 0;
         } else {
-            $summ = 0;
             foreach ($cart as $item) {
-                $summ += floatval($item['price']);
+                foreach ($item as $key => $value){
+                    $model = Shop::find()->where(['id' => $key])->one();
+                    if ($model !== null){
+                        $summ += $value[Yii::$app->language]['price'] * $value[Yii::$app->language]['count'];
+                    }
+                }
             }
+
             return $summ;
         }
     }
 
     public static function getCart(){
-        $cookies = Yii::$app->request->cookies;
-        // Check the availability of the cookie
-        if ($cookies->has('cart')){
-            $cart = $cookies->getValue('cart');
-        } else {
-            $cart = [];
-        }
+        $cart = self::checkCoockie();
+
         if (empty($cart)){
             return [];
         } else {
             $response = [];
             foreach ($cart as $item) {
-                $model = Shop::find()->where(['id' => $item['id']])->one();
-                if (!empty($model)){
-                    $model->count     = $item['count'];
-                    $model->summary   = $item['price'];
-                    $response[] = $model;
+                foreach ($item as $key => $value){
+                    $model = Shop::find()->where(['id' => $key])->one();
+                    if ($model !== null){
+                        $model->count     = $value[Yii::$app->language]['count'];
+                        $model->summary   = $value[Yii::$app->language]['price'];
+                        $response[] = $model;
+                    }
                 }
             }
             return $response;
         }
-    }
-
-    public function getPrice(){
-        $cookies = Yii::$app->request->cookies;
-        // Check the availability of the cookie
-        if ($cookies->has('cart')){
-            $cart = $cookies->getValue('cart');
-        }
-
-        $id = [];
-        foreach ($cart as $value){
-            $id[] = $value['id'];
-        }
-
-        $list = Shop::find()->where(['in', 'id', $id])->sum('price');
-
-        print_r($list);
-
-        return $list;
     }
 }

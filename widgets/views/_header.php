@@ -27,7 +27,7 @@ use app\models\CartModel;
                 <div class="total-cart"><a class="cart-button" href="<?=Url::to('/cart')?>">
                         <div class="total-cart__cart"><img src="<?=Yii::getAlias("@web")?>/img/basket.svg"></div>
                         <div class="total-cart__total">
-                            <div class="total-price"><span class="cart-amount db_price"><span class="currency">$</span></span></div>
+                            <div class="total-price"><span class="cart-amount db_price"><span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></span></div>
                         </div></a></div>
                 <div class="header-lang">
                     <?php foreach (Yii::$app->params['availableLocales'] as $key =>  $lang):?>
