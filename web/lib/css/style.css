@@ -2740,7 +2740,7 @@ main.loading {
     color: #fff;
   }
 }
-.payment-content__header h1 span {
+.payment-content__header h1 strong {
   font-weight: 300;
 }
 .payment-content__header h1:after {
@@ -2867,7 +2867,9 @@ main.loading {
   color: #fff;
   color: #b3b3b3;
 }
-.payment-content__personal-info .ted-info-payment__item #pay {
+.payment-content__personal-info .ted-info-payment__item #pay,
+.payment-content__personal-info .ted-info-payment__item #payu,
+.payment-content__personal-info .ted-info-payment__item #payapple {
   cursor: pointer;
   display: block;
   padding: 5px;
@@ -2876,9 +2878,26 @@ main.loading {
   width: 20px;
   height: 20px;
 }
-.payment-content__personal-info .ted-info-payment__item #pay:focus {
+.payment-content__personal-info .ted-info-payment__item #pay:focus,
+.payment-content__personal-info .ted-info-payment__item #payu:focus,
+.payment-content__personal-info .ted-info-payment__item #payapple:focus {
   outline: none;
   resize: none;
+}
+.payment-content__personal-info .ted-info-payment__item #payu {
+  cursor: default;
+}
+.payment-content__personal-info .ted-info-payment__item #payapple {
+  cursor: default;
+}
+.payment-content__personal-info .ted-info-payment__item p {
+  color: #000;
+  font-size: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  color: #fff;
+  color: #fff;
+  margin: 5px;
 }
 .payment-content .links-btns {
   display: flex;
@@ -3058,7 +3077,7 @@ main.loading {
     color: #fff;
   }
 }
-.shop-item-wrap__description .shop-header h1 span {
+.shop-item-wrap__description .shop-header h1 strong {
   font-weight: 300;
 }
 .shop-item-wrap__description .shop-header h1:after {
@@ -3689,7 +3708,7 @@ main.loading {
     color: #fff;
   }
 }
-.special-item-wrap__description .special-header h1 span {
+.special-item-wrap__description .special-header h1 strong {
   font-weight: 300;
 }
 .special-item-wrap__description .special-header h1:after {

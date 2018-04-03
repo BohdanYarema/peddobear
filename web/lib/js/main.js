@@ -272,3 +272,7 @@ function removeItem(removeButton)
     recalculateCart();
   });
 }
+
+document.getElementById("payu").disabled = true;
+document.getElementById("payapple").disabled = true;
+

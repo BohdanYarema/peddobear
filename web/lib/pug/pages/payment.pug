@@ -9,7 +9,7 @@ block content
         .wrapper
             .payment-content
                 .payment-content__header
-                    h1 #[span Personal] information
+                    h1 #[strong Personal] information
                 .payment-content__personal-info
                     .ted-fon-payment
                         img(src="img/TED EBASOS.svg")
@@ -81,7 +81,7 @@ block content
                                 .payment-btn
                                     img(src="img/PayPal.svg")
                             .ted-info-payment__item
-                                input#pay(
+                                input#payu(
                                     type="radio"
                                     name="paytype"
                                     value="payu"
@@ -89,8 +89,9 @@ block content
                                 label(for="pay") PayU
                                 .payment-btn
                                     img(src="img/PayU.svg")
+                                p (Soon)
                             .ted-info-payment__item
-                                input#pay(
+                                input#payapple(
                                     type="radio"
                                     name="paytype"
                                     value="applepay"
@@ -98,6 +99,7 @@ block content
                                 label(for="pay") Apple Pay
                                 .payment-btn
                                     img(src="img/applepay.svg")
+                                p (Soon)
                         .links-btns
                             a.pay-prev-btn(href="cart.html")
                                 p #[span.triangle] Back
