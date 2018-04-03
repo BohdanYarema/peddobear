@@ -26,7 +26,7 @@ use app\widgets\CookieWidget;
                             </div>
                             <div class="shop-item-wrap__price revealator-slidedown revealator-once revealator-delay5">
                                 <div class="price-amount">
-                                    <p>Price: <span class="price-item"><?=$item->locale->price?></span> <span class="currency"><?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?></span></p>
+                                    <p>Price: <span class="price-item"><?=$item->locale->price?></span> </p>
                                 </div>
                                 <div class="item-quantity">
                                     <button class="minus-btn" type="button" name="button">-</button>

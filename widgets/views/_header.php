@@ -8,9 +8,27 @@
 
 use yii\helpers\Url;
 use app\models\CartModel;
-
+$shiping = CartModel::getShiping();
 ?>
-
+<style>
+    .cart-amount:after {
+        content: ' <?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>';
+    }
+    .special-item-wrap__price .price-amount p:after {
+        content: " <?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>";
+    }
+    .shop-item-wrap__price .price-amount p:after {
+        content: " <?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>";
+    }
+    .product__price:after, .product__line-price:after, .common-price:after {
+        content: " <?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>";
+        text-transform: lowercase;
+    }
+    .product__price:after, .product__line-price:after, .common-price:after{
+        content: " <?=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>";
+        text-transform: lowercase;
+    }
+</style>
 
 <div class="header">
     <div class="header-wraper">
@@ -27,9 +45,8 @@ use app\models\CartModel;
                 <div class="total-cart"><a class="cart-button" href="<?=Url::to('/cart')?>">
                         <div class="total-cart__cart"><img src="<?=Yii::getAlias("@web")?>/img/basket.svg"></div>
                         <div class="total-cart__total">
-                            <div class="total-price"><span class="cart-amount db_price">100</span></div>
+                            <div class="total-price"><span class="cart-amount db_price"><?=CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping]?></span></div>
                         </div></a></div>
-<!--                --><?php //=Yii::$app->params['delivery'][Yii::$app->language]['currency_name']?>
                 <div class="header-lang">
                     <?php foreach (Yii::$app->params['availableLocales'] as $key =>  $lang):?>
                         <?php if ($key == Yii::$app->language):?>
