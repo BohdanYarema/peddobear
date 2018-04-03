@@ -273,6 +273,6 @@ function removeItem(removeButton)
   });
 }
 
-document.getElementById("payu").disabled = true;
-document.getElementById("payapple").disabled = true;
+// document.getElementById("payu").disabled = true;
+// document.getElementById("payapple").disabled = true;
 
