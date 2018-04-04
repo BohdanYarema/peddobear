@@ -33,7 +33,7 @@ use app\widgets\CookieWidget;
                                     <input id="item__<?=$item->id?>" class="item-amount" type="text" value="1" min="1">
                                     <button class="plus-btn" type="button" name="button">+</button>
                                 </div>
-                                <button class="add-to-cart" data-id="<?=$item->id?>"  data-selector="item__<?=$item->id?>" type="submit" value="submit"><?=Yii::t('frontend', 'add to cart')?></button>
+                                <button class="add-to-cart" data-id="<?=$item->id?>"  data-selector="item__<?=$item->id?>" type="submit" value="submit"><?=Yii::t('frontend', 'Add to cart')?></button>
                             </div>
                             <div class="shop-item-wrap__img revealator-slidedown revealator-once revealator-delay7">
                                 <img class="shop" src="<?=$item->image_base_url.'/'.$item->image_path;?>">

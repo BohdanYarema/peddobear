@@ -13,7 +13,7 @@ use app\widgets\CookieWidget;
         <div class="wrapper">
             <div class="contacts-inner">
                 <div class="contacts-inner__header revealator-slideright revealator-delay6 revealator-duration2">
-                    <h1><?=Yii::t('frontend', 'contact information')?></h1>
+                    <h1><?=Yii::t('frontend', 'CONTACT INFORMATION')?></h1>
                 </div>
                 <div class="contact-info-inner">
                     <div class="contact-info revealator-zoomin revealator-delay10 revealator-duration7">

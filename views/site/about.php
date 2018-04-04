@@ -13,7 +13,7 @@ use app\widgets\CookieWidget;
             <div class="block-content">
                 <div class="left-part revealator-slideright revealator-delay5 revealator-duration10">
                     <div class="left-part__header">
-                        <h1 class="aboutted"><?=Yii::t('frontend', 'about')?></h1>
+                        <h1 class="aboutted"><?=Yii::t('frontend', 'ABOUT TED')?></h1>
                     </div>
                     <div class="background-ted-mob"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     <div class="left-part__icon-text">
@@ -44,40 +44,40 @@ use app\widgets\CookieWidget;
                     </div>
                     <div class="left-part__footer">
                         <div class="footer-title">
-                            <h2><?=Yii::t('frontend', 'world_smells')?></h2>
+                            <h2><?=Yii::t('frontend', 'Now the world smells like your scent')?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="right-part revealator-slideleft revealator-delay10">
                     <div class="right-part__header">
-                        <h1 class="aboutted"><?=Yii::t('frontend', 'ted_is')?></h1>
+                        <h1 class="aboutted"><?=Yii::t('frontend', 'TED IS')?></h1>
                     </div>
                     <div class="background-ted"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     <div class="right-part__icon-text">
                         <div class="text-icon-column">
                             <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon1.svg"></div>
                             <div class="text-icon">
-                                <p><?=Yii::t('frontend', 'anti_alergic')?></p>
+                                <p><?=Yii::t('frontend', 'text_about_right_three')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">
                             <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon2.svg"></div>
                             <div class="text-icon">
-                                <p><?=Yii::t('frontend', 'specialy_adapted')?></p>
+                                <p><?=Yii::t('frontend', 'text_about_right_three')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">
                             <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon3.svg"></div>
                             <div class="text-icon">
                                 <p>
-                                    <?=Yii::t('frontend', 'friendly')?>
+                                    <?=Yii::t('frontend', 'text_about_right_three')?>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="right-part__footer">
                         <h4>
-                            <?=Yii::t('frontend', 'eternal_layers')?>
+                            <?=Yii::t('frontend', 'Three internal layers are being |evenly penetrated with perfume liquid by special machine. Each layer absorbs an ideal amount of fragrance. Finally it brings you luxury fragrance as well as saves your money')?>
                         </h4>
                     </div><a class="right-part__next-btn" href="/shop">
                         <p><?=Yii::t('frontend', 'next')?> <span class="triangle"></span></p></a>

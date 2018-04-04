@@ -16,16 +16,16 @@ $shiping = CartModel::getShiping();
         <div class="wrapper">
             <div class="cart-block">
                 <div class="cart-block__header">
-                    <h1><?=Yii::t('frontend', 'shopping cart')?></h1>
+                    <h1><?=Yii::t('frontend', 'SHOPPING CART')?></h1>
                 </div>
                 <?php if (!empty($cart)):?>
                     <div class="cart-block__cart">
                     <div class="column-labels">
                         <label class="product-details"> </label>
-                        <label class="product-price"><?=Yii::t('frontend', 'price')?></label>
-                        <label class="product-quantity"><?=Yii::t('frontend', 'quantity')?></label>
-                        <label class="product-line-price"><?=Yii::t('frontend', 'total')?></label>
-                        <label class="product-removal"><?=Yii::t('frontend', 'remove')?></label>
+                        <label class="product-price"><?=Yii::t('frontend', 'PRICE')?></label>
+                        <label class="product-quantity"><?=Yii::t('frontend', 'QUANTITY')?></label>
+                        <label class="product-line-price"><?=Yii::t('frontend', 'TOTAL')?></label>
+                        <label class="product-removal"><?=Yii::t('frontend', 'REMOVE')?></label>
                     </div>
                     <?php $count = 0?>
                     <?php foreach ($cart as $item):?>
@@ -53,13 +53,13 @@ $shiping = CartModel::getShiping();
                         <div class="totals__titles">
                             <div class="titles-wrapper">
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'delivery point')?></h4>
+                                    <h4><?=Yii::t('frontend', 'DELIVERY POINT')?></h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'total quantity')?></h4>
+                                    <h4><?=Yii::t('frontend', 'TOTAL QUANTITY')?></h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'total price')?></h4>
+                                    <h4><?=Yii::t('frontend', 'TOTAL PRICE')?></h4>
                                 </label>
                             </div>
                         </div>

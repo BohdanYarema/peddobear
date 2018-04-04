@@ -56,7 +56,7 @@ use app\widgets\CookieWidget;
 
             <div class="buttons-links">
                 <a class="cart-prev-btn" href="<?=\yii\helpers\Url::to(['/shop'])?>">
-                    <p><span class="triangle"></span> <?=Yii::t('frontend', 'return')?></p>
+                    <p><span class="triangle"></span> <?=Yii::t('frontend', ' RETURN TO shop')?></p>
                 </a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/cart'])?>">
                     <p><?=Yii::t('frontend', 'continue')?> <span class="triangle"></span></p>
                 </a>
