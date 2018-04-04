@@ -16,16 +16,16 @@ $shiping = CartModel::getShiping();
         <div class="wrapper">
             <div class="cart-block">
                 <div class="cart-block__header">
-                    <h1><span>Shopping</span> cart</h1>
+                    <h1><?=Yii::t('frontend', 'shopping cart')?></h1>
                 </div>
                 <?php if (!empty($cart)):?>
                     <div class="cart-block__cart">
                     <div class="column-labels">
                         <label class="product-details"> </label>
-                        <label class="product-price">Price</label>
-                        <label class="product-quantity">Quantity</label>
-                        <label class="product-line-price">Total</label>
-                        <label class="product-removal">Remove</label>
+                        <label class="product-price"><?=Yii::t('frontend', 'price')?></label>
+                        <label class="product-quantity"><?=Yii::t('frontend', 'quantity')?></label>
+                        <label class="product-line-price"><?=Yii::t('frontend', 'total')?></label>
+                        <label class="product-removal"><?=Yii::t('frontend', 'remove')?></label>
                     </div>
                     <?php $count = 0?>
                     <?php foreach ($cart as $item):?>
@@ -53,13 +53,13 @@ $shiping = CartModel::getShiping();
                         <div class="totals__titles">
                             <div class="titles-wrapper">
                                 <label class="titl">
-                                    <h4><span>Delivery</span> Point</h4>
+                                    <h4><?=Yii::t('frontend', 'delivery point')?><span>Delivery</span> Point</h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><span>Total</span> Quantity</h4>
+                                    <h4><?=Yii::t('frontend', 'total quantity')?><span>Total</span> Quantity</h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><span>Total</span> Price</h4>
+                                    <h4><?=Yii::t('frontend', 'total price')?><span>Total</span> Price</h4>
                                 </label>
                             </div>
                         </div>
@@ -81,26 +81,26 @@ $shiping = CartModel::getShiping();
                                 </label>
                                 <label class="common-quantity"><?=$count?></label>
                                 <label class="common-price db_price"><?=CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping]?>
-                                    <div class="delivery-label">(Delivery costs included)</div>
+                                    <div class="delivery-label">(<?=Yii::t('frontend', 'Delivery costs included')?>)</div>
                                 </label>
                             </div>
                         </div>
                         <div class="buttons-links"><a class="cart-prev-btn" href="shop.html">
-                                <p><span class="triangle"></span> RETURN</p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
-                                <p>CONTINUE <span class="triangle"></span></p></a></div>
+                                <p><span class="triangle"></span> <?=Yii::t('frontend', 'return')?></p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
+                                <p><?=Yii::t('frontend', 'continue')?> <span class="triangle"></span></p></a></div>
                         <div class="ted-fon"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     </div>
                 </div>
                 <?php else:?>
                     <div class="cart-empty " style="display: flex">
                         <div class="cart-empty__header">
-                            <h1>Your cart is empty</h1>
+                            <h1><?=Yii::t('frontend', 'cart is empty')?></h1>
                         </div>
                         <div class="cart-empty__logo"><img src="<?=Yii::getAlias("@web")?>/img/SADTED.png"></div>
                         <div class="cart-empty__subtext">
-                            <p>But you can fix it</p>
+                            <p><?=Yii::t('frontend', 'fix it')?></p>
                         </div><a class="cart-empty__btn" href="<?=\yii\helpers\Url::to(['/shop'])?>">
-                            <p>Return to shop</p></a>
+                            <p><?=Yii::t('frontend', 'return to shop')?></p></a>
                     </div>
                 <?php endif;?>
             </div>

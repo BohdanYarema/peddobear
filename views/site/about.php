@@ -13,74 +13,74 @@ use app\widgets\CookieWidget;
             <div class="block-content">
                 <div class="left-part revealator-slideright revealator-delay5 revealator-duration10">
                     <div class="left-part__header">
-                        <h1 class="aboutted">About <span>Ted</span></h1>
+                        <h1 class="aboutted"><?=Yii::t('frontend', 'about')?></h1>
                     </div>
-                    <div class="background-ted-mob"><img src="img/TED EBASOS.svg"></div>
+                    <div class="background-ted-mob"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     <div class="left-part__icon-text">
                         <div class="order-text-row">
-                            <div class="icon-block"><img src="img/1parfume.svg"></div>
+                            <div class="icon-block"><img src="<?=Yii::getAlias("@web")?>/img/1parfume.svg"></div>
                             <div class="text-block">
-                                <p><span>TED A CAR</span> is a universal and premium kind of air aromatization in the form of a stylish accessory that can be used in a car, in the bathroom or in any room.</p>
+                                <p>
+                                    <?=Yii::t('frontend', 'text_about_one')?>
+                                </p>
                             </div>
                         </div>
                         <div class="order-text-row">
-                            <div class="icon-block"><img src="img/2dimont.svg"></div>
+                            <div class="icon-block"><img src="<?=Yii::getAlias("@web")?>/img/2dimont.svg"></div>
                             <div class="text-block">
-                                <p><span>TED A CAR</span> is different from its competitors with it’s fashionable and stylish design, as well as unusual  and original fragrances that will be appreciated by connoisseurs of fashion accessories and style.</p>
+                                <p>
+                                    <?=Yii::t('frontend', 'text_about_two')?>
+                                </p>
                             </div>
                         </div>
                         <div class="order-text-row">
-                            <div class="icon-block"><img src="img/3france.svg"></div>
+                            <div class="icon-block"><img src="<?=Yii::getAlias("@web")?>/img/3france.svg"></div>
                             <div class="text-block">
-                                <p><span>Persistent and pleasant</span> aromas developed in Europe will quickly help your move unpleasant smells, and also make your surrounding more comfortable to be in and just cheer up!</p>
+                                <p>
+                                    <?=Yii::t('frontend', 'text_about_three')?>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="left-part__footer">
                         <div class="footer-title">
-                            <h2>Now the world smells like your scent!</h2>
+                            <h2><?=Yii::t('frontend', 'world_smells')?></h2>
                         </div>
                     </div>
                 </div>
                 <div class="right-part revealator-slideleft revealator-delay10">
                     <div class="right-part__header">
-                        <h1 class="aboutted"><span>Ted</span> IS</h1>
+                        <h1 class="aboutted"><?=Yii::t('frontend', 'ted_is')?></h1>
                     </div>
-                    <div class="background-ted"><img src="img/TED EBASOS.svg"></div>
+                    <div class="background-ted"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     <div class="right-part__icon-text">
                         <div class="text-icon-column">
-                            <div class="icon-item"><img src="img/icon1.svg"></div>
+                            <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon1.svg"></div>
                             <div class="text-icon">
-                                <p>External layer becomes multicolored by covering non-toxic and <span>anti-allergic paints</span></p>
+                                <p><?=Yii::t('frontend', 'anti_alergic')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">
-                            <div class="icon-item"><img src="img/icon2.svg"></div>
+                            <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon2.svg"></div>
                             <div class="text-icon">
-                                <p>Due to its specially adapted cellulose, which possesses a conserve function, the fragrance is equally <span>persistent during a month</span></p>
+                                <p><?=Yii::t('frontend', 'specialy_adapted')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">
-                            <div class="icon-item"><img src="img/icon3.svg"></div>
+                            <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon3.svg"></div>
                             <div class="text-icon">
                                 <p>
-                                    We use eco friendly cardboard
-                                    only. It is chemically free as
-                                    well as safe for an environment.
-                                    <span>It don't cause any irritations</span>
+                                    <?=Yii::t('frontend', 'friendly')?>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="right-part__footer">
                         <h4>
-                            Three internal layers are being |evenly penetrated with
-                            perfume liquid by special machine. Each layer absorbs
-                            an ideal amount of fragrance. Finally it brings you
-                            luxury fragrance as well as saves your money
+                            <?=Yii::t('frontend', 'eternal_layers')?>
                         </h4>
-                    </div><a class="right-part__next-btn" href="shop.html">
-                        <p>NEXT <span class="triangle"></span></p></a>
+                    </div><a class="right-part__next-btn" href="/shop">
+                        <p><?=Yii::t('frontend', 'next')?> <span class="triangle"></span></p></a>
                 </div>
             </div>
         </div>

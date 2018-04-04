@@ -32,7 +32,7 @@ use app\widgets\CookieWidget;
                                     <input id="item__<?=$item->id?>" class="item-amount" type="text" value="1" min="1">
                                     <button class="plus-btn" type="button" name="button">+</button>
                                 </div>
-                                <button class="add-to-cart" data-id="<?=$item->id?>" data-selector="item__<?=$item->id?>" type="submit" value="submit">Add to cart</button>
+                                <button class="add-to-cart" data-id="<?=$item->id?>" data-selector="item__<?=$item->id?>" type="submit" value="submit"><?=Yii::t('frontend', 'add to cart')?></button>
                             </div>
                             <div class="special-item-wrap__img revealator-slidedown revealator-once revealator-delay7">
                                 <img class="special" src="<?=$item->image_base_url.'/'.$item->image_path;?>">
@@ -56,9 +56,9 @@ use app\widgets\CookieWidget;
 
             <div class="buttons-links">
                 <a class="cart-prev-btn" href="<?=\yii\helpers\Url::to(['/shop'])?>">
-                    <p><span class="triangle"></span> RETURN TO shop</p>
+                    <p><span class="triangle"></span> <?=Yii::t('frontend', 'return')?></p>
                 </a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/cart'])?>">
-                    <p>CONTINUE <span class="triangle"></span></p>
+                    <p><?=Yii::t('frontend', 'continue')?> <span class="triangle"></span></p>
                 </a>
             </div>
         </div>
