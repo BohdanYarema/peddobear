@@ -53,13 +53,13 @@ $shiping = CartModel::getShiping();
                         <div class="totals__titles">
                             <div class="titles-wrapper">
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'delivery point')?><span>Delivery</span> Point</h4>
+                                    <h4><?=Yii::t('frontend', 'delivery point')?></h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'total quantity')?><span>Total</span> Quantity</h4>
+                                    <h4><?=Yii::t('frontend', 'total quantity')?></h4>
                                 </label>
                                 <label class="titl">
-                                    <h4><?=Yii::t('frontend', 'total price')?><span>Total</span> Price</h4>
+                                    <h4><?=Yii::t('frontend', 'total price')?></h4>
                                 </label>
                             </div>
                         </div>
