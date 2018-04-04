@@ -57,13 +57,13 @@ use app\widgets\CookieWidget;
                         <div class="text-icon-column">
                             <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon1.svg"></div>
                             <div class="text-icon">
-                                <p><?=Yii::t('frontend', 'text_about_right_three')?></p>
+                                <p><?=Yii::t('frontend', 'text_about_right_one')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">
                             <div class="icon-item"><img src="<?=Yii::getAlias("@web")?>/img/icon2.svg"></div>
                             <div class="text-icon">
-                                <p><?=Yii::t('frontend', 'text_about_right_three')?></p>
+                                <p><?=Yii::t('frontend', 'text_about_right_two')?></p>
                             </div>
                         </div>
                         <div class="text-icon-column">

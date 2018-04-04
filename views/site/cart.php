@@ -86,7 +86,7 @@ $shiping = CartModel::getShiping();
                             </div>
                         </div>
                         <div class="buttons-links"><a class="cart-prev-btn" href="shop.html">
-                                <p><span class="triangle"></span> <?=Yii::t('frontend', 'return')?></p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
+                                <p><span class="triangle"></span> <?=Yii::t('frontend', 'RETURN')?></p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
                                 <p><?=Yii::t('frontend', 'continue')?> <span class="triangle"></span></p></a></div>
                         <div class="ted-fon"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>
                     </div>
