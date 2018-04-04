@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\CartModel;
+use app\models\Payment;
 use app\models\Shop;
 use app\modules\models\Page;
 use Yii;
@@ -100,8 +101,23 @@ class SiteController extends Controller
     {
         $page = Page::find()->where(['slug' => 'payment'])->one();
         $this->getMeta($page);
+
+
+        $model          = new \app\models\Payment();
+        $model->status
+            = 0;
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                print_r('1111111');
+                exit();
+            }
+        }
+
         return $this->render('payment', [
-            'page' => $page
+            'page'  => $page,
+            'model' => $model
         ]);
     }
 
