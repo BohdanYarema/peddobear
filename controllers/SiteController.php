@@ -139,7 +139,7 @@ class SiteController extends Controller
         $returnUrl      = "http://peddobear.devservice.pro/success";
         $cancelUrl      = "http://peddobear.devservice.pro/cancel";
         $notifyUrl      = "http://peddobear.devservice.pro/notify";
-        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        $currency       = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $querystring    = 'cmd=_xclick';
 
         $querystring .= "?business=" . urlencode($paypalEmail) . "&";
