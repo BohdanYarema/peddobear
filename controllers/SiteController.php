@@ -134,7 +134,7 @@ class SiteController extends Controller
 
         $paypalEmail    = "shop-facilitator@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
-        $price          = '25.05';
+        $price          = '10';
         $itemName       = "Peddobear purchase";
         $returnUrl      = "http://peddobear.devservice.pro/success";
         $cancelUrl      = "http://peddobear.devservice.pro/cancel";
