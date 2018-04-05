@@ -145,7 +145,6 @@ class SiteController extends Controller
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
         $querystring .= "item_name=" . urlencode($itemName) . "&";
         $querystring .= "amount=" . urlencode(floatval($price)) . "&";
-        $querystring .= "quantity=" . urlencode($count) . "&";
 
         $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
