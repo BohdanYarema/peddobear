@@ -28,9 +28,9 @@ use yii\widgets\ActiveForm;
                         'options' => [
                             'class' => 'ted-info'
                         ],
-                        'fieldConfig' => ['template' => "{label}\n{input}"],
+                        'fieldConfig' => ['template' => "{label}\n{input}\n{error}"],
                     ]); ?>
-                        <?= $form->errorSummary($model) ?>
+
                         <?= $form->field($model, 'name', [
                             'options' => [
                                 'class' => 'input-wrapp'
