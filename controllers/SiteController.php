@@ -130,7 +130,7 @@ class SiteController extends Controller
         }
 
 
-        $paypalEmail    = "bohdanyarema1992-facilitator@gmail.com";
+        $paypalEmail    = "bohdanyarema1992test@gmail.com";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $itemName       = "Peddobear purchase";
