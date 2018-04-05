@@ -109,9 +109,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
-                // form inputs are valid, do something here
-                print_r('1111111');
-                exit();
+                $this->goPayPal();
             }
         }
 
@@ -119,6 +117,43 @@ class SiteController extends Controller
             'page'  => $page,
             'model' => $model
         ]);
+    }
+
+
+    public function goPayPal(){
+        $shiping        = CartModel::getShiping();
+        $cart           = CartModel::getCart();
+        $count          = 0;
+
+        foreach ($cart as $item) {
+            $count += $item->count;
+        }
+
+
+        $paypalEmail    = "bohdanyarema1992-facilitator@gmail.com";
+        $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
+        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $itemName       = "Peddobear purchase";
+        $returnUrl      = "http://peddobear.devservice.pro/success";
+        $cancelUrl      = "http://peddobear.devservice.pro/cancel";
+        $notifyUrl      = "http://peddobear.devservice.pro/notify";
+        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        $querystring    = 'cmd=_xclick';
+
+        $querystring .= "?business=" . urlencode($paypalEmail) . "&";
+        $querystring .= "currency_code=" . urlencode($currency) . "&";
+        $querystring .= "lc=" . urlencode(Yii::$app->language) . "&";
+        $querystring .= "cmd=" . urlencode('_xclick') . "&";
+        $querystring .= "item_name=" . urlencode($itemName) . "&";
+        $querystring .= "amount=" . urlencode($price) . "&";
+        $querystring .= "quantity=" . urlencode($count) . "&";
+
+        $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
+        $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
+        $querystring .= "notify_url=" . urlencode($notifyUrl);
+
+        header('location:' . $paypalURL . $querystring);
+        exit();
     }
 
     /**
