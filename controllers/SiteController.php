@@ -142,9 +142,6 @@ class SiteController extends Controller
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $querystring    = 'cmd=_xclick';
 
-        print_r($price);
-        exit();
-
         $querystring .= "?business=" . urlencode($paypalEmail) . "&";
         $querystring .= "currency_code=" . urlencode($currency) . "&";
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
