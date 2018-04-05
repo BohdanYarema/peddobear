@@ -142,7 +142,6 @@ class SiteController extends Controller
 
         $querystring .= "?business=" . urlencode($paypalEmail) . "&";
         $querystring .= "currency_code=" . urlencode($currency) . "&";
-        $querystring .= "lc=" . urlencode(Yii::$app->language) . "&";
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
         $querystring .= "item_name=" . urlencode($itemName) . "&";
         $querystring .= "amount=" . urlencode($price) . "&";
