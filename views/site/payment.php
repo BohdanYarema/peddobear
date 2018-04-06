@@ -8,10 +8,25 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 
+$payments = [
+    0 => [
+        'image'     => Yii::getAlias("@web").'/img/PayPal.svg',
+        'status'    => 1,
+        'id'        => 'pay'
+    ],
+    1 => [
+        'image'     => Yii::getAlias("@web").'/img/PayU.svg',
+        'status'    => 1,
+        'id'        => 'payu'
+    ],
+    2 => [
+        'image'     => Yii::getAlias("@web").'/img/applepay.svg',
+        'status'    => 0,
+        'id'        =>  'payapple'
+    ],
+];
+
 ?>
-
-
-
 
 <main class="payment-page">
     <?php echo HeaderWidget::widget(['model' => null]); ?>
@@ -97,12 +112,19 @@ use yii\widgets\ActiveForm;
                         <?php echo $form->field($model, 'payment_type')->radioList(
                             [0 => 'PayPal', 1 => 'PayU', 2 => 'Apple Pay'],
                             [
-                                'item' => function($index, $label, $name, $checked, $value) {
+                                'item' => function($index, $label, $name, $checked, $value) use (&$payments) {
+                                    $disabled = '';
+                                    if ($payments[$index]['status'] === 0){
+                                        $disabled = 'disabled="disabled"';
+                                    }
                                     $return = "<div class='ted-info-payment__item'>";
-                                    $return .= '<input id="payapple" type="radio" name="' . $name . '" value="' . $value . '" tabindex="3">';
+                                    $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="' . $name . '" value="' . $value . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
                                     $return .= ucwords($label);
-                                    $return .= '</label><div class="payment-btn"><img src="'.Yii::getAlias("@web").'/img/PayPal.svg"></div>';
+                                    $return .= '</label><div class="payment-btn"><img src="'.$payments[$index]['image'].'"></div>';
+                                    if ($index == 2){
+                                        $return .= "<p>(Soon)</p>";
+                                    }
                                     $return .= '</div>';
                                     return $return;
                                 },
