@@ -129,9 +129,6 @@ class SiteController extends Controller
             $count += $item->count;
         }
 
-
-
-
         $paypalEmail    = "shop-facilitator@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $price          = Yii::$app->params['delivery'][Yii::$app->language][$shiping];

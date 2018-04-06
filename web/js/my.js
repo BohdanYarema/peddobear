@@ -43,8 +43,8 @@ function addToCart(id, count) {
         "site/add",
          data
     ).done(function( response ) {
-        $(".db_price").empty();
-        $(".db_price").text(response['summary']);
+        $(".db_price__header").empty();
+        $(".db_price__header").text(response['summary']);
     });
 }
 
@@ -57,8 +57,10 @@ function updateCart(id, count) {
         "site/add",
         data
     ).done(function( response ) {
+        $(".db_price__header").empty();
+        $(".db_price__header").text(response['summary']);
         $(".db_price").empty();
-        $(".db_price").text(response['summary']);
+        $(".db_price").text(response['summary__full']);
         $(".db_price--single__"+id).empty();
         $(".db_price--single__"+id).text(response['single']);
         $(".common-quantity").empty();
@@ -78,8 +80,10 @@ function deleteFromCart(id) {
         if(response == 0){
             window.location.reload()
         } else {
+            $(".db_price__header").empty();
+            $(".db_price__header").text(response['summary']);
             $(".db_price").empty();
-            $(".db_price").text(response['summary']);
+            $(".db_price").text(response['summary__full']);
             $(".common-quantity").empty();
             $(".common-quantity").text(response['count']);
         }

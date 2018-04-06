@@ -46,9 +46,10 @@ class CartModel extends Model
             $shiping = self::getShiping();
 
             return [
-                'summary'   => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
-                'single'    => $single,
-                'count'     => $total
+                'summary'           => $summ,
+                'summary__full'     => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
+                'single'            => $single,
+                'count'             => $total
             ];
         }
     }
@@ -76,9 +77,10 @@ class CartModel extends Model
             $shiping = self::getShiping();
 
             return [
-                'summary'   => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
-                'single'    => $single,
-                'count'     => $total
+                'summary'           => $summ,
+                'summary__full'     => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
+                'single'            => $single,
+                'count'             => $total
             ];
         }
 
