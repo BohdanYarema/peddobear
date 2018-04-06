@@ -46,7 +46,7 @@ use app\widgets\CookieWidget;
                 <?php if (Yii::$app->language == 'pl'):?>
                     <div class="ted-fon-slider-pl" style="display: block"><img src="<?=Yii::getAlias("@web")?>/img/blagotworitelnost.svg"></div>
                 <?php else:?>
-                    <div class="ted-fon-slider"><img src="<?=Yii::getAlias("@web")?>/img/Charity.svg"></div>
+                    <div class="ted-fon-slider" style="display: block"><img src="<?=Yii::getAlias("@web")?>/img/Charity.svg"></div>
                 <?php endif;?>
                 <div class="btn-left" data-slider-logos-prev><span></span></div>
                 <div class="slider-nav" data-slider-logos>
