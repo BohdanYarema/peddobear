@@ -17,6 +17,11 @@
   width: 100%;
   align-items: center;
 }
+@media screen and (max-width: 765px) {
+  .cookies-bar-inner {
+    flex-direction: column;
+  }
+}
 .cookies-bar-inner__text {
   display: block;
 }
@@ -655,6 +660,7 @@ main.loading {
 }
 .header-lang .active p {
   color: #999;
+  cursor: default;
 }
 .header-lang__select {
   display: flex;
@@ -1961,7 +1967,7 @@ main.loading {
 .totals .common-price {
   position: relative;
 }
-.totals .common-price .delivery-label {
+.totals .delivery-label {
   position: absolute;
   top: 45px;
   color: #000;
@@ -1971,7 +1977,7 @@ main.loading {
   text-transform: none;
   width: 150px;
   color: #fff;
-  left: -38px;
+  right: -32px;
 }
 .totals .buttons-links {
   display: flex;
@@ -2794,7 +2800,7 @@ main.loading {
 }
 .payment-content__personal-info .input-wrapp {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 }
 .payment-content__personal-info .input-wrapp input {
@@ -2819,13 +2825,6 @@ main.loading {
   resize: none;
   border-bottom: 2px solid;
 }
-.payment-content__personal-info .input-wrapp #zipcode,
-.payment-content__personal-info .input-wrapp #city {
-  width: 130px;
-}
-.payment-content__personal-info .input-wrapp #zipcode {
-  margin-right: 20px;
-}
 .payment-content__personal-info .ted-info-payment {
   display: flex;
   flex-direction: row;
@@ -2840,7 +2839,7 @@ main.loading {
   height: 1px;
   background-color: #fff;
   position: absolute;
-  left: -15px;
+  left: 0;
   right: 0;
   margin: 0 auto;
   top: -15px;
@@ -2883,9 +2882,6 @@ main.loading {
 .payment-content__personal-info .ted-info-payment__item #payapple:focus {
   outline: none;
   resize: none;
-}
-.payment-content__personal-info .ted-info-payment__item #payu {
-  cursor: default;
 }
 .payment-content__personal-info .ted-info-payment__item #payapple {
   cursor: default;
@@ -2975,6 +2971,17 @@ main.loading {
 }
 .payment-content .pay-prev-btn p:after {
   display: none;
+}
+.help-block {
+  color: #e06666;
+  font-size: 12;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 10px;
+}
+.has-error input {
+  border-bottom: 2px #e06666 solid !important;
+  color: #e06666 !important;
+  margin-bottom: 3px !important;
 }
 .shop-page {
   background: #000;
@@ -3393,6 +3400,7 @@ main.loading {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  outline: none !important;
 }
 .btn-left:hover,
 .btn-right:hover {
@@ -3402,6 +3410,7 @@ main.loading {
   -moz-transition: 0.6s ease;
   -o-transition: 0.6s ease;
   transition: 0.6s ease;
+  outline: 0 !important;
 }
 @media screen and (max-width: 1023px) {
   .btn-left:hover,
@@ -3409,8 +3418,7 @@ main.loading {
     background: #333;
   }
 }
-.btn-left span,
-.btn-right span {
+3 span {
   content: '';
   position: absolute;
   width: 10px;
@@ -3419,6 +3427,10 @@ main.loading {
   border-width: 0 2px 2px 0;
   outline: 0 !important;
   transform: rotate(135deg);
+}
+3:active,
+3:focus {
+  outline: 0 !important;
 }
 .btn-left {
   margin-right: 20px;
@@ -4039,6 +4051,17 @@ main.loading {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  outline: 0 !important;
+}
+.btn-left:hover,
+.btn-right:hover {
+  background-color: #171717;
+  color: #fff;
+  -webkit-transition: 0.6s ease;
+  -moz-transition: 0.6s ease;
+  -o-transition: 0.6s ease;
+  transition: 0.6s ease;
+  outline: 0 !important;
 }
 .btn-left span,
 .btn-right span {
@@ -4050,6 +4073,12 @@ main.loading {
   border-width: 0 2px 2px 0;
   outline: 0 !important;
   transform: rotate(135deg);
+}
+.btn-left:active,
+.btn-right:active,
+.btn-left:focus,
+.btn-right:focus {
+  outline: 0 !important;
 }
 .btn-left {
   margin-right: 20px;

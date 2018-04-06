@@ -80,12 +80,11 @@ $shiping = CartModel::getShiping();
                                     </div>
                                 </label>
                                 <label class="common-quantity"><?=$count?></label>
-                                <label class="common-price db_price"><?=CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping]?>
-                                    <div class="delivery-label">(<?=Yii::t('frontend', 'Delivery costs included')?>)</div>
-                                </label>
+                                <label class="common-price db_price"><?=CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping]?></label>
+                                <div class="delivery-label"><?=Yii::t('frontend', 'Delivery costs included')?></div>
                             </div>
                         </div>
-                        <div class="buttons-links"><a class="cart-prev-btn" href="shop.html">
+                        <div class="buttons-links"><a class="cart-prev-btn" href="/shop">
                                 <p><span class="triangle"></span> <?=Yii::t('frontend', 'RETURN')?></p></a><a class="cart-next-btn" href="<?=\yii\helpers\Url::to(['/payment'])?>">
                                 <p><?=Yii::t('frontend', 'continue')?> <span class="triangle"></span></p></a></div>
                         <div class="ted-fon"><img src="<?=Yii::getAlias("@web")?>/img/TED EBASOS.svg"></div>

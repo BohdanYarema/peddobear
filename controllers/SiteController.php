@@ -277,6 +277,16 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Displays addpage.
+     *
+     * @return string
+     */
+    public function actionTest()
+    {
+        return $this->render('test');
+    }
+
 
     /**
      * @return boolean
