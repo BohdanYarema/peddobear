@@ -11,7 +11,7 @@
             <div class="main-container__inner">
                 <div class="main-container__content">
                     <img class="main-page__logo revealator-slideup revealator-delay4" src="<?=Yii::getAlias("@web")?>/img/start1.svg">
-                    <a class="start-button revealator-slideup revealator-delay7" href="<?=\yii\helpers\Url::to(['/cart'])?>"><?=Yii::t('frontend', 'Start')?></a>
+                    <a class="start-button revealator-slideup revealator-delay7" href="<?=\yii\helpers\Url::to(['/shop'])?>"><?=Yii::t('frontend', 'Start')?></a>
                 </div>
             </div>
         </div>
