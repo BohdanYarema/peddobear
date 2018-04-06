@@ -75,47 +75,52 @@ $config = [
             ],
         ],
     ],
-//    'as globalAccess'=>[
-//        'class'=>'\app\components\GlobalAccessBehavior',
-//        'rules'=>[
-//            [
-//                'controllers'=>['admin/default'],
-//                'allow' => true,
-//                'roles' => ['@'],
-//            ],
-//            [
-//                'controllers'=>['admin/default'],
-//                'allow' => true,
-//                'roles' => ['?'],
-//                'actions'=>['login']
-//            ],
-//            [
-//                'controllers'=>['admin/i18n-source-message'],
-//                'allow' => true,
-//                'roles' => ['@'],
-//            ],
-//            [
-//                'controllers'=>['admin/i18n-message'],
-//                'allow' => true,
-//                'roles' => ['@'],
-//            ],
-//            [
-//                'controllers'=>['admin/shop'],
-//                'allow' => true,
-//                'roles' => ['@'],
-//            ],
-//            [
-//                'controllers'=>['file-storage'],
-//                'allow' => true,
-//                'roles' => ['?', '@'],
-//            ],
-//            [
-//                'controllers'=>['site'],
-//                'allow' => true,
-//                'roles' => ['?', '@'],
-//            ],
-//        ]
-//    ],
+    'as globalAccess'=>[
+        'class'=>'\app\components\GlobalAccessBehavior',
+        'rules'=>[
+            [
+                'controllers'=>['admin/default'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/default'],
+                'allow' => true,
+                'roles' => ['?'],
+                'actions'=>['login']
+            ],
+            [
+                'controllers'=>['admin/i18n-source-message'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/i18n-message'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/shop'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['admin/page'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'controllers'=>['file-storage'],
+                'allow' => true,
+                'roles' => ['?', '@'],
+            ],
+            [
+                'controllers'=>['site'],
+                'allow' => true,
+                'roles' => ['?', '@'],
+            ],
+        ]
+    ],
     'params' => $params,
 ];
 
