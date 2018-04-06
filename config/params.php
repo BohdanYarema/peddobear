@@ -9,7 +9,7 @@ return [
     'delivery'=>[
         'pl' => [
             'currency'          => 'PLN',
-            'currency_name'     => 'pln',
+            'currency_name'     => 'PLN',
             'poland'            => 10,
             'world'             => 15
         ],
