@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <ul class="nav nav-tabs">
         <?php foreach (Yii::$app->params['availableLocales'] as $locale => $localeTitle): ?>
-            <li <?php if($locale == Yii::$app->language): ?>class="active"<?php endif;?>><a data-toggle="tab" href="#tab<?=$locale?>"><?=$localeTitle?></a></li>
+            <li <?php if($locale == 'pl'): ?>class="active"<?php endif;?>><a data-toggle="tab" href="#tab<?=$locale?>"><?=$localeTitle?></a></li>
         <?php endforeach; ?>
     </ul>
 
