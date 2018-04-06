@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
     <div class="tab-content">
         <br />
         <?php foreach (Yii::$app->params['availableLocales'] as $locale => $localeTitle): ?>
-            <div id="tab<?=$locale?>" class="tab-pane fade <?php if($locale == Yii::$app->language): ?>in active<?php endif;?>">
+            <div id="tab<?=$locale?>" class="tab-pane fade <?php if($locale == 'pl'): ?>in active<?php endif;?>">
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
 
