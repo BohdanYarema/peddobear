@@ -25,5 +25,6 @@ return [
     'ignoreLanguageUrlPatterns' => [
         '#^admin/#' => '#^admin/#',
         '#^gii/#' => '#^gii/#',
+        '#^file-storage/#' => '#^file-storage/#',
     ],
 ];
