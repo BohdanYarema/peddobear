@@ -131,18 +131,18 @@ class SiteController extends Controller
 
         $paypalEmail    = "shop-facilitator@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
-        $price          = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $currency          = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $itemName       = "Peddobear purchase";
         $returnUrl      = "http://peddobear.devservice.pro/success";
         $cancelUrl      = "http://peddobear.devservice.pro/cancel";
         $notifyUrl      = "http://peddobear.devservice.pro/notify";
-        $currency       = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $price       = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
         $querystring .= "currency_code=" . urlencode($currency) . "&";
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
         $querystring .= "item_name=" . urlencode($itemName) . "&";
-        $querystring .= "amount=1". "&";
+        $querystring .= "amount=". urlencode($price) . "&";
 
         $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
