@@ -21,13 +21,14 @@ class Admin extends \yii\base\Module
     {
         parent::init();
         $this->layout = 'admin';
+        Yii::$app->language = 'pl';
         // custom initialization code goes here
     }
     public function registerTranslations()
     {
         Yii::$app->i18n->translations['modules/users/*'] = [
             'class'          => 'yii\i18n\PhpMessageSource',
-            'sourceLanguage' => 'en-US',
+            'sourceLanguage' => 'en',
         ];
     }
 
