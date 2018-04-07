@@ -17,7 +17,7 @@ use app\widgets\CookieWidget;
                         <div class="special-item-wrap">
                             <div class="special-item-wrap__description revealator-slidedown revealator-once revealator-delay3">
                                 <div class="special-header">
-                                    <h1><strong>miss</strong> <?=$item->locale->title?></h1>
+                                    <h1><?=$item->locale->title?></h1>
                                 </div>
                                 <div class="special-text">
                                     <p><?=$item->locale->description?></p>
