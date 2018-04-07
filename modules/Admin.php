@@ -24,12 +24,4 @@ class Admin extends \yii\base\Module
         Yii::$app->language = 'pl';
         // custom initialization code goes here
     }
-    public function registerTranslations()
-    {
-        Yii::$app->i18n->translations['modules/users/*'] = [
-            'class'          => 'yii\i18n\PhpMessageSource',
-            'sourceLanguage' => 'en',
-        ];
-    }
-
 }
