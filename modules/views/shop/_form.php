@@ -24,15 +24,15 @@ use yii\widgets\ActiveForm;
             <div id="tab<?=$locale?>" class="tab-pane fade <?php if($locale == 'pl'): ?>in active<?php endif;?>">
 
                 <?php
-                    echo \vova07\imperavi\Widget::widget([
-                        'name' => 'i18n[' . $locale .  '][title]',
+                    echo $form->field($model, 'i18n[' . $locale .  '][title]')->widget(\vova07\imperavi\Widget::className(), [
                         'settings' => [
                             'buttons' => ['html', 'format', 'bold'],
                             'lang' => 'pl',
                             'plugins' => [],
                             'formatting' => ['p'],
                         ],
-                    ]);
+                    ])->label('title')
+
                 ?>
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
