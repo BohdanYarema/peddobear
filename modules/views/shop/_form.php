@@ -23,18 +23,27 @@ use yii\widgets\ActiveForm;
         <?php foreach (Yii::$app->params['availableLocales'] as $locale => $localeTitle): ?>
             <div id="tab<?=$locale?>" class="tab-pane fade <?php if($locale == 'pl'): ?>in active<?php endif;?>">
 
-                <?php echo $form->field($model, 'i18n[' . $locale .  '][title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
+                <?php
+                    echo \vova07\imperavi\Widget::widget([
+                        'name' => 'i18n[' . $locale .  '][title]',
+                        'settings' => [
+                            'buttons' => ['html', 'format', 'bold'],
+                            'lang' => 'pl',
+                            'plugins' => [],
+                            'formatting' => ['p'],
+                        ],
+                    ]);
+                ?>
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
 
-                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Название')) ?>
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_title]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Мета Название')) ?>
 
-                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Короткое описание')) ?>
+                <?php echo $form->field($model, 'i18n[' . $locale .  '][meta_description]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Мета Короткое описание')) ?>
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][price]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Price')) ?>
 
                 <?php echo $form->field($model, 'i18n[' . $locale .  '][special_price]')->textInput(['maxlength' => true])->label(Yii::t('backend', 'Special price')) ?>
-
             </div>
         <?php endforeach; ?>
     </div>

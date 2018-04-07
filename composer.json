@@ -21,7 +21,8 @@
         "codemix/yii2-localeurls": "dev-master",
         "trntv/yii2-file-kit": "dev-master",
         "paypal/rest-api-sdk-php": "*",
-        "openpayu/openpayu" : "2.2.*"
+        "openpayu/openpayu" : "2.2.*",
+        "vova07/yii2-imperavi-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

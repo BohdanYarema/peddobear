@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "30a1373637d9cd74619f7354c41dc3d9",
+    "content-hash": "29e694860d385014d97bf400992116ea",
     "packages": [
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -438,6 +438,52 @@
             "time": "2018-03-26T21:22:43+00:00"
         },
         {
+            "name": "openpayu/openpayu",
+            "version": "2.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PayU/openpayu_php.git",
+                "reference": "3d3e409887490b0683f6ff5250b4cf289313443e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PayU/openpayu_php/zipball/3d3e409887490b0683f6ff5250b4cf289313443e",
+                "reference": "3d3e409887490b0683f6ff5250b4cf289313443e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-hash": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.3"
+            },
+            "type": "library",
+            "extra": [
+                {
+                    "engine": "PHP SDK"
+                }
+            ],
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "OpenPayU",
+                    "homepage": "http://developers.payu.com"
+                }
+            ],
+            "description": "OpenPayU PHP Library",
+            "time": "2018-01-19T14:00:05+00:00"
+        },
+        {
             "name": "paypal/rest-api-sdk-php",
             "version": "dev-master",
             "source": {
@@ -629,6 +675,61 @@
             ],
             "description": "Yii2 file upload and storage kit",
             "time": "2018-02-03T18:05:38+00:00"
+        },
+        {
+            "name": "vova07/yii2-imperavi-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vova07/yii2-imperavi-widget.git",
+                "reference": "c227eb5f2400c5631ee64b98d166f7d046da0948"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/c227eb5f2400c5631ee64b98d166f7d046da0948",
+                "reference": "c227eb5f2400c5631ee64b98d166f7d046da0948",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "~1",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "vova07\\imperavi\\": "src",
+                    "vova07\\imperavi\\tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Crudu Vasile",
+                    "email": "bazillio07@yandex.ru",
+                    "homepage": "https://github.com/vova07",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The imperavi redactor widget for Yii 2 framework.",
+            "homepage": "https://github.com/vova07/yii2-imperavi-widget",
+            "keywords": [
+                "Redactor",
+                "extension",
+                "imperavi",
+                "widget",
+                "wysiwyg",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2018-03-19T11:07:58+00:00"
         },
         {
             "name": "yiisoft/yii2",
