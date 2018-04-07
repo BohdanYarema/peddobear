@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\CartModel;
 use app\models\Payment;
 use app\models\Shop;
+use app\modules\models\Log;
 use app\modules\models\Page;
 use Yii;
 use yii\filters\AccessControl;
@@ -104,11 +105,10 @@ class SiteController extends Controller
 
 
         $model          = new \app\models\Payment();
-        $model->status
-            = 0;
+        $model->status  = 0;
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
+            if ($model->save()) {
                 $this->goPayPal();
             }
         }
@@ -161,6 +161,12 @@ class SiteController extends Controller
     {
         $page = Page::find()->where(['slug' => 'notify'])->one();
         $this->getMeta($page);
+
+        $data = $_POST;
+        $model = new Log();
+        $model->text = $data;
+        $model->save();
+
         return $this->render('notify', [
             'page' => $page
         ]);
