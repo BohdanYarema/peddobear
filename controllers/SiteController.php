@@ -142,7 +142,7 @@ class SiteController extends Controller
         $querystring .= "currency_code=" . urlencode($currency) . "&";
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
         $querystring .= "item_name=" . urlencode($itemName) . "&";
-        $querystring .= "amount=" . $price . "&";
+        $querystring .= "amount=1". "&";
 
         $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
