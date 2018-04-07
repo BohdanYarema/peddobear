@@ -138,9 +138,6 @@ class SiteController extends Controller
         $notifyUrl      = "http://peddobear.devservice.pro/notify";
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
 
-        var_dump($currency);
-        exit();
-
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
         $querystring .= "currency_code=" . urlencode($currency) . "&";
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
