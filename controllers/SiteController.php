@@ -162,11 +162,6 @@ class SiteController extends Controller
         $page = Page::find()->where(['slug' => 'notify'])->one();
         $this->getMeta($page);
 
-        $data = $_POST;
-        $model = new Log();
-        $model->text = json_encode($data);
-        $model->save();
-
         return $this->render('notify', [
             'page' => $page
         ]);

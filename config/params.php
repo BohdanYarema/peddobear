@@ -10,7 +10,7 @@ return [
         'pl' => [
             'currency'          => 'PLN',
             'currency_name'     => 'PLN',
-            'poland'            => 1,
+            'poland'            => 10,
             'world'             => 15
         ],
         'en' => [
