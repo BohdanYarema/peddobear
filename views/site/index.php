@@ -1,21 +1,25 @@
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<?php
+    use app\widgets\HeaderWidget;
+    use app\widgets\CookieWidget;
+    /* @var $this yii\web\View */
+?>
 
-    <!-- Identify your business so that you can collect the payments. -->
-    <input type="hidden" name="business" value="shop-facilitator@tedacar.eu">
-
-    <!-- Specify a Buy Now button. -->
-    <input type="hidden" name="cmd" value="_xclick">
-
-    <!-- Specify details about the item that buyers will purchase. -->
-    <input type="hidden" name="item_name" value="Hot Sauce-12oz. Bottle">
-    <input type="hidden" name="amount" value="5.95">
-    <input type="hidden" name="currency_code" value="PLN">
-
-    <!-- Display the payment button. -->
-    <input type="image" name="submit" border="0"
-           src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-           alt="Buy Now">
-    <img alt="" border="0" width="1" height="1"
-         src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-</form>
+<main class="index-page">
+    <?php echo HeaderWidget::widget(['model' => null]); ?>
+    <div class="main-container">
+        <div class="wrapper">
+            <div class="main-container__inner">
+                <div class="main-container__content">
+                    <img class="main-page__logo revealator-slideup revealator-delay4" src="<?=Yii::getAlias("@web")?>/img/start1.svg">
+                    <a class="start-button revealator-slideup revealator-delay7" href="<?=\yii\helpers\Url::to(['/shop'])?>"><?=Yii::t('frontend', 'Start')?></a>
+                </div>
+            </div>
+        </div>
+        <video id="video" loop preload="auto" autoplay poster="<?=Yii::getAlias("@web")?>/video/mob.gif">
+            <!--playsinline controls="true"  muted-->
+            <source src="<?=Yii::getAlias("@web")?>/video/555.mp4" type="video/mp4" codecs="avc1.42E01E, H.264">
+            <source src="<?=Yii::getAlias("@web")?>/video/555.webm" type="video/webm">
+        </video>
+    </div>
+    <?php echo CookieWidget::widget(['model' => null]); ?>
+</main>
