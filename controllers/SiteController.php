@@ -164,7 +164,7 @@ class SiteController extends Controller
 
         $data = $_POST;
         $model = new Log();
-        $model->text = $data;
+        $model->text = json_encode($data);
         $model->save();
 
         return $this->render('notify', [
