@@ -185,6 +185,8 @@ class SiteController extends Controller
     {
         $page = Page::find()->where(['slug' => 'success'])->one();
         $this->getMeta($page);
+        PayMentModel::setCoockie([]);
+        CartModel::setEmpty();
         return $this->render('success', [
             'page' => $page
         ]);
@@ -200,6 +202,8 @@ class SiteController extends Controller
     {
         $page = Page::find()->where(['slug' => 'cancel'])->one();
         $this->getMeta($page);
+        PayMentModel::setCoockie([]);
+        CartModel::setEmpty();
         return $this->render('cancel', [
             'page' => $page
         ]);
