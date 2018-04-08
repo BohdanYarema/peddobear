@@ -114,9 +114,6 @@ class SiteController extends Controller
         $model->items               = CartModel::getCart();
         $model->payment_order_id    = CartModel::getSumm()+time()+$shiping;
 
-        var_dump($model->validate());
-        var_dump($model->getErrors());
-
         if ($model->load(Yii::$app->request->post()) &&  $model->save()) {
             $this->goPayPal($model);
         }
@@ -137,7 +134,7 @@ class SiteController extends Controller
             $count += $item->count;
         }
 
-        $paypalEmail    = "shop-facilitator@tedacar.eu";
+        $paypalEmail    = "Shop@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $itemName       = "Peddobear purchase";
