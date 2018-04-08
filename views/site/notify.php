@@ -63,38 +63,38 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $log->text = json_encode($_POST);
     $log->save();
 
-    if(!empty($_POST)){
-        $model = \app\models\Payment::find()
-            ->where(['payment_order_id' => $_POST['custom']])
-            ->one();
-        if ($model !== null){
-            if ($_POST['payment_status'] == 'Completed'){
-                $model->status = 1;
-                PayMentModel::setCoockie(['status' => 1]);
-            } else {
-                $model->status = 2;
-                PayMentModel::setCoockie(['status' => 2]);
-            }
-            $model->save();
-        }
-    }
+//    if(!empty($_POST)){
+//        $model = \app\models\Payment::find()
+//            ->where(['payment_order_id' => $_POST['custom']])
+//            ->one();
+//        if ($model !== null){
+//            if ($_POST['payment_status'] == 'Completed'){
+//                $model->status = 1;
+//
+//            } else {
+//                $model->status = 2;
+//                PayMentModel::setCoockie(['status' => 2]);
+//            }
+//            $model->save();
+//        }
+//    }
 
-
+    PayMentModel::setCoockie(['status' => 1]);
 
 } else if (strcmp ($res, "INVALID") == 0) {
     $log = new \app\modules\models\Log();
     $log->text = json_encode($_POST);
     $log->save();
 
-    if (!empty($_POST)){
-        $model = \app\models\Payment::find()
-            ->where(['payment_order_id' => $_POST['custom']])
-            ->one();
-        if ($model !== null){
-            $model->status = 3;
-            $model->save();
-        }
-    }
+//    if (!empty($_POST)){
+//        $model = \app\models\Payment::find()
+//            ->where(['payment_order_id' => $_POST['custom']])
+//            ->one();
+//        if ($model !== null){
+//            $model->status = 3;
+//            $model->save();
+//        }
+//    }
 
     PayMentModel::setCoockie(['status' => 3]);
 }
