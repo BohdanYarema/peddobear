@@ -127,6 +127,7 @@ class SiteController extends Controller
 
     public function goPayPal($model){
         $model->payment_order_id    = CartModel::getSumm()+time();
+        $model->save();
         PayMentModel::setCoockie([
             'payment_order_id' => $model->payment_order_id
         ]);

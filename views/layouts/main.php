@@ -16,9 +16,9 @@ AppAsset::register($this);
 
 $data = checkPayment::getCheck();
 if ($data == 1){
-    Yii::$app->getResponse()->redirect(['success', 302]);
+    Yii::$app->getResponse()->redirect(['/success']);
 } elseif($data == 2){
-    Yii::$app->getResponse()->redirect(['cancel', 302]);
+    Yii::$app->getResponse()->redirect(['/cancel']);
 }
 
 
