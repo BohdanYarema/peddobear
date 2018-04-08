@@ -9,7 +9,7 @@ class PayMentModel extends Model
 {
     public static function getCoockie(){
         $cookies = Yii::$app->request->cookies;
-        if (($cookie = $cookies->get('payment')) !== null) {
+        if (($cookie = $cookies->get('payment_order_id')) !== null) {
             $payment = $cookie->value;
         } else {
             $payment = [];
@@ -20,7 +20,7 @@ class PayMentModel extends Model
     public static function setCoockie($data){
         $set_cookies = Yii::$app->response->cookies;
         $set_cookies->add(new \yii\web\Cookie([
-            'name'  => 'payment',
+            'name'  => 'payment_order_id',
             'value' => $data,
         ]));
     }
