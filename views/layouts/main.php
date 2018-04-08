@@ -17,7 +17,7 @@ AppAsset::register($this);
 
 checkPayment::getCheck();
 
-print_r($_COOKIE);
+print_r(PayMentModel::getCoockie());
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
