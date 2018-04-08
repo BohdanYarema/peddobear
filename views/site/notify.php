@@ -62,7 +62,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $log->save();
 
     $model = \app\models\Payment::find()
-        ->where(['payment_order_id' => 1523198309])
+        ->where(['id' => 31])
         ->one();
 
     $model->status = 1;
