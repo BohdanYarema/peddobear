@@ -79,3 +79,10 @@
 //header('Location:'.$response->getResponse()->redirectUri);
 //
 //exit();
+
+
+
+$model = \app\modules\models\Log::find()->all();
+foreach ($model as $item) {
+    print_r($item);
+}
