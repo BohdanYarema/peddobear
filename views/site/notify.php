@@ -61,15 +61,13 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $log->text = json_encode($_POST);
     $log->save();
 
-    if(!empty($_POST)){
-        $model = \app\models\Payment::find()
-            ->where(['payment_order_id' => $_POST['custom']])
-            ->one();
+    $model = \app\models\Payment::find()
+        ->where(['payment_order_id' => 1523198309])
+        ->one();
 
-        $model->status = 1;
+    $model->status = 1;
 
-        $model->save();
-    }
+    $model->save();
 
 
 
