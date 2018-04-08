@@ -30,11 +30,8 @@ class checkPayment extends Model
 
             if ($model !== null){
                 if ($model->status == 1){
-                    PayMentModel::setCoockie([]);
-                    CartModel::setEmpty();
                     return 1;
                 } else {
-                    PayMentModel::setCoockie([]);
                     return 2;
                 }
             }
