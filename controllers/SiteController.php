@@ -120,6 +120,7 @@ class SiteController extends Controller
             PayMentModel::setCoockie([
                 'payment_order_id' => $model->payment_order_id
             ]);
+            $this->refresh();
             //$this->goPayPal($model);
         }
 
@@ -158,8 +159,6 @@ class SiteController extends Controller
         $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
         $querystring .= "notify_url=" . urlencode($notifyUrl);
-
-        Yii::$app->session->setFlash('payment', true);
 
         header('location:' . $paypalURL . $querystring);
         exit();
