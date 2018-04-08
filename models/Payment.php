@@ -23,12 +23,19 @@ use yii\behaviors\TimestampBehavior;
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ * @property array $items[]
  *
  * @property PaymentItems[] $paymentItems
  * @property PaymentLogs[] $paymentLogs
  */
 class Payment extends \yii\db\ActiveRecord
 {
+    /**
+     * {@var}
+     */
+    public $items;
+
+
     /**
      * {@inheritdoc}
      */
@@ -54,6 +61,7 @@ class Payment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['items'], 'safe'],
             [['shipping', 'summary'], 'number'],
             [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],

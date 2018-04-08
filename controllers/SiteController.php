@@ -106,11 +106,19 @@ class SiteController extends Controller
 
         $model          = new \app\models\Payment();
         $model->status  = 0;
+        $model->items   = CartModel::getCart();
+
+        print_r(CartModel::getCart());
+        exit();
 
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->save()) {
-                $this->goPayPal();
+            foreach ($model->items as $value){
+                var_dump($value->price);
             }
+            exit();
+//            if ($model->save()) {
+//                $this->goPayPal();
+//            }
         }
 
         return $this->render('payment', [
