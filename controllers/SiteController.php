@@ -109,7 +109,7 @@ class SiteController extends Controller
         $model                      = new \app\models\Payment();
         $model->status              = 0;
         $model->currency            = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $model->shipping            = $shiping;
+        $model->shipping            = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
         $model->payment_order_id    = CartModel::getSumm()+time()+$shiping;
