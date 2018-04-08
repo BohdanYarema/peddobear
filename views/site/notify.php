@@ -4,11 +4,6 @@
 // Instead, read raw POST data from the input stream.
 $raw_post_data = file_get_contents('php://input');
 $raw_post_array = explode('&', $raw_post_data);
-
-$model = new \app\modules\models\Log();
-$model->text = json_encode($raw_post_array);
-$model->save();
-
 $myPost = array();
 foreach ($raw_post_array as $keyval) {
     $keyval = explode ('=', $keyval);
@@ -68,7 +63,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
 
 } else if (strcmp ($res, "INVALID") == 0) {
     $model = new \app\modules\models\Log();
-    $model->text = 'bad news bro';
+    $model->text = json_encode($_POST);
     $model->save();
 }
 ?>
