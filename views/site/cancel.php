@@ -10,6 +10,14 @@ use app\widgets\HeaderWidget;
 use app\widgets\FooterWidget;
 use app\widgets\CookieWidget;
 
+print_r($_POST);
+print_r($_GET);
+
+$raw_post_data = file_get_contents('php://input');
+$raw_post_array = explode('&', $raw_post_data);
+
+print_r($raw_post_array);
+
 ?>
 
 <main class="failed-page">
