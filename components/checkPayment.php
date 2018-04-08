@@ -32,12 +32,14 @@ class checkPayment extends Model
                 if ($model->status == 1){
                     PayMentModel::setCoockie([]);
                     CartModel::setEmpty();
-                    Yii::$app->getResponse()->redirect('/success');
+                    return 1;
                 } else {
                     PayMentModel::setCoockie([]);
-                    Yii::$app->getResponse()->redirect('/cancel');
+                    return 2;
                 }
             }
+        } else {
+            return 0;
         }
     }
 }

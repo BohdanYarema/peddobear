@@ -15,9 +15,12 @@ use app\models\PayMentModel;
 AppAsset::register($this);
 
 
-checkPayment::getCheck();
-
-print_r(PayMentModel::getCoockie());
+$data = checkPayment::getCheck();
+if ($data == 1){
+    Yii::$app->getResponse()->redirect(['success', 302]);
+} elseif($data == 2){
+    Yii::$app->getResponse()->redirect(['cancel', 302]);
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
