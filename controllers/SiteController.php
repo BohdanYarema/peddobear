@@ -112,7 +112,7 @@ class SiteController extends Controller
         $model->shipping            = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
-        $model->payment_order_id    = CartModel::getSumm()+time()+$shiping;
+        $model->payment_order_id    = CartModel::getSumm()+time();
 
         if ($model->load(Yii::$app->request->post()) &&  $model->save()) {
             $this->goPayPal($model);
