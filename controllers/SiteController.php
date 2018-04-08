@@ -108,7 +108,7 @@ class SiteController extends Controller
 
         $model                      = new \app\models\Payment();
         $model->status              = 0;
-        $model->currency            = Yii::$app->params['delivery']['currency'];
+        $model->currency            = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $model->shipping            = $shiping;
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
