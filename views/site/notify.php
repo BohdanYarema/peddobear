@@ -57,13 +57,33 @@ if (strcmp ($res, "VERIFIED") == 0) {
     // process the notification
     // assign posted variables to local variables
 
-    $model = new \app\modules\models\Log();
-    $model->text = json_encode($_POST);
+    $model = \app\models\Payment::find()
+        ->where(['payment_order_id' => $_POST['custom']])
+        ->one();
+
+    if ($_POST['payment_status' == '']){
+        $model->status = 1;
+    } else {
+        $model->status = 2;
+    }
+
     $model->save();
 
+    $log = new \app\modules\models\Log();
+    $log->text = json_encode($_POST);
+    $log->save();
+
 } else if (strcmp ($res, "INVALID") == 0) {
-    $model = new \app\modules\models\Log();
-    $model->text = json_encode($_POST);
+    $model = \app\models\Payment::find()
+        ->where(['payment_order_id' => $_POST['custom']])
+        ->one();
+
+    $model->status = 2;
+
     $model->save();
+
+    $log = new \app\modules\models\Log();
+    $log->text = json_encode($_POST);
+    $log->save();
 }
 ?>

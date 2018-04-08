@@ -94,6 +94,15 @@ class CartModel extends Model
         ]));
     }
 
+
+    public static function setEmpty(){
+        $set_cookies = Yii::$app->response->cookies;
+        $set_cookies->add(new \yii\web\Cookie([
+            'name'  => 'cart',
+            'value' => [],
+        ]));
+    }
+
     public function deleteCoockie($id, $cart){
         foreach ($cart as $key => $value){
             if (array_key_exists($id, $value)){

@@ -9,8 +9,12 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\checkPayment;
 
 AppAsset::register($this);
+
+
+checkPayment::getCheck();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

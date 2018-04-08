@@ -6,6 +6,12 @@ return [
         'pl' => 'pl',
         'en' => 'en',
     ],
+    'status'=>[
+        0 => 'Just send',
+        1 => 'Complete',
+        2 => 'Pending or other',
+        3 => 'Not verify',
+    ],
     'delivery'=>[
         'pl' => [
             'currency'          => 'PLN',
