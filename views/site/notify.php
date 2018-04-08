@@ -61,13 +61,11 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $log->text = json_encode($_POST);
     $log->save();
 
-    $model = \app\models\Payment::find()
-        ->where(['id' => 31])
-        ->one();
-
-    $model->status = 1;
-
-    $model->save();
+    $model = \app\models\Payment::find()->all();
+    foreach ($model as $item) {
+        $item->status = 1;
+        $item->save();
+    }
 
 
 
