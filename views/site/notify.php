@@ -70,8 +70,8 @@ if (strcmp ($res, "VERIFIED") == 0) {
 
 
 } else if (strcmp ($res, "INVALID") == 0) {
-//    $model = new \app\modules\models\Log();
-//    $model->text = json_encode($_POST);
-//    $model->save();
+    $model = new \app\modules\models\Log();
+    $model->text = json_encode($_POST);
+    $model->save();
 }
 ?>
