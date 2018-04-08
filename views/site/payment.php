@@ -5,6 +5,7 @@ use app\widgets\CookieWidget;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\PayMentModel;
 
 /* @var $this yii\web\View */
 
@@ -25,6 +26,11 @@ $payments = [
         'id'        =>  'payapple'
     ],
 ];
+
+$model->payment_order_id = time()+rand(1,100);
+PayMentModel::setCoockie([
+    'payment_order_id' => $model->payment_order_id
+]);
 
 ?>
 

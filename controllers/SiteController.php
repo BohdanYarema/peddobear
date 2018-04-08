@@ -114,12 +114,7 @@ class SiteController extends Controller
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
 
-        if ($model->load(Yii::$app->request->post()) &&  $model->validate()) {
-            $model->payment_order_id    = CartModel::getSumm()+time();
-            $model->save();
-            PayMentModel::setCoockie([
-                'payment_order_id' => $model->payment_order_id
-            ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $this->goPayPal($model);
         }
 
