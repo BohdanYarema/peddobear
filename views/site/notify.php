@@ -57,9 +57,9 @@ if (strcmp ($res, "VERIFIED") == 0) {
     // process the notification
     // assign posted variables to local variables
 
-    $log = new \app\modules\models\Log();
-    $log->text = json_encode($_POST);
-    $log->save();
+//    $log = new \app\modules\models\Log();
+//    $log->text = json_encode($_POST);
+//    $log->save();
 
     $model = \app\models\Payment::find()->all();
     foreach ($model as $item) {
