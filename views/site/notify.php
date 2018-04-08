@@ -86,14 +86,15 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $log->text = json_encode($_POST);
     $log->save();
 
-    $model = \app\models\Payment::find()
-        ->where(['payment_order_id' => $_POST['custom']])
-        ->one();
-    if ($model !== null){
-        $model->status = 3;
-        $model->save();
+    if (!empty($_POST)){
+        $model = \app\models\Payment::find()
+            ->where(['payment_order_id' => $_POST['custom']])
+            ->one();
+        if ($model !== null){
+            $model->status = 3;
+            $model->save();
+        }
     }
-
 
     PayMentModel::setCoockie(['status' => 3]);
 }
