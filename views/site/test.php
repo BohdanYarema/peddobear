@@ -84,5 +84,5 @@
 
 $model = \app\modules\models\Log::find()->all();
 foreach ($model as $item) {
-    print_r($item);
+    print_r(json_decode($item->text, true));
 }
