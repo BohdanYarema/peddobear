@@ -18,6 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $city
  * @property string $payment_type
  * @property string $currency
+ * @property double $payment_order_id
  * @property double $shipping
  * @property double $summary
  * @property int $status
@@ -62,7 +63,7 @@ class Payment extends \yii\db\ActiveRecord
     {
         return [
             [['items'], 'safe'],
-            [['shipping', 'summary'], 'number'],
+            [['shipping', 'summary', 'payment_order_id'], 'number'],
             [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type'], 'string', 'max' => 1024],
@@ -88,9 +89,28 @@ class Payment extends \yii\db\ActiveRecord
             'shipping' => 'Shipping',
             'summary' => 'Summary',
             'status' => 'Status',
+            'payment_order_id' => 'Payment order id',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @param bool $insert
+     * @param array $changedAttributes
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        foreach ($this->items as $value){
+            $model              = new PaymentItems();
+            $model->payment_id  = $this->id;
+            $model->shop_id     = $value->id;
+            $model->price       = $value->locale->price;
+            $model->count       = $value->count;
+            $model->summary     = $value->summary;
+            $model->save();
+        }
+        parent::afterSave($insert, $changedAttributes);
     }
 
     /**

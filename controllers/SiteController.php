@@ -103,22 +103,19 @@ class SiteController extends Controller
         $page = Page::find()->where(['slug' => 'payment'])->one();
         $this->getMeta($page);
 
+        $shiping = CartModel::getShiping();
 
-        $model          = new \app\models\Payment();
-        $model->status  = 0;
-        $model->items   = CartModel::getCart();
 
-        print_r(CartModel::getCart());
-        exit();
+        $model                      = new \app\models\Payment();
+        $model->status              = 0;
+        $model->currency            = Yii::$app->params['delivery']['currency'];
+        $model->shipping            = $shiping;
+        $model->summary             = CartModel::getSumm();
+        $model->items               = CartModel::getCart();
+        $model->payment_order_id    = CartModel::getSumm()+time()+$shiping;
 
-        if ($model->load(Yii::$app->request->post())) {
-            foreach ($model->items as $value){
-                var_dump($value->price);
-            }
-            exit();
-//            if ($model->save()) {
-//                $this->goPayPal();
-//            }
+        if ($model->load(Yii::$app->request->post()) &&  $model->save()) {
+            $this->goPayPal($model);
         }
 
         return $this->render('payment', [
@@ -128,7 +125,7 @@ class SiteController extends Controller
     }
 
 
-    public function goPayPal(){
+    public function goPayPal($model){
         $shiping        = CartModel::getShiping();
         $cart           = CartModel::getCart();
         $count          = 0;
@@ -151,11 +148,13 @@ class SiteController extends Controller
         $querystring .= "cmd=" . urlencode('_xclick') . "&";
         $querystring .= "item_name=" . urlencode($itemName) . "&";
         $querystring .= "amount=". urlencode($price) . "&";
-        $querystring .= "payer_id=". urlencode($itemName.'_'.time()) . "&";
+        $querystring .= "custom=". urlencode($model->payment_order_id) . "&";
 
         $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
         $querystring .= "notify_url=" . urlencode($notifyUrl);
+
+        Yii::$app->session->setFlash('payment', true);
 
         header('location:' . $paypalURL . $querystring);
         exit();
