@@ -51,7 +51,7 @@ PayMentModel::setCoockie([
                         ],
                         'fieldConfig' => ['template' => "{label}\n{input}\n{error}"],
                     ]); ?>
-
+                        <?= $form->field($model, 'payment_order_id')->hiddenInput()->label(false) ?>
                         <?= $form->field($model, 'name', [
                             'options' => [
                                 'class' => 'input-wrapp'
