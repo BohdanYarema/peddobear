@@ -19,7 +19,6 @@ checkPayment::getCheck();
 
 
 print_r($_COOKIE);
-PayMentModel::setCoockie(['status' => 3]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

@@ -67,14 +67,16 @@ if (strcmp ($res, "VERIFIED") == 0) {
         $model = \app\models\Payment::find()
             ->where(['payment_order_id' => $_POST['custom']])
             ->one();
-        if ($_POST['payment_status'] == 'Completed'){
-            $model->status = 1;
-            PayMentModel::setCoockie(['status' => 1]);
-        } else {
-            $model->status = 2;
-            PayMentModel::setCoockie(['status' => 2]);
+        if ($model !== null){
+            if ($_POST['payment_status'] == 'Completed'){
+                $model->status = 1;
+                PayMentModel::setCoockie(['status' => 1]);
+            } else {
+                $model->status = 2;
+                PayMentModel::setCoockie(['status' => 2]);
+            }
+            $model->save();
         }
-        $model->save();
     }
 
 
@@ -87,8 +89,11 @@ if (strcmp ($res, "VERIFIED") == 0) {
     $model = \app\models\Payment::find()
         ->where(['payment_order_id' => $_POST['custom']])
         ->one();
-    $model->status = 3;
-    $model->save();
+    if ($model !== null){
+        $model->status = 3;
+        $model->save();
+    }
+
 
     PayMentModel::setCoockie(['status' => 3]);
 }

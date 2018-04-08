@@ -30,7 +30,7 @@ class checkPayment extends Model
                 Yii::$app->getResponse()->redirect('/success');
             } else {
                 PayMentModel::setCoockie([]);
-                Yii::$app->getResponse()->redirect('/fail');
+                Yii::$app->getResponse()->redirect('/cancel');
             }
         }
     }
