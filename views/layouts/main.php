@@ -14,7 +14,6 @@ use app\models\PayMentModel;
 
 AppAsset::register($this);
 
-PayMentModel::setCoockie([]);
 $data = checkPayment::getCheck();
 if ($data == 1){
     Yii::$app->getResponse()->redirect(['success', 302]);
