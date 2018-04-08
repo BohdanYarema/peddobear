@@ -21,9 +21,14 @@ if ($data == 1){
     Yii::$app->getResponse()->redirect(['/cancel']);
 }
 
-
-print_r(PayMentModel::getCoockie());
 ?>
+
+<!--
+    <?php
+print_r(PayMentModel::getCoockie());
+    ?>
+-->
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
