@@ -24,13 +24,19 @@ class checkPayment extends Model
     {
         $data = PayMentModel::getCoockie();
         if (!empty($data)){
-            if ($data['status'] == 1){
-                PayMentModel::setCoockie([]);
-                CartModel::setEmpty();
-                Yii::$app->getResponse()->redirect('/success');
-            } else {
-                PayMentModel::setCoockie([]);
-                Yii::$app->getResponse()->redirect('/cancel');
+            $model = \app\models\Payment::find()
+                ->where(['payment_order_id' => $data['payment_order_id']])
+                ->one();
+
+            if ($model !== null){
+                if ($model->status == 1){
+                    PayMentModel::setCoockie([]);
+                    CartModel::setEmpty();
+                    Yii::$app->getResponse()->redirect('/success');
+                } else {
+                    PayMentModel::setCoockie([]);
+                    Yii::$app->getResponse()->redirect('/cancel');
+                }
             }
         }
     }

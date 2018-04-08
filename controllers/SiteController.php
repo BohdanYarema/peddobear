@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CartModel;
 use app\models\Payment;
+use app\models\PayMentModel;
 use app\models\Shop;
 use app\modules\models\Log;
 use app\modules\models\Page;
@@ -115,6 +116,9 @@ class SiteController extends Controller
         $model->payment_order_id    = CartModel::getSumm()+time();
 
         if ($model->load(Yii::$app->request->post()) &&  $model->save()) {
+            PayMentModel::setCoockie([
+                'payment_order_id' => $model->payment_order_id
+            ]);
             $this->goPayPal($model);
         }
 
