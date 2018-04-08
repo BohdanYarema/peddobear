@@ -27,5 +27,6 @@ return [
         '#^admin/#' => '#^admin/#',
         '#^gii/#' => '#^gii/#',
         '#^file-storage/#' => '#^file-storage/#',
+        '#^notify#' => '#^notify#',
     ],
 ];

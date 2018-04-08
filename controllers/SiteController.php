@@ -159,12 +159,7 @@ class SiteController extends Controller
      */
     public function actionNotify()
     {
-        $page = Page::find()->where(['slug' => 'notify'])->one();
-        $this->getMeta($page);
-
-        return $this->render('notify', [
-            'page' => $page
-        ]);
+        return $this->render('notify');
     }
 
 
