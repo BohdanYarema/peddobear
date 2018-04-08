@@ -113,11 +113,6 @@ class SiteController extends Controller
         $model->shipping            = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
-        $model->payment_order_id    = CartModel::getSumm()+time();
-
-        PayMentModel::setCoockie([
-            'payment_order_id' => $model->payment_order_id
-        ]);
 
         if ($model->load(Yii::$app->request->post()) &&  $model->save()) {
             $this->goPayPal($model);
@@ -131,6 +126,10 @@ class SiteController extends Controller
 
 
     public function goPayPal($model){
+        $model->payment_order_id    = CartModel::getSumm()+time();
+        PayMentModel::setCoockie([
+            'payment_order_id' => $model->payment_order_id
+        ]);
         $shiping        = CartModel::getShiping();
         $cart           = CartModel::getCart();
         $count          = 0;
