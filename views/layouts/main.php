@@ -21,6 +21,8 @@ if ($data == 1){
 } elseif($data == 2){
     Yii::$app->getResponse()->redirect(['cancel', 302]);
 }
+
+print_r(PayMentModel::getCoockie());
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
