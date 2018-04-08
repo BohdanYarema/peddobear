@@ -182,6 +182,21 @@ class SiteController extends Controller
         ]);
     }
 
+
+    /**
+     * Displays cartpage.
+     *
+     * @return string
+     */
+    public function actionCancel()
+    {
+        $page = Page::find()->where(['slug' => 'cancel'])->one();
+        $this->getMeta($page);
+        return $this->render('cancel', [
+            'page' => $page
+        ]);
+    }
+
     /**
      * Displays cartpage.
      *

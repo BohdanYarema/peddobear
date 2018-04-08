@@ -13,13 +13,14 @@ return [
         ['pattern'=>'/about',       'route'=>'site/about'],
         ['pattern'=>'/cart',        'route'=>'site/cart'],
         ['pattern'=>'/shop',        'route'=>'site/shop'],
-        ['pattern'=>'/special',    'route'=>'site/special'],
+        ['pattern'=>'/special',     'route'=>'site/special'],
         ['pattern'=>'/test',        'route'=>'site/test'],
-        ['pattern'=>'/contact',    'route'=>'site/contact'],
+        ['pattern'=>'/contact',     'route'=>'site/contact'],
         ['pattern'=>'/payment',     'route'=>'site/payment'],
         ['pattern'=>'/success',     'route'=>'site/success'],
         ['pattern'=>'/notify',      'route'=>'site/notify'],
-        ['pattern'=>'/test',      'route'=>'site/test'],
+        ['pattern'=>'/test',        'route'=>'site/test'],
+        ['pattern'=>'/cancel',      'route'=>'site/cancel'],
     ],
     // Ignore / Filter route pattern's
     'ignoreLanguageUrlPatterns' => [
