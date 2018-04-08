@@ -1,4 +1,6 @@
 <?php
+use app\models\PayMentModel;
+
 // STEP 1: read POST data
 // Reading POSTed data directly from $_POST causes serialization issues with array data in the POST.
 // Instead, read raw POST data from the input stream.
@@ -67,8 +69,10 @@ if (strcmp ($res, "VERIFIED") == 0) {
             ->one();
         if ($_POST['payment_status'] == 'Completed'){
             $model->status = 1;
+            PayMentModel::setCoockie(['status' => 1]);
         } else {
             $model->status = 2;
+            PayMentModel::setCoockie(['status' => 2]);
         }
         $model->save();
     }
@@ -85,5 +89,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
         ->one();
     $model->status = 3;
     $model->save();
+
+    PayMentModel::setCoockie(['status' => 3]);
 }
 ?>
