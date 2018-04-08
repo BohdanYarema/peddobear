@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\components\checkPayment;
+use app\models\PayMentModel;
 
 AppAsset::register($this);
 
@@ -18,6 +19,7 @@ checkPayment::getCheck();
 
 
 print_r($_COOKIE);
+PayMentModel::setCoockie(['status' => 3]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
