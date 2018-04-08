@@ -120,8 +120,7 @@ class SiteController extends Controller
             PayMentModel::setCoockie([
                 'payment_order_id' => $model->payment_order_id
             ]);
-            $this->refresh();
-            //$this->goPayPal($model);
+            $this->goPayPal($model);
         }
 
         return $this->render('payment', [
