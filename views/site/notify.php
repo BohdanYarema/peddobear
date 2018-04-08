@@ -66,11 +66,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
             ->where(['payment_order_id' => $_POST['custom']])
             ->one();
 
-        if ($_POST['payment_status'] == 'Completed'){
-            $model->status = 1;
-        } else {
-            $model->status = 2;
-        }
+        $model->status = 1;
 
         $model->save();
     }
