@@ -21,13 +21,13 @@ var_dump(Yii::$app->session->setFlash('payment', true));
             <div class="successful-wrap">
                 <div class="successful">
                     <div class="successful__header">
-                        <h1>thank you!</h1>
+                        <h1><?=Yii::t('frontend', 'thank you!')?></h1>
                     </div>
                     <div class="successful__logo"><img src="<?=Yii::getAlias("@web")?>/img/SMILETED.png"></div>
                     <div class="successful__subtext">
-                        <p> your payment was <br> proccesed successfully</p>
+                        <p> <?=Yii::t('frontend', 'your payment was proccesed successfully')?></p>
                     </div><a class="successful__btn" href="/shop">
-                        <p>buy some more ted'<span>s</span></p></a>
+                        <p><?=Yii::t('frontend', 'buy some more teds')?></p></a>
                 </div>
             </div>
         </div>
