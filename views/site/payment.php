@@ -17,7 +17,7 @@ $payments = [
     ],
     1 => [
         'image'     => Yii::getAlias("@web").'/img/PayU.svg',
-        'status'    => 1,
+        'status'    => 0,
         'id'        => 'payu'
     ],
     2 => [
