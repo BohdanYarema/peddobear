@@ -25,8 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'locale.title',
-            'price',
-            'special_price',
             'status',
             'created_at:datetime',
             //'updated_at',
