@@ -23,14 +23,13 @@ class AppAsset extends AssetBundle
         'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700',
         'https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800',
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.css',
-        'css/style.css',
-        ['css/fm.revealator.jquery.min.css', 'id' => 'revealatorCss']
+        ['css/fm.revealator.jquery.min.css', 'id' => 'revealatorCss'],
+        'css/style.css'
     ];
     public $js = [
-        //'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js',
+        ['js/fm.revealator.jquery.min.js', 'id' => 'revealator'],
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js',
         'js/main.js',
-        ['js/fm.revealator.jquery.min.js', 'id' => 'revealator'],
         'js/my.js',
     ];
     public $depends = [
