@@ -24,7 +24,7 @@ use app\widgets\CookieWidget;
                         <div class="contact-info__title">
                             <p><?=Yii::t('frontend', 'social media')?>:</p>
                         </div>
-                        <div class="contact-info__icons"><a href="#"><img src="<?=Yii::getAlias("@web")?>/img/telega.svg"></a><a href="#"> <img src="<?=Yii::getAlias("@web")?>/img/insta.svg"></a><a href="#"><img src="<?=Yii::getAlias("@web")?>/img/facebook.svg"></a></div>
+                        <div class="contact-info__icons"><a href="https://t.me/ted_a_car" target="_blank"><img src="<?=Yii::getAlias("@web")?>/img/telega.svg"></a><a href="https://www.instagram.com/tedacar.eu/" target="_blank"> <img src="<?=Yii::getAlias("@web")?>/img/insta.svg"></a><a href="https://www.facebook.com/pg/TEDACAREU/shop/?ref=page_internal" target="_blank"><img src="<?=Yii::getAlias("@web")?>/img/facebook.svg"></a></div>
                     </div>
                     <div class="contact-phones revealator-zoomin revealator-delay10 revealator-duration7">
                         <div class="contact-phones__header-item">
