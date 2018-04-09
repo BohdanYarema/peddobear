@@ -24,8 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'image_base_url:url',
-            'image_path',
+            'locale.title',
+            'price',
+            'special_price',
             'status',
             'created_at:datetime',
             //'updated_at',
