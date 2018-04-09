@@ -123,12 +123,13 @@ PayMentModel::setCoockie([
                                     if ($payments[$index]['status'] === 0){
                                         $disabled = 'disabled="disabled"';
                                     }
+
                                     $return = "<div class='ted-info-payment__item'>";
                                     $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="' . $name . '" value="' . $value . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
                                     $return .= ucwords($label);
                                     $return .= '</label><div class="payment-btn"><img src="'.$payments[$index]['image'].'"></div>';
-                                    if ($index == 2){
+                                    if ($index == 2 || $index == 1){
                                         $return .= "<p>(Soon)</p>";
                                     }
                                     $return .= '</div>';
