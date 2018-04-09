@@ -21,7 +21,7 @@ var_dump(Yii::$app->session->setFlash('payment', true));
             <div class="successful-wrap">
                 <div class="successful">
                     <div class="successful__header">
-                        <h1><?=Yii::t('frontend', 'thank you!')?></h1>
+                        <h1><?=Yii::t('frontend', 'thank you')?></h1>
                     </div>
                     <div class="successful__logo"><img src="<?=Yii::getAlias("@web")?>/img/SMILETED.png"></div>
                     <div class="successful__subtext">

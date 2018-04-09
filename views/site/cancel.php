@@ -25,7 +25,7 @@ use app\widgets\CookieWidget;
                     <div class="failed__subtext">
                         <p><?=Yii::t('frontend', 'dont panic! try again')?></p>
                     </div><a class="failed__btn" href="/shop">
-                        <p><?=Yii::t('frontend', 'Return to shop')?></p></a>
+                        <p><?=Yii::t('frontend', 'return to shop')?></p></a>
                 </div>
             </div>
         </div>
