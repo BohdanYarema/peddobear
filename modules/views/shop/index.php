@@ -24,7 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'locale.title',
             [
                 'attribute' => 'locale.title',
                 'format'    => 'html'
