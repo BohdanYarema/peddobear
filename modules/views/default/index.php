@@ -1,47 +1,51 @@
-
 <?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+/* @var $searchModel app\models\PaymentSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Payments';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-index">
+<div class="payment-index">
 
-    <br>
-    <br><br>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <div class="body-content">
+    <p>
+        <?= Html::a('Create Payment', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            'id',
+            'name',
+            'email:email',
+            'phone',
+            //'country',
+            //'address',
+            //'zipcode',
+            //'city',
+            //'payment_type',
+            //'currency',
+            'shipping',
+            'summary',
+            //'status',
+            'created_at:datetime',
+            //'updated_at',
+            //'payment_order_id',
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+            [
+                'class'     => 'yii\grid\ActionColumn',
+                'template'  => '{view} {delete}'
+            ],
+        ],
+    ]); ?>
 </div>
