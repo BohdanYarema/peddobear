@@ -138,9 +138,9 @@ class SiteController extends Controller
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $itemName       = "Peddobear purchase";
-        $returnUrl      = "http://peddobear.devservice.pro/success";
-        $cancelUrl      = "http://peddobear.devservice.pro/cancel";
-        $notifyUrl      = "http://peddobear.devservice.pro/notify";
+        $returnUrl      = "http://tedacar.eu/success";
+        $cancelUrl      = "http://tedacar.eu/cancel";
+        $notifyUrl      = "http://tedacar.eu/notify";
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
