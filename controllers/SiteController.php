@@ -319,7 +319,7 @@ class SiteController extends Controller
             \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
             \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
             \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->meta_image_base_url.'/'.$model->meta_image_path]);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Peddobear']);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Ted a car']);
             \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
 
 
