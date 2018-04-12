@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+use yii\data\ActiveDataProvider;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Payment */
@@ -47,4 +49,29 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+
+    <?php
+        $dataProvider = new ActiveDataProvider([
+            'query' => \app\models\PaymentItems::find()->where(['payment_id' => $model->id]),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+        echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                'id',
+                'payment_id',
+                'shop_id',
+                [
+                    'attribute' => 'shop_id',
+                    'value'     => 'shop.locale.title'
+                ],
+                'price',
+                'count',
+                'summary',
+                'created_at:datetime',
+            ],
+        ]);
+    ?>
 </div>
