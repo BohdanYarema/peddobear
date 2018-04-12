@@ -65,7 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'shop_id',
                 [
                     'attribute' => 'shop_id',
-                    'value'     => 'shop.locale.title'
+                    'value'     => 'shop.locale.title',
+                    'format'    => 'html'
                 ],
                 'price',
                 'count',
