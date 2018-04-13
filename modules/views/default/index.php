@@ -35,13 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'    => 'payment_type',
                 'value'         =>  function ($model){
                     return Yii::$app->params['payment_type'][$model->payment_type]['id'];
-                }
+                },
+                'filter'    => \yii\helpers\ArrayHelper::map(Yii::$app->params['payment_type'], 'key', 'id')
             ],
             [
                 'attribute'    => 'status',
                 'value'         =>  function ($model){
                     return Yii::$app->params['status'][$model->status];
-                }
+                },
+                'filter'    =>  Yii::$app->params['status']
             ],
             'created_at:datetime',
 

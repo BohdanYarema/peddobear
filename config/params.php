@@ -16,17 +16,20 @@ return [
         0 => [
             'image'     => '/img/PayPal.svg',
             'status'    => 1,
-            'id'        => 'pay'
+            'id'        => 'pay',
+            'key'       => 0
         ],
         1 => [
             'image'     => '/img/PayU.svg',
             'status'    => 0,
-            'id'        => 'payu'
+            'id'        => 'payu',
+            'key'       => 1
         ],
         2 => [
             'image'     => '/img/applepay.svg',
             'status'    => 0,
-            'id'        =>  'payapple'
+            'id'        =>  'payapple',
+            'key'       => 2
         ],
     ],
     'delivery'=>[
