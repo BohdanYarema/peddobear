@@ -12,6 +12,23 @@ return [
         2 => 'Pending or other',
         3 => 'Not verify',
     ],
+    'payment_type'=>[
+        0 => [
+            'image'     => '/img/PayPal.svg',
+            'status'    => 1,
+            'id'        => 'pay'
+        ],
+        1 => [
+            'image'     => '/img/PayU.svg',
+            'status'    => 0,
+            'id'        => 'payu'
+        ],
+        2 => [
+            'image'     => '/img/applepay.svg',
+            'status'    => 0,
+            'id'        =>  'payapple'
+        ],
+    ],
     'delivery'=>[
         'pl' => [
             'currency'          => 'PLN',

@@ -9,23 +9,7 @@ use app\models\PayMentModel;
 
 /* @var $this yii\web\View */
 
-$payments = [
-    0 => [
-        'image'     => Yii::getAlias("@web").'/img/PayPal.svg',
-        'status'    => 1,
-        'id'        => 'pay'
-    ],
-    1 => [
-        'image'     => Yii::getAlias("@web").'/img/PayU.svg',
-        'status'    => 0,
-        'id'        => 'payu'
-    ],
-    2 => [
-        'image'     => Yii::getAlias("@web").'/img/applepay.svg',
-        'status'    => 0,
-        'id'        =>  'payapple'
-    ],
-];
+$payments = Yii::$app->params['payment_type'];
 
 $model->payment_order_id = time()+rand(1,100);
 PayMentModel::setCoockie([
@@ -128,7 +112,7 @@ PayMentModel::setCoockie([
                                     $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="' . $name . '" value="' . $value . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
                                     $return .= ucwords($label);
-                                    $return .= '</label><div class="payment-btn"><img src="'.$payments[$index]['image'].'"></div>';
+                                    $return .= '</label><div class="payment-btn"><img src="'.Yii::getAlias("@web").$payments[$index]['image'].'"></div>';
                                     if ($index == 2 || $index == 1){
                                         $return .= "<p>(Soon)</p>";
                                     }

@@ -29,18 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'email:email',
             'phone',
-            //'country',
-            //'address',
-            //'zipcode',
-            //'city',
-            //'payment_type',
-            //'currency',
             'shipping',
             'summary',
-            //'status',
+            [
+                'attribute'    => 'payment_type',
+                'value'         =>  function ($model){
+                    return Yii::$app->params['payment_type'][$model->payment_type]['id'];
+                }
+            ],
+            [
+                'attribute'    => 'status',
+                'value'         =>  function ($model){
+                    return Yii::$app->params['status'][$model->status];
+                }
+            ],
             'created_at:datetime',
-            //'updated_at',
-            //'payment_order_id',
 
             [
                 'class'     => 'yii\grid\ActionColumn',
