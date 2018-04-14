@@ -110,6 +110,11 @@ $config = [
                 'roles' => ['@'],
             ],
             [
+                'controllers'=>['admin/log'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
                 'controllers'=>['file-storage'],
                 'allow' => true,
                 'roles' => ['?', '@'],
