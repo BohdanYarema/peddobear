@@ -17,12 +17,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, "{
   \"products\": [
     {
       \"name\": \"Wireless mouse\",
-      \"unitPrice\": \"15000\",
-      \"quantity\": \"1\"
-    },
-    {
-      \"name\": \"HDMI cable\",
-      \"unitPrice\": \"6000\",
+      \"unitPrice\": \"100\",
       \"quantity\": \"1\"
     }
   ]
