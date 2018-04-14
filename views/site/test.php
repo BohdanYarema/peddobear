@@ -8,7 +8,7 @@ curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_POST, TRUE);
 
 curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-  \"notifyUrl\": \"https://peddobear.devservice.pro/notify\",
+  \"notifyUrl\": \"http://peddobear.devservice.pro/notify\",
   \"customerIp\": \"127.0.0.1\",
   \"merchantPosId\": \"586502\",
   \"description\": \"RTV market\",
