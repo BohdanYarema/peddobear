@@ -41,6 +41,7 @@ AdmiAsset::register($this);
                 ['label' => 'Page', 'url' => ['/admin/page/index']],
                 ['label' => 'Keys', 'url' => ['/admin/i18n-source-message/index']],
                 ['label' => 'Translate for keys', 'url' => ['/admin/i18n-message/index']],
+                ['label' => 'Logs', 'url' => ['/admin/log/index']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin/default/login']]
                 ) : (
