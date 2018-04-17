@@ -333,6 +333,8 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = $this->getPauLink($model);
+        print_r($getUrl);
+        exit();
         //header('location:' . $paypalURL . $querystring);
         //exit();
     }
@@ -345,56 +347,52 @@ class SiteController extends Controller
         foreach ($cart as $item) {
             $price      = $item->getEndPrice();
             $items[]    = [
-                "name"      => $item->locale->title,
+                "name"      => htmlspecialchars_decode($item->locale->title),
                 "unitPrice" => $price,
                 "quantity"  => $item->count
             ];
         }
 
-        var_dump($items);
-        exit();
-//
-//        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
-//        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-//        $itemName       = "Ted a Car purchase";
-//
-//
-//        $ch = curl_init();
-//
-//        curl_setopt($ch, CURLOPT_URL, "https://secure.payu.com/api/v2_1/orders/");
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-//
-//        curl_setopt($ch, CURLOPT_POST, TRUE);
-//
-//        $post = [
-//            "notifyUrl"     => "http://peddobear.devservice.pro/notify",
-//            "customerIp"    => "127.0.0.1",
-//            "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
-//            "description"   => $itemName,
-//            "currencyCode"  => $currency,
-//            "totalAmount"   => $price,
-//            "products"      => [
-//
-//            ]
-//        ];
-//
-//        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
-//
-//        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-//            "Content-Type: application/json",
-//            "Authorization: Bearer ".Yii::$app->params['PayU']['token']
-//        ));
-//
-//        $response = curl_exec($ch);
-//        $err = curl_error($ch);
-//
-//        curl_close($ch);
-//
-//        if ($err) {
-//            return false;
-//        } else {
-//            return $response;
-//        }
+
+        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        $itemName       = "Ted a Car purchase";
+
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, "https://secure.payu.com/api/v2_1/orders/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+
+        $post = [
+            "notifyUrl"     => "http://peddobear.devservice.pro/notify",
+            "customerIp"    => "127.0.0.1",
+            "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
+            "description"   => $itemName,
+            "currencyCode"  => $currency,
+            "totalAmount"   => $price,
+            "products"      => $items
+        ];
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Authorization: Bearer ".Yii::$app->params['PayU']['token']
+        ));
+
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+
+        curl_close($ch);
+
+        if ($err) {
+            return false;
+        } else {
+            return $response;
+        }
     }
 }
