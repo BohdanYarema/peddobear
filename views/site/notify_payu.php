@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Bogdanek
+ * Date: 14.04.18
+ * Time: 08:58
+ */
+
+$raw_post_data = file_get_contents('php://input');
+$raw_post_array = explode('&', $raw_post_data);
+
+$log = new \app\modules\models\Log();
+$log->text = json_encode($raw_post_array);
+$log->save();
+
+$model = \app\models\Payment::find()
+    ->where(['payment_order_id' => $_POST['custom']])
+    ->one();
+if ($_POST['payment_status'] == 'Completed'){
+    $model->status = 1;
+} else {
+    $model->status = 2;
+}
+$model->save();

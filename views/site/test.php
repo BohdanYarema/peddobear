@@ -1,43 +1,5 @@
 <?php
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, "https://secure.payu.com/api/v2_1/orders/");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
-curl_setopt($ch, CURLOPT_POST, TRUE);
+$test = '["{\"order\":{\"orderId\":\"PWQDQX4G8R180417GUEST000P01\",\"orderCreateDate\":\"2018-04-17T22:21:38.171+02:00\",\"notifyUrl\":\"http:\/\/peddobear.devservice.pro\/notify\",\"customerIp\":\"127.0.0.1\",\"merchantPosId\":\"586502\",\"description\":\"Ted a Car purchase\",\"currencyCode\":\"PLN\",\"totalAmount\":\"2100\",\"buyer\":{\"customerId\":\"guest\",\"email\":\"bohdanyarema1992@gmail.com\"},\"payMethod\":{\"amount\":\"2100\",\"type\":\"PBL\"},\"status\":\"COMPLETED\",\"products\":[{\"name\":\"test\",\"unitPrice\":\"6\",\"quantity\":\"1\"},{\"name\":\"test\",\"unitPrice\":\"6\",\"quantity\":\"1\"},{\"name\":\"test\",\"unitPrice\":\"6\",\"quantity\":\"1\"}]},\"localReceiptDateTime\":\"2018-04-17T22:21:46.527+02:00\",\"properties\":[{\"name\":\"PAYMENT_ID\",\"value\":\"1083019218\"}]}"]';
 
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-  \"notifyUrl\": \"http://peddobear.devservice.pro/notify\",
-  \"customerIp\": \"127.0.0.1\",
-  \"merchantPosId\": \"586502\",
-  \"description\": \"RTV market\",
-  \"currencyCode\": \"PLN\",
-  \"totalAmount\": \"100\",
-  \"products\": [
-    {
-      \"name\": \"Wireless mouse\",
-      \"unitPrice\": \"100\",
-      \"quantity\": \"1\"
-    }
-  ]
-}");
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    "Content-Type: application/json",
-    "Authorization: Bearer 2a49df22-495e-41ef-88f8-1965250f1327"
-));
-
-$response = curl_exec($ch);
-curl_close($ch);
-
-var_dump($response);
-
-
-
-
-//$model = \app\modules\models\Log::find()->all();
-//foreach ($model as $item) {
-//    print_r(json_decode($item->text, true));
-//}
+var_dump($test);

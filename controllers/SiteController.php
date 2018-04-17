@@ -282,9 +282,6 @@ class SiteController extends Controller
             switch ($model->payment_type){
                 case 0 :{
                     $model->payment_order_id = time()+rand(1,100);
-                    PayMentModel::setCoockie([
-                        'payment_order_id' => $model->payment_order_id
-                    ]);
                     $model->save();
                     $this->goPayPal($model);
                     break;
@@ -292,9 +289,6 @@ class SiteController extends Controller
                 case 1 :{
                     $data = $this->goPayU($model);
                     $model->payment_order_id = $data['orderId'];
-                    PayMentModel::setCoockie([
-                        'payment_order_id' => $model->payment_order_id
-                    ]);
                     if ($model->save()){
                         header('location:' . $data['redirectUri']);
                         exit();
