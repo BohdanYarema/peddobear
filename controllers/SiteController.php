@@ -282,14 +282,19 @@ class SiteController extends Controller
             switch ($model->payment_type){
                 case 0 :{
                     $model->payment_order_id = time()+rand(1,100);
-                    $model->save();
-                    $this->goPayPal($model);
+                    if ($model->save()){
+                        PayMentModel::setCoockie([]);
+                        CartModel::setEmpty();
+                        $this->goPayPal($model);
+                    }
                     break;
                 }
                 case 1 :{
                     $data = $this->goPayU($model);
                     $model->payment_order_id = $data['orderId'];
                     if ($model->save()){
+                        PayMentModel::setCoockie([]);
+                        CartModel::setEmpty();
                         header('location:' . $data['redirectUri']);
                         exit();
                     }
@@ -310,9 +315,19 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionNotify()
+    public function actionNotifyPayu()
     {
         return $this->render('notify_payu');
+    }
+
+    /**
+     * Notify page.
+     *
+     * @return string
+     */
+    public function actionNotifyPayPal()
+    {
+        return $this->render('notify_paypal');
     }
 
     public function goPayPal($model){
@@ -330,7 +345,7 @@ class SiteController extends Controller
         $itemName       = "Ted a Car purchase";
         $returnUrl      = "http://tedacar.eu/success";
         $cancelUrl      = "http://tedacar.eu/cancel";
-        $notifyUrl      = "http://tedacar.eu/notify";
+        $notifyUrl      = "http://tedacar.eu/notify-pay-pal";
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
@@ -381,7 +396,7 @@ class SiteController extends Controller
         curl_setopt($ch, CURLOPT_POST, TRUE);
 
         $post = [
-            "notifyUrl"     => "http://peddobear.devservice.pro/notify",
+            "notifyUrl"     => "http://peddobear.devservice.pro/notify-payu",
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => "Ted a Car purchase",
