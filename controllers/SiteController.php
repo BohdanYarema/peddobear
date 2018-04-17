@@ -333,11 +333,13 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = json_decode($this->getPauLink($model), true);
+        var_dump($getUrl);
 
         if ($getUrl !== false){
-            header('location:' . $getUrl['redirectUri']);
+            //header('location:' . $getUrl['redirectUri']);
             exit;
         }
+        exit;
     }
 
     public function getPauLink($model){
