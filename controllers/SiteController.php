@@ -347,7 +347,7 @@ class SiteController extends Controller
         foreach ($cart as $item) {
             $price      = $item->getEndPrice();
             $items[]    = [
-                "name"      => htmlspecialchars_decode($item->locale->title),
+                "name"      => $item->locale->title,
                 "unitPrice" => $price,
                 "quantity"  => $item->count
             ];
@@ -374,7 +374,9 @@ class SiteController extends Controller
             "description"   => $itemName,
             "currencyCode"  => $currency,
             "totalAmount"   => $price,
-            "products"      => $items
+            "products"      => [
+                $items
+            ]
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
