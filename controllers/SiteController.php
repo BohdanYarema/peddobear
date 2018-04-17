@@ -372,12 +372,10 @@ class SiteController extends Controller
             "description"   => $itemName,
             "currencyCode"  => $currency,
             "totalAmount"   => $price,
-            "products"      => [
-                $items
-            ]
+            "products"      => $items
         ];
 
-        print_r($post);
+        var_dump($post);
         exit();
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
