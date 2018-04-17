@@ -333,13 +333,10 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = json_decode($this->getPauLink($model), true);
-        print_r($getUrl['redirectUri']);
-        exit();
+
         if ($getUrl !== false){
-            if (!empty($getUrl) && $getUrl['status']['statusCode'] == 'SUCCESS'){
-                header('location:' . $getUrl['redirectUri']);
-                exit;
-            }
+            header('location:' . $getUrl['redirectUri']);
+            exit;
         }
     }
 
