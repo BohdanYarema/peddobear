@@ -10,5 +10,5 @@ $raw_post_data = file_get_contents('php://input');
 $raw_post_array = explode('&', $raw_post_data);
 
 $log = new \app\modules\models\Log();
-$log->text = $raw_post_array;
+$log->text = json_encode($raw_post_array);
 $log->save();
