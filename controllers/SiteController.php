@@ -333,8 +333,6 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = $this->getPauLink($model);
-        print_r($getUrl);
-        exit();
         //header('location:' . $paypalURL . $querystring);
         //exit();
     }
@@ -378,6 +376,9 @@ class SiteController extends Controller
                 $items
             ]
         ];
+
+        print_r($post);
+        exit();
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
 
