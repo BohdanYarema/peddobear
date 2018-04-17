@@ -14,12 +14,13 @@ use app\models\PayMentModel;
 
 AppAsset::register($this);
 
-$data = checkPayment::getCheck();
-if ($data == 1){
-    Yii::$app->getResponse()->redirect(['/success']);
-} elseif($data == 2){
-    Yii::$app->getResponse()->redirect(['/cancel']);
-}
+//
+//$data = checkPayment::getCheck();
+//if ($data == 1){
+//    Yii::$app->getResponse()->redirect(['/success']);
+//} elseif($data == 2){
+//    Yii::$app->getResponse()->redirect(['/cancel']);
+//}
 
 ?>
 

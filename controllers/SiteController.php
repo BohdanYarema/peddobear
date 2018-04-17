@@ -19,7 +19,7 @@ class SiteController extends Controller
 {
     public function beforeAction($action)
     {
-        if (in_array($action->id, ['success', 'notify'])) {
+        if (in_array($action->id, ['success', 'cancel', 'notify'])) {
             $this->enableCsrfValidation = false;
         }
         return parent::beforeAction($action);
@@ -91,81 +91,6 @@ class SiteController extends Controller
         return $this->render('cart', [
             'page' => $page
         ]);
-    }
-
-
-    /**
-     * Displays cartpage.
-     *
-     * @return string
-     */
-    public function actionPayment()
-    {
-        $page = Page::find()->where(['slug' => 'payment'])->one();
-        $this->getMeta($page);
-
-        $shiping = CartModel::getShiping();
-
-
-        $model                      = new \app\models\Payment();
-        $model->status              = 0;
-        $model->currency            = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $model->shipping            = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
-        $model->summary             = CartModel::getSumm();
-        $model->items               = CartModel::getCart();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->goPayPal($model);
-        }
-
-        return $this->render('payment', [
-            'page'  => $page,
-            'model' => $model
-        ]);
-    }
-
-
-    public function goPayPal($model){
-        $shiping        = CartModel::getShiping();
-        $cart           = CartModel::getCart();
-        $count          = 0;
-
-        foreach ($cart as $item) {
-            $count += $item->count;
-        }
-
-        $paypalEmail    = "Shop@tedacar.eu";
-        $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
-        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $itemName       = "Peddobear purchase";
-        $returnUrl      = "http://tedacar.eu/success";
-        $cancelUrl      = "http://tedacar.eu/cancel";
-        $notifyUrl      = "http://tedacar.eu/notify";
-        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
-
-        $querystring = "?business=" . urlencode($paypalEmail) . "&";
-        $querystring .= "currency_code=" . urlencode($currency) . "&";
-        $querystring .= "cmd=" . urlencode('_xclick') . "&";
-        $querystring .= "item_name=" . urlencode($itemName) . "&";
-        $querystring .= "amount=". urlencode($price) . "&";
-        $querystring .= "custom=". urlencode($model->payment_order_id) . "&";
-
-        $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
-        $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
-        $querystring .= "notify_url=" . urlencode($notifyUrl);
-
-        header('location:' . $paypalURL . $querystring);
-        exit();
-    }
-
-    /**
-     * Displays cartpage.
-     *
-     * @return string
-     */
-    public function actionNotify()
-    {
-        return $this->render('notify');
     }
 
 
@@ -331,5 +256,147 @@ class SiteController extends Controller
         }
 
         return true;
+    }
+
+    /**
+     * Displays paymentpage.
+     *
+     * @return string
+     */
+    public function actionPayment()
+    {
+        $page = Page::find()->where(['slug' => 'payment'])->one();
+        $this->getMeta($page);
+
+        $shiping = CartModel::getShiping();
+
+
+        $model                      = new \app\models\Payment();
+        $model->status              = 0;
+        $model->currency            = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        $model->shipping            = Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $model->summary             = CartModel::getSumm();
+        $model->items               = CartModel::getCart();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->goPayU($model);
+        }
+
+        return $this->render('payment', [
+            'page'  => $page,
+            'model' => $model
+        ]);
+    }
+
+    /**
+     * Notify page.
+     *
+     * @return string
+     */
+    public function actionNotify()
+    {
+        return $this->render('notify');
+    }
+
+    public function goPayPal($model){
+        $shiping        = CartModel::getShiping();
+        $cart           = CartModel::getCart();
+        $count          = 0;
+
+        foreach ($cart as $item) {
+            $count += $item->count;
+        }
+
+        $paypalEmail    = "Shop@tedacar.eu";
+        $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
+        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        $itemName       = "Peddobear purchase";
+        $returnUrl      = "http://tedacar.eu/success";
+        $cancelUrl      = "http://tedacar.eu/cancel";
+        $notifyUrl      = "http://tedacar.eu/notify";
+        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+
+        $querystring = "?business=" . urlencode($paypalEmail) . "&";
+        $querystring .= "currency_code=" . urlencode($currency) . "&";
+        $querystring .= "cmd=" . urlencode('_xclick') . "&";
+        $querystring .= "item_name=" . urlencode($itemName) . "&";
+        $querystring .= "amount=". urlencode($price) . "&";
+        $querystring .= "custom=". urlencode($model->payment_order_id) . "&";
+
+        $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
+        $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
+        $querystring .= "notify_url=" . urlencode($notifyUrl);
+
+        header('location:' . $paypalURL . $querystring);
+        exit();
+    }
+
+    public function goPayU($model){
+        $getUrl = $this->getPauLink($model);
+        //header('location:' . $paypalURL . $querystring);
+        //exit();
+    }
+
+    public function getPauLink($model){
+        $shiping        = CartModel::getShiping();
+        $cart           = CartModel::getCart();
+        $items          = [];
+
+        foreach ($cart as $item) {
+            $price = $item->getEndPrice();
+            $items = [
+                [
+                    "name"      => $item->locale->title,
+                    "unitPrice" => $price,
+                    "quantity"  => $item->count
+                ]
+            ];
+        }
+
+        var_dump($items);
+        exit();
+//
+//        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+//        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+//        $itemName       = "Ted a Car purchase";
+//
+//
+//        $ch = curl_init();
+//
+//        curl_setopt($ch, CURLOPT_URL, "https://secure.payu.com/api/v2_1/orders/");
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+//        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+//
+//        curl_setopt($ch, CURLOPT_POST, TRUE);
+//
+//        $post = [
+//            "notifyUrl"     => "http://peddobear.devservice.pro/notify",
+//            "customerIp"    => "127.0.0.1",
+//            "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
+//            "description"   => $itemName,
+//            "currencyCode"  => $currency,
+//            "totalAmount"   => $price,
+//            "products"      => [
+//
+//            ]
+//        ];
+//
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
+//
+//        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+//            "Content-Type: application/json",
+//            "Authorization: Bearer ".Yii::$app->params['PayU']['token']
+//        ));
+//
+//        $response = curl_exec($ch);
+//        $err = curl_error($ch);
+//
+//        curl_close($ch);
+//
+//        if ($err) {
+//            return false;
+//        } else {
+//            return $response;
+//        }
     }
 }

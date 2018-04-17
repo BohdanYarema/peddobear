@@ -7,36 +7,36 @@ curl_setopt($ch, CURLOPT_HEADER, FALSE);
 
 curl_setopt($ch, CURLOPT_POST, TRUE);
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-  \"notifyUrl\": \"http://peddobear.devservice.pro/notify\",
-  \"customerIp\": \"127.0.0.1\",
-  \"merchantPosId\": \"586502\",
-  \"description\": \"RTV market\",
-  \"currencyCode\": \"PLN\",
-  \"totalAmount\": \"100\",
-  \"products\": [
-    {
-      \"name\": \"Wireless mouse\",
-      \"unitPrice\": \"100\",
-      \"quantity\": \"1\"
-    }
-  ]
-}");
+$post = [
+    "notifyUrl"     => "http://peddobear.devservice.pro/notify",
+    "customerIp"    => "127.0.0.1",
+    "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
+    "description"   => "RTV market",
+    "currencyCode"  => "PLN",
+    "totalAmount"   => "100",
+    "products"      => [
+        [
+            "name"=> "Wireless mouse",
+            "unitPrice"=> "100",
+            "quantity"=> "1"
+        ]
+    ]
+];
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     "Content-Type: application/json",
-    "Authorization: Bearer 2d59a1d1-929d-4a9f-b3cd-a87532d528d1"
+    "Authorization: Bearer ".Yii::$app->params['PayU']['token']
 ));
 
 $response = curl_exec($ch);
+$err = curl_error($ch);
+
 curl_close($ch);
 
-var_dump($response);
-
-
-
-
-//$model = \app\modules\models\Log::find()->all();
-//foreach ($model as $item) {
-//    print_r(json_decode($item->text, true));
-//}
+if ($err) {
+    return false;
+} else {
+    return $response;
+}
