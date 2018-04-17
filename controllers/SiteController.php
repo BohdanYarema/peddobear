@@ -278,8 +278,31 @@ class SiteController extends Controller
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->goPayU($model);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            switch ($model->payment_type){
+                case 0 :{
+                    $model->payment_order_id = time()+rand(1,100);
+                    PayMentModel::setCoockie([
+                        'payment_order_id' => $model->payment_order_id
+                    ]);
+                    $model->save();
+                    $this->goPayPal($model);
+                    break;
+                }
+                case 1 :{
+                    $data = $this->goPayU($model);
+                    $model->payment_order_id = $data['orderId'];
+                    PayMentModel::setCoockie([
+                        'payment_order_id' => $model->payment_order_id
+                    ]);
+                    if ($model->save()){
+                        header('location:' . $data['redirectUri']);
+                        exit();
+                    }
+                    break;
+                }
+            }
+
         }
 
         return $this->render('payment', [
@@ -310,7 +333,7 @@ class SiteController extends Controller
         $paypalEmail    = "Shop@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $itemName       = "Peddobear purchase";
+        $itemName       = "Ted a Car purchase";
         $returnUrl      = "http://tedacar.eu/success";
         $cancelUrl      = "http://tedacar.eu/cancel";
         $notifyUrl      = "http://tedacar.eu/notify";
@@ -333,18 +356,18 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = json_decode($this->getPauLink($model), true);
-        var_dump($getUrl);
 
         if ($getUrl !== false){
-            //header('location:' . $getUrl['redirectUri']);
-            exit;
+            return $getUrl;
+        } else {
+            return false;
         }
-        exit;
     }
 
     public function getPauLink($model){
         $shiping        = CartModel::getShiping();
         $cart           = CartModel::getCart();
+        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
         $items          = [];
 
         foreach ($cart as $item) {
@@ -354,12 +377,6 @@ class SiteController extends Controller
                 "quantity"  => $item->count
             ];
         }
-
-
-        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
-        //$currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $itemName       = "Ted a Car purchase";
-
 
         $ch = curl_init();
 
@@ -373,9 +390,10 @@ class SiteController extends Controller
             "notifyUrl"     => "http://peddobear.devservice.pro/notify",
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
-            "description"   => $itemName,
+            "description"   => "Ted a Car purchase",
             "currencyCode"  => 'PLN',
-            "totalAmount"   => floatval($price)*100
+            "totalAmount"   => floatval($price)*100,
+            "products"      => json_encode($items)
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, "{
@@ -385,7 +403,7 @@ class SiteController extends Controller
             \"description\": \"".$post['description']."\",
             \"currencyCode\": \"PLN\",
             \"totalAmount\": \"".$post['totalAmount']."\",
-            \"products\": ".json_encode($items)."
+            \"products\": ".$post['products']."
         }");
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(

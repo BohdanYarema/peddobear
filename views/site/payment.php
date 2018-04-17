@@ -11,11 +11,6 @@ use app\models\PayMentModel;
 
 $payments = Yii::$app->params['payment_type'];
 
-$model->payment_order_id = time()+rand(1,100);
-PayMentModel::setCoockie([
-    'payment_order_id' => $model->payment_order_id
-]);
-
 ?>
 
 <main class="payment-page">
