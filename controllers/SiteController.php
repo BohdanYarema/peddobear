@@ -374,18 +374,8 @@ class SiteController extends Controller
             "currencyCode"  => 'PLN',
             "totalAmount"   => intval($price),
             "products"      => [
-                [
-                    "name"=> "Wireless mouse",
-                    "unitPrice"=> "100",
-                    "quantity"=> "1"
-                ],
-                [
-                    "name"=> "Wireless mouse",
-                    "unitPrice"=> "100",
-                    "quantity"=> "1"
-                ]
+                $items
             ]
-            //
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
