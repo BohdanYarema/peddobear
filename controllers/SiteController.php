@@ -333,10 +333,12 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = $this->getPauLink($model);
-        var_dump($getUrl);
-        exit;
-        //header('location:' . $paypalURL . $querystring);
-        //exit();
+        if ($getUrl !== false){
+            if (!empty($getUrl) && $getUrl['status']['statusCode'] == 'SUCCESS'){
+                header('location:' . $getUrl['redirectUri']);
+                exit;
+            }
+        }
     }
 
     public function getPauLink($model){
@@ -354,7 +356,7 @@ class SiteController extends Controller
 
 
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
-        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
+        //$currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $itemName       = "Ted a Car purchase";
 
 
