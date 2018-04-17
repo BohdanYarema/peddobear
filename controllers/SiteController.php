@@ -373,7 +373,19 @@ class SiteController extends Controller
             "description"   => $itemName,
             "currencyCode"  => $currency,
             "totalAmount"   => $price,
-            "products"      => $items
+            "products"      => [
+                [
+                    "name"=> "Wireless mouse",
+                    "unitPrice"=> "100",
+                    "quantity"=> "1"
+                ],
+                [
+                    "name"=> "Wireless mouse",
+                    "unitPrice"=> "100",
+                    "quantity"=> "1"
+                ]
+            ]
+            //$items
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
