@@ -10,13 +10,17 @@ $raw_post_data = file_get_contents('php://input');
 $raw_post_array = explode('&', $raw_post_data);
 
 $log = new \app\modules\models\Log();
-$log->text = json_encode($raw_post_array);
+$log->text = json_encode($raw_post_array[0]);
 $log->save();
 
+$result = json_decode($raw_post_array[0], true);
+$order_id   = $result['order']['orderId'];
+$status     = $result['order']['status'];
+
 $model = \app\models\Payment::find()
-    ->where(['payment_order_id' => $_POST['custom']])
+    ->where(['payment_order_id' => $order_id])
     ->one();
-if ($_POST['payment_status'] == 'Completed'){
+if ($status == 'COMPLETED'){
     $model->status = 1;
 } else {
     $model->status = 2;

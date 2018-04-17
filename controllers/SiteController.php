@@ -312,7 +312,7 @@ class SiteController extends Controller
      */
     public function actionNotify()
     {
-        return $this->render('notify');
+        return $this->render('notify_payu');
     }
 
     public function goPayPal($model){
