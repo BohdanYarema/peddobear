@@ -375,7 +375,7 @@ class SiteController extends Controller
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => $itemName,
             "currencyCode"  => 'PLN',
-            "totalAmount"   => intval($price),
+            "totalAmount"   => floatval($price)*100,
             "products"      => $items
         ];
 
