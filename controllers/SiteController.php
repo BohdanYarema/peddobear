@@ -375,11 +375,18 @@ class SiteController extends Controller
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => $itemName,
             "currencyCode"  => 'PLN',
-            "totalAmount"   => floatval($price)*100,
-            "products"      => $items
+            "totalAmount"   => floatval($price)*100
         ];
 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+            \"notifyUrl\": \"http://peddobear.devservice.pro/notify\",
+            \"customerIp\": \"127.0.0.1\",
+            \"merchantPosId\": \"".Yii::$app->params['PayU']['merchantPosId']."\",
+            \"description\": \"".$post['description']."\",
+            \"currencyCode\": \"PLN\",
+            \"totalAmount\": \"".$post['totalAmount']."\",
+            \"products\": ".json_encode($items)."
+        }");
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
