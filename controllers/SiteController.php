@@ -372,13 +372,8 @@ class SiteController extends Controller
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => $itemName,
             "currencyCode"  => $currency,
-            "totalAmount"   => $price,
+            "totalAmount"   => intval($price),
             "products"      => [
-                [
-                    "name"=> "Wireless mouse",
-                    "unitPrice"=> "100",
-                    "quantity"=> "1"
-                ],
                 [
                     "name"=> "Wireless mouse",
                     "unitPrice"=> "100",
