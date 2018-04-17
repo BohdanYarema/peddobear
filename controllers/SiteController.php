@@ -19,7 +19,7 @@ class SiteController extends Controller
 {
     public function beforeAction($action)
     {
-        if (in_array($action->id, ['success', 'cancel', 'notify'])) {
+        if (in_array($action->id, ['success', 'cancel', 'notify-pay-pal', 'notify-payu'])) {
             $this->enableCsrfValidation = false;
         }
         return parent::beforeAction($action);
