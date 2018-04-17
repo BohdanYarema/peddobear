@@ -22,6 +22,8 @@ AppAsset::register($this);
 //    Yii::$app->getResponse()->redirect(['/cancel']);
 //}
 
+print_r($_COOKIE);
+
 ?>
 
 <?php $this->beginPage() ?>
