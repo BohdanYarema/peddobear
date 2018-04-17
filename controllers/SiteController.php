@@ -345,10 +345,9 @@ class SiteController extends Controller
         $items          = [];
 
         foreach ($cart as $item) {
-            $price      = $item->getEndPrice();
             $items[]    = [
-                "name"      => htmlentities($item->locale->title),
-                "unitPrice" => $price,
+                "name"      => 'test',
+                "unitPrice" => $item->getEndPrice(),
                 "quantity"  => $item->count
             ];
         }
