@@ -19,7 +19,7 @@ class SiteController extends Controller
 {
     public function beforeAction($action)
     {
-        if (in_array($action->id, ['success', 'cancel', 'notify-pay-pal', 'notify-payu'])) {
+        if (in_array($action->id, ['success', 'cancel', 'notifypaypal', 'notifypayu'])) {
             $this->enableCsrfValidation = false;
         }
         return parent::beforeAction($action);
@@ -315,7 +315,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionNotifyPayu()
+    public function actionNotifypayu()
     {
         return $this->render('notify_payu');
     }
@@ -325,7 +325,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionNotifyPayPal()
+    public function actionNotifypaypal()
     {
         return $this->render('notify_paypal');
     }
@@ -345,7 +345,7 @@ class SiteController extends Controller
         $itemName       = "Ted a Car purchase";
         $returnUrl      = "http://tedacar.eu/success";
         $cancelUrl      = "http://tedacar.eu/cancel";
-        $notifyUrl      = "http://tedacar.eu/notify-pay-pal";
+        $notifyUrl      = "http://tedacar.eu/notifypaypal";
         $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
@@ -396,7 +396,7 @@ class SiteController extends Controller
         curl_setopt($ch, CURLOPT_POST, TRUE);
 
         $post = [
-            "notifyUrl"     => "http://peddobear.devservice.pro/notify-payu",
+            "notifyUrl"     => "http://peddobear.devservice.pro/notifypayu",
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => "Ted a Car purchase",
@@ -406,7 +406,7 @@ class SiteController extends Controller
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-            \"notifyUrl\": \"http://peddobear.devservice.pro/notify\",
+            \"notifyUrl\": \"".$post['notifyUrl']."\",
             \"customerIp\": \"127.0.0.1\",
             \"merchantPosId\": \"".Yii::$app->params['PayU']['merchantPosId']."\",
             \"description\": \"".$post['description']."\",
