@@ -21,7 +21,7 @@ return [
         ],
         1 => [
             'image'     => '/img/PayU.svg',
-            'status'    => 0,
+            'status'    => 1,
             'id'        => 'payu',
             'key'       => 1
         ],
