@@ -371,7 +371,7 @@ class SiteController extends Controller
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => $itemName,
-            "currencyCode"  => 'USD',
+            "currencyCode"  => 'PLN',
             "totalAmount"   => intval($price),
             "products"      => [
                 [
