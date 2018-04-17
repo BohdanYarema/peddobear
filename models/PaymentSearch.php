@@ -19,8 +19,8 @@ class PaymentSearch extends Payment
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type', 'currency'], 'safe'],
-            [['shipping', 'summary', 'payment_order_id'], 'number'],
+            [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type', 'currency', 'payment_order_id'], 'safe'],
+            [['shipping', 'summary'], 'number'],
         ];
     }
 
@@ -63,8 +63,7 @@ class PaymentSearch extends Payment
             'id' => $this->id,
             'shipping' => $this->shipping,
             'summary' => $this->summary,
-            'status' => $this->status,
-            'payment_order_id' => $this->payment_order_id,
+            'status' => $this->status
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
@@ -75,7 +74,8 @@ class PaymentSearch extends Payment
             ->andFilterWhere(['like', 'zipcode', $this->zipcode])
             ->andFilterWhere(['like', 'city', $this->city])
             ->andFilterWhere(['like', 'payment_type', $this->payment_type])
-            ->andFilterWhere(['like', 'currency', $this->currency]);
+            ->andFilterWhere(['like', 'payment_type', $this->payment_type])
+            ->andFilterWhere(['like', 'payment_order_id', $this->payment_order_id]);
 
         return $dataProvider;
     }
