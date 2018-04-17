@@ -371,11 +371,21 @@ class SiteController extends Controller
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => $itemName,
-            "currencyCode"  => $currency,
+            "currencyCode"  => 'USD',
             "totalAmount"   => intval($price),
             "products"      => [
-                $items
+                [
+                    "name"=> "Wireless mouse",
+                    "unitPrice"=> "100",
+                    "quantity"=> "1"
+                ],
+                [
+                    "name"=> "Wireless mouse",
+                    "unitPrice"=> "100",
+                    "quantity"=> "1"
+                ]
             ]
+            //
         ];
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
