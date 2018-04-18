@@ -370,7 +370,7 @@ class SiteController extends Controller
 
         foreach ($model->paymentItems as $item) {
             $items[]    = [
-                "name"      => strip_tags($item->shop->locale->title),
+                "name"      => 'item',
                 "unitPrice" => $item->summary,
                 "quantity"  => $item->count
             ];
