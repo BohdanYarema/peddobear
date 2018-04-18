@@ -283,8 +283,11 @@ class SiteController extends Controller
                 case 0 :{
                     $model->payment_order_id = time()+rand(1,100);
                     if ($model->save()){
+                        unset($_COOKIE['cart']);
+                        unset($_COOKIE['payment_order_id']);
                         PayMentModel::setCoockie([]);
                         CartModel::setEmpty();
+                        sleep(2);
                         $this->goPayPal($model);
                     }
                     break;
@@ -293,8 +296,11 @@ class SiteController extends Controller
                     $data = $this->goPayU($model);
                     $model->payment_order_id = $data['orderId'];
                     if ($model->save()){
+                        unset($_COOKIE['cart']);
+                        unset($_COOKIE['payment_order_id']);
                         PayMentModel::setCoockie([]);
                         CartModel::setEmpty();
+                        sleep(2);
                         header('location:' . $data['redirectUri']);
                         exit();
                     }
