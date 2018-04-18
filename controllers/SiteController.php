@@ -431,6 +431,10 @@ class SiteController extends Controller
 
         curl_close($ch);
 
+        print_r($response);
+        exit;
+
+
         if ($err) {
             return false;
         } else {
