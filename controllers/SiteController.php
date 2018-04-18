@@ -278,35 +278,8 @@ class SiteController extends Controller
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            switch ($model->payment_type){
-                case 0 :{
-                    $model->payment_order_id = time()+rand(1,100);
-                    if ($model->save()){
-                        unset($_COOKIE['cart']);
-                        unset($_COOKIE['payment_order_id']);
-                        PayMentModel::setCoockie([]);
-                        CartModel::setEmpty();
-//                        sleep(2);
-//                        $this->goPayPal($model);
-                    }
-                    break;
-                }
-                case 1 :{
-                    $data = $this->goPayU($model);
-                    $model->payment_order_id = $data['orderId'];
-                    if ($model->save()){
-                        unset($_COOKIE['cart']);
-                        unset($_COOKIE['payment_order_id']);
-                        PayMentModel::setCoockie([]);
-                        CartModel::setEmpty();
-                        sleep(2);
-//                        header('location:' . $data['redirectUri']);
-//                        exit();
-                    }
-                    break;
-                }
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
 
         }
 
@@ -314,6 +287,31 @@ class SiteController extends Controller
             'page'  => $page,
             'model' => $model
         ]);
+    }
+
+    public function actionPay($id){
+//        switch ($model->payment_type){
+//            case 0 :{
+//                $model->payment_order_id = time()+rand(1,100);
+//                unset($_COOKIE['cart']);
+//                unset($_COOKIE['payment_order_id']);
+//                PayMentModel::setCoockie([]);
+//                CartModel::setEmpty();
+//                $this->goPayPal($model);
+//                break;
+//            }
+//            case 1 :{
+//                $data = $this->goPayU($model);
+//                $model->payment_order_id = $data['orderId'];
+//                unset($_COOKIE['cart']);
+//                unset($_COOKIE['payment_order_id']);
+//                PayMentModel::setCoockie([]);
+//                CartModel::setEmpty();
+//                header('location:' . $data['redirectUri']);
+//                exit();
+//                break;
+//            }
+//        }
     }
 
     /**
