@@ -281,7 +281,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             PayMentModel::setCoockie([]);
             CartModel::setEmpty();
-            return $this->redirect(['pay', 'id' => $model->payment_order_id]);
+            return $this->redirect(['pay', 'id' => $model->id]);
         }
 
         return $this->render('payment', [
@@ -291,7 +291,7 @@ class SiteController extends Controller
     }
 
     public function actionPay($id){
-        $model = Payment::find()->where(['payment_order_id' => $id])->one();
+        $model = Payment::find()->where(['id' => $id])->one();
         if ($model !== null){
             switch ($model->payment_type){
                 case 0 :{
@@ -364,6 +364,8 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = json_decode($this->getPauLink($model), true);
+        print_r($getUrl);
+        exit();
 
         if ($getUrl !== false){
             return $getUrl;
