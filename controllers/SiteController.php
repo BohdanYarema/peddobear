@@ -231,34 +231,6 @@ class SiteController extends Controller
 
 
     /**
-     * @return boolean
-     */
-    public function getMeta($model)
-    {
-        if($model !== null){
-            \Yii::$app->view->title = $model->locale->title;
-            \Yii::$app->view->registerMetaTag(['name'       => 'title', 'content'           => $model->locale->meta_title]);
-            \Yii::$app->view->registerMetaTag(['name'       => 'description', 'content'     => $model->locale->meta_description]);
-            \Yii::$app->view->registerMetaTag(['name'       => 'keywords', 'content'        => $model->locale->meta_keywords]);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:title', 'content'        => $model->locale->meta_title]);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->meta_image_base_url.'/'.$model->meta_image_path]);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Ted a car']);
-            \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
-
-
-            \Yii::$app->view->registerMetaTag(['name' => 'twitter:url', 'content'           => Url::canonical()]);
-            \Yii::$app->view->registerMetaTag(['name' => 'twitter:card', 'content'          => 'summary']);
-            \Yii::$app->view->registerMetaTag(['name' => 'twitter:title', 'content'         => $model->locale->meta_title]);
-            \Yii::$app->view->registerMetaTag(['name' => 'twitter:description', 'content'   => $model->locale->meta_description]);
-            \Yii::$app->view->registerMetaTag(['name' => 'twitter:image', 'content'         => $model->meta_image_base_url.'/'.$model->meta_image_path]);
-        }
-
-        return true;
-    }
-
-    /**
      * Displays paymentpage.
      *
      * @return string
@@ -308,27 +280,19 @@ class SiteController extends Controller
 
     public function actionPay($id){
         $model = Payment::find()->where(['id' => $id])->one();
-        if ($model !== null){
+        if ($model !== null && $model->status == 0){
             header('location:' . $model->redirectUrl);
             exit();
+        } else {
+            return $this->redirect(['cancel']);
         }
     }
 
-    /**
-     * Notify page.
-     *
-     * @return string
-     */
     public function actionNotifypayu()
     {
         return $this->render('notify_payu');
     }
 
-    /**
-     * Notify page.
-     *
-     * @return string
-     */
     public function actionNotifypaypal()
     {
         return $this->render('notify_paypal');
@@ -426,5 +390,35 @@ class SiteController extends Controller
         } else {
             return $response;
         }
+    }
+
+
+
+    /**
+     * @return boolean
+     */
+    public function getMeta($model)
+    {
+        if($model !== null){
+            \Yii::$app->view->title = $model->locale->title;
+            \Yii::$app->view->registerMetaTag(['name'       => 'title', 'content'           => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['name'       => 'description', 'content'     => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['name'       => 'keywords', 'content'        => $model->locale->meta_keywords]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:title', 'content'        => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:type', 'content'         => 'website']);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:description', 'content'  => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:image', 'content'        => $model->meta_image_base_url.'/'.$model->meta_image_path]);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:site_name', 'content'    => 'Ted a car']);
+            \Yii::$app->view->registerMetaTag(['property'   => 'og:url', 'content'          => Url::canonical()]);
+
+
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:url', 'content'           => Url::canonical()]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:card', 'content'          => 'summary']);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:title', 'content'         => $model->locale->meta_title]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:description', 'content'   => $model->locale->meta_description]);
+            \Yii::$app->view->registerMetaTag(['name' => 'twitter:image', 'content'         => $model->meta_image_base_url.'/'.$model->meta_image_path]);
+        }
+
+        return true;
     }
 }
