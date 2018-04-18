@@ -370,7 +370,7 @@ class SiteController extends Controller
 
         foreach ($model->paymentItems as $item) {
             $items[]    = [
-                "name"      => 'item',
+                "name"      => strip_tags($item->shop->locale->title),
                 "unitPrice" => $item->summary,
                 "quantity"  => $item->count
             ];
@@ -390,7 +390,7 @@ class SiteController extends Controller
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => "Ted a Car purchase",
             "currencyCode"  => 'PLN',
-            "totalAmount"   => floatval($price)*100,
+            "totalAmount"   => $price*100,
             "products"      => json_encode($items)
         ];
 
