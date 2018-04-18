@@ -23,5 +23,7 @@ class PayMentModel extends Model
             'name'  => 'payment_order_id',
             'value' => $data,
         ]));
+
+        unset($_COOKIE['payment_order_id']);
     }
 }

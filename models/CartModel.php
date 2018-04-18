@@ -101,6 +101,8 @@ class CartModel extends Model
             'name'  => 'cart',
             'value' => [],
         ]));
+
+        unset($_COOKIE['cart']);
     }
 
     public function deleteCoockie($id, $cart){
