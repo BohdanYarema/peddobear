@@ -47,7 +47,7 @@ return [
         ],
     ],
     'PayU' => [
-        'token'         => 'e2e0ac79-5469-4c2b-b2e3-e6502bb1b798',
+        'token'         => '5322a54d-0fce-4ce7-a288-8da639349aca',
         'merchantPosId' => '586502'
     ]
 ];
