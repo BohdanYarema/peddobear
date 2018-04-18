@@ -301,6 +301,7 @@ class SiteController extends Controller
                 case 1 :{
                     $data = $this->goPayU($model);
                     $model->payment_order_id = $data['orderId'];
+                    $model->save();
                     header('location:' . $data['redirectUri']);
                     exit();
                     break;
