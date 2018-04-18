@@ -330,14 +330,6 @@ class SiteController extends Controller
     }
 
     public function goPayPal($model){
-        $shiping        = CartModel::getShiping();
-        $cart           = CartModel::getCart();
-        $count          = 0;
-
-        foreach ($cart as $item) {
-            $count += $item->count;
-        }
-
         $paypalEmail    = "Shop@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
@@ -345,7 +337,7 @@ class SiteController extends Controller
         $returnUrl      = "http://tedacar.eu/success";
         $cancelUrl      = "http://tedacar.eu/cancel";
         $notifyUrl      = "http://tedacar.eu/notifypaypal";
-        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $price          = $model->summary + $model->shipping;
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
         $querystring .= "currency_code=" . urlencode($currency) . "&";
@@ -364,8 +356,6 @@ class SiteController extends Controller
 
     public function goPayU($model){
         $getUrl = json_decode($this->getPauLink($model), true);
-        print_r($getUrl);
-        exit();
 
         if ($getUrl !== false){
             return $getUrl;
@@ -375,15 +365,13 @@ class SiteController extends Controller
     }
 
     public function getPauLink($model){
-        $shiping        = CartModel::getShiping();
-        $cart           = CartModel::getCart();
-        $price          = CartModel::getSumm() + Yii::$app->params['delivery'][Yii::$app->language][$shiping];
+        $price          = $model->summary + $model->shipping;
         $items          = [];
 
-        foreach ($cart as $item) {
+        foreach ($model->paymentItems as $item) {
             $items[]    = [
-                "name"      => 'test',
-                "unitPrice" => $item->getEndPrice(),
+                "name"      => htmlentities($item->shop->locale->name),
+                "unitPrice" => $item->summary,
                 "quantity"  => $item->count
             ];
         }
