@@ -401,15 +401,7 @@ class SiteController extends Controller
             "products"      => json_encode($items)
         ];
 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-            \"notifyUrl\": \"".$post['notifyUrl']."\",
-            \"customerIp\": \"127.0.0.1\",
-            \"merchantPosId\": \"".Yii::$app->params['PayU']['merchantPosId']."\",
-            \"description\": \"".$post['description']."\",
-            \"currencyCode\": \"PLN\",
-            \"totalAmount\": \"".$post['totalAmount']."\",
-            \"products\": ".$post['products']."
-        }");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
