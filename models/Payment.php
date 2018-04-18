@@ -18,6 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $city
  * @property string $payment_type
  * @property string $currency
+ * @property string $redirectUrl
  * @property string $payment_order_id
  * @property double $shipping
  * @property double $summary
@@ -62,7 +63,7 @@ class Payment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['items', 'payment_order_id'], 'safe'],
+            [['items', 'payment_order_id', 'redirectUrl'], 'safe'],
             [['shipping', 'summary'], 'number'],
             [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
@@ -90,6 +91,7 @@ class Payment extends \yii\db\ActiveRecord
             'summary' => 'Summary',
             'status' => 'Status',
             'payment_order_id' => 'Payment order id',
+            'redirectUrl' => 'redirect Url',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

@@ -278,10 +278,26 @@ class SiteController extends Controller
         $model->summary             = CartModel::getSumm();
         $model->items               = CartModel::getCart();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            PayMentModel::setCoockie([]);
-            CartModel::setEmpty();
-            return $this->redirect(['pay', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            switch ($model->payment_type){
+                case 0 :{
+                    $data = $this->goPayPal($model);
+                    $model->redirectUrl = $data['redirectUri'];
+                    break;
+                }
+                case 1 :{
+                    $data = $this->goPayU($model);
+                    $model->payment_order_id    = $data['orderId'];
+                    $model->redirectUrl         = $data['redirectUri'];
+                    break;
+                }
+            }
+
+            if ($model->save()){
+                PayMentModel::setCoockie([]);
+                CartModel::setEmpty();
+                return $this->redirect(['pay', 'id' => $model->id]);
+            }
         }
 
         return $this->render('payment', [
@@ -293,20 +309,8 @@ class SiteController extends Controller
     public function actionPay($id){
         $model = Payment::find()->where(['id' => $id])->one();
         if ($model !== null){
-            switch ($model->payment_type){
-                case 0 :{
-                    $this->goPayPal($model);
-                    break;
-                }
-                case 1 :{
-                    $data = $this->goPayU($model);
-                    $model->payment_order_id = $data['orderId'];
-                    $model->save();
-                    header('location:' . $data['redirectUri']);
-                    exit();
-                    break;
-                }
-            }
+            header('location:' . $model->redirectUrl);
+            exit();
         }
     }
 
@@ -351,8 +355,9 @@ class SiteController extends Controller
         $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
         $querystring .= "notify_url=" . urlencode($notifyUrl);
 
-        header('location:' . $paypalURL . $querystring);
-        exit();
+        return [
+            'redirectUri' => $paypalURL . $querystring
+        ];
     }
 
     public function goPayU($model){
