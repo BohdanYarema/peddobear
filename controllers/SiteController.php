@@ -279,8 +279,9 @@ class SiteController extends Controller
         $model->items               = CartModel::getCart();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-
+            PayMentModel::setCoockie([]);
+            CartModel::setEmpty();
+            return $this->redirect(['pay', 'id' => $model->payment_order_id]);
         }
 
         return $this->render('payment', [
@@ -290,28 +291,22 @@ class SiteController extends Controller
     }
 
     public function actionPay($id){
-//        switch ($model->payment_type){
-//            case 0 :{
-//                $model->payment_order_id = time()+rand(1,100);
-//                unset($_COOKIE['cart']);
-//                unset($_COOKIE['payment_order_id']);
-//                PayMentModel::setCoockie([]);
-//                CartModel::setEmpty();
-//                $this->goPayPal($model);
-//                break;
-//            }
-//            case 1 :{
-//                $data = $this->goPayU($model);
-//                $model->payment_order_id = $data['orderId'];
-//                unset($_COOKIE['cart']);
-//                unset($_COOKIE['payment_order_id']);
-//                PayMentModel::setCoockie([]);
-//                CartModel::setEmpty();
-//                header('location:' . $data['redirectUri']);
-//                exit();
-//                break;
-//            }
-//        }
+        $model = Payment::find()->where(['payment_order_id' => $id])->one();
+        if ($model !== null){
+            switch ($model->payment_type){
+                case 0 :{
+                    $this->goPayPal($model);
+                    break;
+                }
+                case 1 :{
+                    $data = $this->goPayU($model);
+                    $model->payment_order_id = $data['orderId'];
+                    header('location:' . $data['redirectUri']);
+                    exit();
+                    break;
+                }
+            }
+        }
     }
 
     /**
