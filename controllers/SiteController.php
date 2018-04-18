@@ -287,8 +287,8 @@ class SiteController extends Controller
                         unset($_COOKIE['payment_order_id']);
                         PayMentModel::setCoockie([]);
                         CartModel::setEmpty();
-                        sleep(2);
-                        $this->goPayPal($model);
+//                        sleep(2);
+//                        $this->goPayPal($model);
                     }
                     break;
                 }
@@ -301,8 +301,8 @@ class SiteController extends Controller
                         PayMentModel::setCoockie([]);
                         CartModel::setEmpty();
                         sleep(2);
-                        header('location:' . $data['redirectUri']);
-                        exit();
+//                        header('location:' . $data['redirectUri']);
+//                        exit();
                     }
                     break;
                 }
