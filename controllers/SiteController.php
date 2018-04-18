@@ -414,6 +414,9 @@ class SiteController extends Controller
 
         curl_close($ch);
 
+        var_dump($response);
+        exit();
+
 
         if ($err) {
             return false;
