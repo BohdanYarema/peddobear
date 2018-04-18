@@ -378,7 +378,7 @@ class SiteController extends Controller
         foreach ($cart as $item) {
             $items[]    = [
                 "name"      => strip_tags($item->locale->title),
-                "unitPrice" => $item->getEndPrice(),
+                "unitPrice" => round($item->getEndPrice()),
                 "quantity"  => $item->count
             ];
         }
@@ -420,10 +420,6 @@ class SiteController extends Controller
         $err = curl_error($ch);
 
         curl_close($ch);
-
-        var_dump($response);
-        var_dump($post);
-        exit();
 
         if ($err) {
             return false;
