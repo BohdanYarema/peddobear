@@ -373,11 +373,12 @@ class SiteController extends Controller
     public function getPauLink($model){
         $price          = $model->summary + $model->shipping;
         $items          = [];
+        $cart           = CartModel::getCart();
 
-        foreach ($model->paymentItems as $item) {
+        foreach ($cart as $item) {
             $items[]    = [
-                "name"      => strip_tags($item->shop->locale->title),
-                "unitPrice" => round($item->summary),
+                "name"      => strip_tags($item->locale->title),
+                "unitPrice" => $item->getEndPrice(),
                 "quantity"  => $item->count
             ];
         }
