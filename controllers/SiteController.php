@@ -414,11 +414,6 @@ class SiteController extends Controller
 
         curl_close($ch);
 
-        var_dump($response);
-        var_dump($post['products']);
-        exit();
-
-
         if ($err) {
             return false;
         } else {
