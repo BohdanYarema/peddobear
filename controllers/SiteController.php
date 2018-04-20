@@ -44,6 +44,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->language == 'xx'){
+            return $this->redirect('/en', '301');
+        }
+
         $page = Page::find()->where(['slug' => 'index'])->one();
         $this->getMeta($page);
         return $this->render('index', [
