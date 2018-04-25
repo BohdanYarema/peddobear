@@ -48,6 +48,8 @@ use yii\widgets\ActiveForm;
         <?php endforeach; ?>
     </div>
 
+    <?= $form->field($model, 'counter')->textInput(); ?>
+
     <?= $form->field($model, 'status')->dropDownList([
         '0' => 'Отключен',
         '1' => 'Активный',

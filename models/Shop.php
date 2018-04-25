@@ -18,6 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property float $summary
  * @property int $created_at
  * @property int $updated_at
+ * @property int $counter
  *
  * @property ShopI18n[] $shopI18ns
  */
@@ -66,7 +67,7 @@ class Shop extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'counter'], 'integer'],
             [['image_base_url', 'image_path', 'slide_base_url', 'slide_path'], 'string', 'max' => 1024],
             [['i18n', 'image', 'summary', 'count', 'slide'], 'safe']
         ];
@@ -89,6 +90,7 @@ class Shop extends \yii\db\ActiveRecord
             'updated_at'        => 'Updated At',
             'image'             => 'Image',
             'slide'             => 'Slide',
+            'counter'           => 'Counter',
         ];
     }
 

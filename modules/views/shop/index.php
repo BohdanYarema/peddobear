@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'locale.title',
                 'format'    => 'html'
             ],
+            'counter',
             'status',
             'created_at:datetime',
             //'updated_at',
