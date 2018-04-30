@@ -257,7 +257,6 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             switch ($model->payment_type){
                 case 0 :{
-                    $model->payment_order_id    = Yii::$app->security->generateRandomKey(5)+time();
                     $data = $this->goPayPal($model);
                     $model->redirectUrl         = $data['redirectUri'];
                     break;
@@ -304,6 +303,7 @@ class SiteController extends Controller
     }
 
     public function goPayPal($model){
+        $model->payment_order_id = Yii::$app->security->generateRandomKey(5)+time();
         $paypalEmail    = "shop-buyer@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
