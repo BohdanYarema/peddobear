@@ -303,13 +303,13 @@ class SiteController extends Controller
     }
 
     public function goPayPal($model){
-        $paypalEmail    = "Shop@tedacar.eu";
+        $paypalEmail    = "shop-buyer@tedacar.eu";
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $itemName       = "Ted a Car purchase";
-        $returnUrl      = "http://tedacar.eu/success";
-        $cancelUrl      = "http://tedacar.eu/cancel";
-        $notifyUrl      = "http://tedacar.eu/notifypaypal";
+        $returnUrl      = "http://peddobear.devservice.pro/success";
+        $cancelUrl      = "http://peddobear.devservice.pro/cancel";
+        $notifyUrl      = "http://peddobear.devservice.pro/notifypaypal";
         $price          = $model->summary + $model->shipping;
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
