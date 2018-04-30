@@ -27,7 +27,7 @@ if ($status == 'COMPLETED'){
 }
 $model->save();
 
-foreach ($model->items as $item){
+foreach ($model->paymentItems as $item){
     $shop = \app\models\Shop::find()->where(['id' => $item->shop_id])->one();
     if($shop !== null){
         $shop->counter = $shop->counter - $item->count;
