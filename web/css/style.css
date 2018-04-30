@@ -3432,19 +3432,19 @@ main.loading {
   }
 }
 3 span {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border: solid #cecece;
-    border-width: 0 2px 2px 0;
-    outline: 0 !important;
-    transform: rotate(135deg);
-  }
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #cecece;
+  border-width: 0 2px 2px 0;
+  outline: 0 !important;
+  transform: rotate(135deg);
+}
 3:active,
 3:focus {
-   outline: 0 !important;
- }
+  outline: 0 !important;
+}
 .btn-left {
   margin-right: 20px;
 }

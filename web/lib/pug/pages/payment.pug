@@ -62,6 +62,7 @@ block content
                                 autocomplete="off"
                                 required
                                 )
+                        .input-wrapp
                             input#city(
                                 type="text"
                                 name="city"
@@ -85,16 +86,17 @@ block content
                                     type="radio"
                                     name="paytype"
                                     value="payu"
+                                    disabled='disabled'
                                     )
                                 label(for="pay") PayU
                                 .payment-btn
                                     img(src="img/PayU.svg")
-                                p (Soon)
                             .ted-info-payment__item
                                 input#payapple(
                                     type="radio"
                                     name="paytype"
                                     value="applepay"
+                                    disabled='disabled'
                                     )
                                 label(for="pay") Apple Pay
                                 .payment-btn

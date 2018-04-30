@@ -401,14 +401,14 @@
     .common-price
         position relative
         
-        .delivery-label
-            position absolute
-            top 45px
-            regular-10()
-            text-transform none
-            width 150px
-            color #fff
-            left -38px
+    .delivery-label
+        position absolute
+        top 45px
+        regular-10()
+        text-transform none
+        width 150px
+        color #fff
+        right -32px
             
             
     .buttons-links
@@ -489,6 +489,16 @@
         height 50px
         text-align center
         margin-top 10px
+        
+        &:hover
+            background-color #171717
+            -webkit-transition: 0.6s ease
+            -moz-transition: 0.6s ease
+            -o-transition: 0.6s ease
+            transition: 0.6s ease
+            
+            +below(tb)
+                background-color #333
         
         p
             regular-16()

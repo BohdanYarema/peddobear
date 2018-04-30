@@ -90,7 +90,7 @@
                 
         .input-wrapp
             display flex
-            flex-direction row
+            flex-direction column
             justify-content space-between
 
             input
@@ -111,12 +111,6 @@
                     resize none
                     border-bottom 2px  solid
                     
-            #zipcode 
-            #city
-                width 130px
-                
-            #zipcode
-                margin-right 20px
                 
         .ted-info-payment
             display flex
@@ -132,7 +126,7 @@
                 height 1px
                 background-color #fff
                 position absolute
-                left -15px
+                left 0
                 right 0
                 margin 0 auto
                 top -15px
@@ -175,9 +169,8 @@
                         outline none
                         resize none
                         
-                #payu
-                    cursor default
                 #payapple
+                #payu
                     cursor default
                     
                 p
@@ -249,3 +242,15 @@
         p
             &:after
                 display none
+                
+.help-block
+    color #e06666
+    font-size 12
+    font-family 'Raleway', sans-serif
+    margin-bottom 10px
+    
+.has-error
+    input
+        border-bottom: 2px #e06666 solid !important;
+        color: #e06666 !important;
+        margin-bottom: 3px !important;

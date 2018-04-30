@@ -167,7 +167,7 @@ $('[data-slider-logos-text]').slick({
     slidesToScroll: 1,
     fade: false,
     asNavFor: '[data-slider-logos]',
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     arrows: false
 });
 
