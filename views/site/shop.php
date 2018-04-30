@@ -35,8 +35,10 @@ use app\widgets\CookieWidget;
                                 </div>
                                 <button class="add-to-cart" data-id="<?=$item->id?>"  data-selector="item__<?=$item->id?>" type="submit" value="submit"><?=Yii::t('frontend', 'Add to cart')?></button>
                                 <div class="warning-block">
-                                    <h4>WARNING! <br></h4>
-                                    <p>There are only 3 items left, <br> the delivery time can be <br> increased</p>
+                                    <?php if($item->counter <= 3):?>
+                                        <h4>WARNING! <br></h4>
+                                        <p>There are only 3 items left, <br> the delivery time can be <br> increased</p>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="shop-item-wrap__img revealator-slidedown revealator-once revealator-delay7">

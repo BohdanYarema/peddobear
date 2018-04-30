@@ -49,7 +49,8 @@ class CartModel extends Model
                 'summary'           => $summ,
                 'summary__full'     => $summ+Yii::$app->params['delivery'][Yii::$app->language][$shiping],
                 'single'            => $single,
-                'count'             => $total
+                'count'             => $total,
+                'counter'           => $model->counter
             ];
         }
     }

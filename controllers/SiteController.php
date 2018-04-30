@@ -270,12 +270,6 @@ class SiteController extends Controller
             }
 
             if ($model->save()){
-
-                foreach ($model->items as $item){
-                    $item->counter = $item->counter - $item->count;
-                    $item->save();
-                }
-
                 PayMentModel::setCoockie([]);
                 CartModel::setEmpty();
                 return $this->redirect(['pay', 'id' => $model->id]);

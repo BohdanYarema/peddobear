@@ -26,3 +26,11 @@ if ($status == 'COMPLETED'){
     $model->status = 2;
 }
 $model->save();
+
+foreach ($model->items as $item){
+    $shop = \app\models\Shop::find()->where(['id' => $item->shop_id])->one();
+    if($shop !== null){
+        $shop->counter = $shop->counter - $item->count;
+        $shop->save();
+    }
+}

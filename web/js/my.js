@@ -43,8 +43,15 @@ function addToCart(id, count) {
         "site/add",
          data
     ).done(function( response ) {
+        var status = response['counter'] - response['count'];
         $(".db_price__header").empty();
         $(".db_price__header").text(response['summary']);
+
+        if (status <= 3){
+            $(".warning-block").html('<h4>WARNING! <br></h4><p>There are only 3 items left, <br> the delivery time can be <br> increased</p>');
+        } else {
+            $(".warning-block").empty();
+        }
     });
 }
 
