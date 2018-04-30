@@ -257,8 +257,9 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             switch ($model->payment_type){
                 case 0 :{
+                    $model->payment_order_id    = Yii::$app->security->generateRandomKey(5)+time();
                     $data = $this->goPayPal($model);
-                    $model->redirectUrl = $data['redirectUri'];
+                    $model->redirectUrl         = $data['redirectUri'];
                     break;
                 }
                 case 1 :{

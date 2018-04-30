@@ -9,9 +9,6 @@
 use app\widgets\HeaderWidget;
 use app\widgets\FooterWidget;
 use app\widgets\CookieWidget;
-
-var_dump(Yii::$app->session->setFlash('payment', true));
-
 ?>
 
 <main class="success-page">
