@@ -65,15 +65,10 @@ if (strcmp ($res, "VERIFIED") == 0) {
         $model = \app\models\Payment::find()
             ->where(['payment_order_id' => $_POST['custom']])
             ->one();
-        if ($_POST['payment_status'] == 'Completed'){
-            $model->status = 1;
-        } else {
-            $model->status = 2;
-        }
-        $model->save();
-
 
         $payitems = \app\models\PaymentItems::find()->where(['payment_id' => $model->id])->all();
+
+
         foreach ($payitems as $item){
             $shop = \app\models\Shop::find()->where(['id' => $item->shop_id])->one();
             if($shop !== null){
@@ -85,6 +80,13 @@ if (strcmp ($res, "VERIFIED") == 0) {
 
             }
         }
+
+        if ($_POST['payment_status'] == 'Completed'){
+            $model->status = 1;
+        } else {
+            $model->status = 2;
+        }
+        $model->save();
     }
 
 
@@ -99,18 +101,5 @@ if (strcmp ($res, "VERIFIED") == 0) {
         ->one();
     $model->status = 3;
     $model->save();
-
-    $payitems = \app\models\PaymentItems::find()->where(['payment_id' => $model->id])->all();
-    foreach ($payitems as $item){
-        $shop = \app\models\Shop::find()->where(['id' => $item->shop_id])->one();
-        if($shop !== null){
-            $shop->counter = $shop->counter - $item->count;
-            $shop->save();
-            $log = new \app\modules\models\Log();
-            $log->text = json_encode($shop);
-            $log->save();
-
-        }
-    }
 }
 ?>
