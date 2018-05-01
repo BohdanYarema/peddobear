@@ -64,6 +64,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
     if(!empty($_POST)){
         $model = \app\models\Payment::find()
             ->where(['payment_order_id' => $_POST['custom']])
+            ->andWhere(['status' => 0])
             ->one();
 
         $payitems = \app\models\PaymentItems::find()->where(['payment_id' => $model->id])->all();
@@ -74,9 +75,6 @@ if (strcmp ($res, "VERIFIED") == 0) {
             if($shop !== null){
                 $shop->counter = $shop->counter - $item->count;
                 $shop->save();
-                $log = new \app\modules\models\Log();
-                $log->text = json_encode($shop);
-                $log->save();
 
             }
         }
