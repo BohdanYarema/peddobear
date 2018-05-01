@@ -75,11 +75,19 @@ if (strcmp ($res, "VERIFIED") == 0) {
 
         $payitems = \app\models\PaymentItems::find()->where(['payment_id' => $model->id])->all();
 
+        $log = new \app\modules\models\Log();
+        $log->text = json_encode($payitems);
+        $log->save();
+
         foreach ($payitems as $item){
             $shop = \app\models\Shop::find()->where(['id' => $item->shop_id])->one();
             if($shop !== null){
                 $shop->counter = $shop->counter - $item->count;
                 $shop->save();
+                $log = new \app\modules\models\Log();
+                $log->text = json_encode($shop);
+                $log->save();
+
             }
         }
     }
