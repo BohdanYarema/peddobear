@@ -361,7 +361,7 @@ class SiteController extends Controller
         curl_setopt($ch, CURLOPT_POST, TRUE);
 
         $post = [
-            "notifyUrl"     => "http://tedacar.eu/notifypayu",
+            "notifyUrl"     => "http://peddobear.devservice.pro/notifypayu",
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => "Ted a Car purchase",
