@@ -308,9 +308,9 @@ class SiteController extends Controller
         $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
         $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
         $itemName       = "Ted a Car purchase";
-        $returnUrl      = "http://peddobear.devservice.pro/success";
-        $cancelUrl      = "http://peddobear.devservice.pro/cancel";
-        $notifyUrl      = "http://peddobear.devservice.pro/notifypaypal";
+        $returnUrl      = "http://tedacar.eu/success";
+        $cancelUrl      = "http://tedacar.eu/cancel";
+        $notifyUrl      = "http://tedacar.eu/notifypaypal";
         $price          = $model->summary + $model->shipping;
 
         $querystring = "?business=" . urlencode($paypalEmail) . "&";
@@ -361,7 +361,7 @@ class SiteController extends Controller
         curl_setopt($ch, CURLOPT_POST, TRUE);
 
         $post = [
-            "notifyUrl"     => "http://peddobear.devservice.pro/notifypayu",
+            "notifyUrl"     => "http://tedacar.eu/notifypayu",
             "customerIp"    => "127.0.0.1",
             "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
             "description"   => "Ted a Car purchase",

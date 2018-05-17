@@ -21,7 +21,7 @@ return [
         ],
         1 => [
             'image'     => '/img/PayU.svg',
-            'status'    => 0,
+            'status'    => 1,
             'id'        => 'payu',
             'key'       => 1
         ],
@@ -36,7 +36,7 @@ return [
         'pl' => [
             'currency'          => 'PLN',
             'currency_name'     => 'PLN',
-            'poland'            => 0.01,
+            'poland'            => 10,
             'world'             => 15
         ],
         'en' => [
@@ -47,7 +47,7 @@ return [
         ],
     ],
     'PayU' => [
-        'token'         => '006e9c7e-5220-420d-824e-36bd098b4dff',
-        'merchantPosId' => '586502'
+        'token'         => 'a14bb303c9640a5b899828b67cfe4d7a',
+        'merchantPosId' => '669539'
     ]
 ];
