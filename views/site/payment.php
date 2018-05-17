@@ -103,14 +103,28 @@ $payments = Yii::$app->params['payment_type'];
                                         $disabled = 'disabled="disabled"';
                                     }
 
+                                    if ($payments[$index]['status'] === 1){
+                                        if ($index == 1 && Yii::$app->language == 'en'){
+                                            $disabled = 'disabled="disabled"';
+                                        }
+                                    }
+
                                     $return = "<div class='ted-info-payment__item'>";
                                     $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="' . $name . '" value="' . $value . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
                                     $return .= ucwords($label);
                                     $return .= '</label><div class="payment-btn"><img src="'.Yii::getAlias("@web").$payments[$index]['image'].'"></div>';
-                                    if ($index == 2 || $index == 1){
+
+                                    if ($payments[$index]['status'] === 0){
                                         $return .= "<p>(Soon)</p>";
                                     }
+
+                                    if ($payments[$index]['status'] === 1){
+                                        if ($index == 1 && Yii::$app->language == 'en'){
+                                            $return .= "<p>(Just for PL)</p>";
+                                        }
+                                    }
+
                                     $return .= '</div>';
                                     return $return;
                                 },
