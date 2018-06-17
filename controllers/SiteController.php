@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\ApiToken;
 use app\models\CartModel;
 use app\models\Payment;
 use app\models\PayMentModel;
 use app\models\Shop;
 use app\modules\models\Log;
 use app\modules\models\Page;
+use Codeception\Template\Api;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -344,6 +346,13 @@ class SiteController extends Controller
         $items          = [];
         $cart           = CartModel::getCart();
 
+        if (ApiToken::checkApiToken()) {
+            $token = ApiToken::getApiToken();
+        } else {
+            ApiToken::setApiToken();
+            $token = ApiToken::getApiToken();
+        }
+
         foreach ($cart as $item) {
             $items[]    = [
                 "name"      => strip_tags($item->locale->title),
@@ -382,7 +391,7 @@ class SiteController extends Controller
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
-            "Authorization: Bearer ".Yii::$app->params['PayU']['token']
+            "Authorization: Bearer ".$token
         ));
 
         $response = curl_exec($ch);
