@@ -102,13 +102,15 @@ class ApiToken extends \yii\db\ActiveRecord
 
     public static function checkApiToken(){
         $model = self::findOne(['status' => 1]);
-        if ($model->expired > time()){
-            return true;
-        } else {
-            if ($model !== null){
-                $model->status = 0;
-                $model->save();
+        if ($model !== null){
+            if ($model->expired > time()){
+                return true;
+            } else {
+                    $model->status = 0;
+                    $model->save();
+                return false;
             }
+        } else {
             return false;
         }
     }
