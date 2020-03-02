@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 02, 2020 at 10:23 PM
+-- Generation Time: Mar 02, 2020 at 10:27 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.1.20
 
@@ -224,17 +224,17 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m180320_185429_add_table_shop', 1521572593),
 ('m180320_203132_add_file_storage_table', 1521577909),
 ('m180320_222035_add_column_to_shop', 1521584517),
-('m180401_084008_add_table_log', 1583180472),
-('m180401_174931_change_shop_table', 1583180473),
-('m180401_194036_add_table_page', 1583180473),
-('m180401_194244_seed_data_page', 1583180473),
-('m180404_202453_add_table_for_payment', 1583180473),
-('m180408_014125_add_page_cacel', 1583180473),
-('m180408_122955_add_column_to_payment', 1583180473),
-('m180417_195632_change_column_order_id', 1583180473),
-('m180418_091858_add_url_for_payment', 1583180473),
-('m180425_182148_add_column_count', 1583180473),
-('m180617_061843_add_table_for_token', 1583180473);
+('m180401_084008_add_table_log', 1583180859),
+('m180401_174931_change_shop_table', 1583180860),
+('m180401_194036_add_table_page', 1583180860),
+('m180401_194244_seed_data_page', 1583180860),
+('m180404_202453_add_table_for_payment', 1583180860),
+('m180408_014125_add_page_cacel', 1583180860),
+('m180408_122955_add_column_to_payment', 1583180860),
+('m180417_195632_change_column_order_id', 1583180860),
+('m180418_091858_add_url_for_payment', 1583180860),
+('m180425_182148_add_column_count', 1583180860),
+('m180617_061843_add_table_for_token', 1583180860);
 
 -- --------------------------------------------------------
 
@@ -257,18 +257,18 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id`, `slug`, `status`, `meta_image_path`, `meta_image_base_url`, `created_at`, `updated_at`) VALUES
-(1, 'coockie', 1, NULL, NULL, 1583180473, 1583180473),
-(2, 'about', 1, NULL, NULL, 1583180473, 1583180473),
-(3, 'shop', 1, NULL, NULL, 1583180473, 1583180473),
-(4, 'special', 1, NULL, NULL, 1583180473, 1583180473),
-(5, 'cart', 1, NULL, NULL, 1583180473, 1583180473),
-(6, 'contact', 1, NULL, NULL, 1583180473, 1583180473),
-(7, 'success', 1, NULL, NULL, 1583180473, 1583180473),
-(8, 'fail', 1, NULL, NULL, 1583180473, 1583180473),
-(9, 'index', 1, NULL, NULL, 1583180473, 1583180473),
-(10, 'payment', 1, NULL, NULL, 1583180473, 1583180473),
-(11, 'notify', 1, NULL, NULL, 1583180473, 1583180473),
-(12, 'cancel', 1, NULL, NULL, 1583180473, 1583180473);
+(1, 'coockie', 1, NULL, NULL, 1583180860, 1583180860),
+(2, 'about', 1, NULL, NULL, 1583180860, 1583180860),
+(3, 'shop', 1, NULL, NULL, 1583180860, 1583180860),
+(4, 'special', 1, NULL, NULL, 1583180860, 1583180860),
+(5, 'cart', 1, NULL, NULL, 1583180860, 1583180860),
+(6, 'contact', 1, NULL, NULL, 1583180860, 1583180860),
+(7, 'success', 1, NULL, NULL, 1583180860, 1583180860),
+(8, 'fail', 1, NULL, NULL, 1583180860, 1583180860),
+(9, 'index', 1, NULL, NULL, 1583180860, 1583180860),
+(10, 'payment', 1, NULL, NULL, 1583180860, 1583180860),
+(11, 'notify', 1, NULL, NULL, 1583180860, 1583180860),
+(12, 'cancel', 1, NULL, NULL, 1583180860, 1583180860);
 
 -- --------------------------------------------------------
 
@@ -294,30 +294,30 @@ CREATE TABLE `page_i18n` (
 --
 
 INSERT INTO `page_i18n` (`id`, `page_id`, `i18n`, `title`, `description`, `meta_title`, `meta_keywords`, `meta_description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(2, 1, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(3, 2, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(4, 2, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(5, 3, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(6, 3, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(7, 4, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(8, 4, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(9, 5, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(10, 5, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(11, 6, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(12, 6, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(13, 7, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(14, 7, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(15, 8, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(16, 8, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(17, 9, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(18, 9, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(19, 10, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(20, 10, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(21, 11, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(22, 11, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(23, 12, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473),
-(24, 12, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180473, 1583180473);
+(1, 1, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(2, 1, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(3, 2, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(4, 2, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(5, 3, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(6, 3, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(7, 4, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(8, 4, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(9, 5, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(10, 5, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(11, 6, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(12, 6, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(13, 7, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(14, 7, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(15, 8, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(16, 8, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(17, 9, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(18, 9, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(19, 10, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(20, 10, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(21, 11, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(22, 11, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(23, 12, 'pl', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860),
+(24, 12, 'en', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Coockie', 'Coockie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1583180860, 1583180860);
 
 -- --------------------------------------------------------
 
