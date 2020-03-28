@@ -105,7 +105,7 @@ $payments = Yii::$app->params['payment_type'];
                                     }
 
                                     $return = "<div class='ted-info-payment__item'>";
-                                    $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="paymentType[]" value="' . $index . '" tabindex="'.$index.'" '.$disabled.'>';
+                                    $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="payment_type[]" value="' . $index . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
                                     $return .= ucwords($payments[$index]['name']);
                                     $return .= '</label><div class="payment-btn"><img src="'.Yii::getAlias("@web").$payments[$index]['image'].'"></div>';
