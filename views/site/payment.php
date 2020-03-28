@@ -95,34 +95,23 @@ $payments = Yii::$app->params['payment_type'];
                         ])->label(false) ?>
 
                         <?php echo $form->field($model, 'payment_type')->radioList(
-                            [0 => 'PayPal', 1 => 'PayU', 2 => 'Apple Pay'],
+                            $payments,
                             [
-                                'item' => function($index, $label, $name, $checked, $value) use (&$payments) {
+                                'item' => function($index) use (&$payments) {
+
                                     $disabled = '';
                                     if ($payments[$index]['status'] === 0){
                                         $disabled = 'disabled="disabled"';
                                     }
 
-                                    if ($payments[$index]['status'] === 1){
-                                        if ($index == 1 && Yii::$app->language == 'en'){
-                                            $disabled = 'disabled="disabled"';
-                                        }
-                                    }
-
                                     $return = "<div class='ted-info-payment__item'>";
-                                    $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="' . $name . '" value="' . $value . '" tabindex="'.$index.'" '.$disabled.'>';
+                                    $return .= '<input id="'.$payments[$index]['id'].'" type="radio" name="paymentType[]" value="' . $index . '" tabindex="'.$index.'" '.$disabled.'>';
                                     $return .= '<label class="modal-radio">';
-                                    $return .= ucwords($label);
+                                    $return .= ucwords($payments[$index]['name']);
                                     $return .= '</label><div class="payment-btn"><img src="'.Yii::getAlias("@web").$payments[$index]['image'].'"></div>';
 
                                     if ($payments[$index]['status'] === 0){
                                         $return .= "<p>(Soon)</p>";
-                                    }
-
-                                    if ($payments[$index]['status'] === 1){
-                                        if ($index == 1 && Yii::$app->language == 'en'){
-                                            $return .= "<p>(Just for PL)</p>";
-                                        }
                                     }
 
                                     $return .= '</div>';

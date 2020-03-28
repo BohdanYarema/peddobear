@@ -16,6 +16,8 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+use app\models\PaymentController;
+use app\models\PayPal;
 
 class SiteController extends Controller
 {
@@ -260,14 +262,8 @@ class SiteController extends Controller
             switch ($model->payment_type){
                 case 0 :{
                     $model->payment_order_id    = Yii::$app->security->generateRandomKey(5)+time();
-                    $data = $this->goPayPal($model);
-                    $model->redirectUrl         = $data['redirectUri'];
-                    break;
-                }
-                case 1 :{
-                    $data = $this->goPayU($model);
-                    $model->payment_order_id    = $data['orderId'];
-                    $model->redirectUrl         = $data['redirectUri'];
+                    $result = new PaymentController(new PayPal());
+                    $model->redirectUrl         = $result->pay($model);
                     break;
                 }
             }
@@ -295,117 +291,10 @@ class SiteController extends Controller
         }
     }
 
-    public function actionNotifypayu()
-    {
-        return $this->render('notify_payu');
-    }
-
     public function actionNotifypaypal()
     {
         return $this->render('notify_paypal');
     }
-
-    public function goPayPal($model){
-        $paypalEmail    = "shop-buyer@tedacar.eu";
-        $paypalURL      = "https://www.paypal.com/cgi-bin/webscr";
-        $currency       = Yii::$app->params['delivery'][Yii::$app->language]['currency'];
-        $itemName       = "Ted a Car purchase";
-        $returnUrl      = "http://tedacar.eu/success";
-        $cancelUrl      = "http://tedacar.eu/cancel";
-        $notifyUrl      = "http://tedacar.eu/notifypaypal";
-        $price          = $model->summary + $model->shipping;
-
-        $querystring = "?business=" . urlencode($paypalEmail) . "&";
-        $querystring .= "currency_code=" . urlencode($currency) . "&";
-        $querystring .= "cmd=" . urlencode('_xclick') . "&";
-        $querystring .= "item_name=" . urlencode($itemName) . "&";
-        $querystring .= "amount=". urlencode($price) . "&";
-        $querystring .= "custom=". urlencode($model->payment_order_id) . "&";
-
-        $querystring .= "return=" . urlencode(stripslashes($returnUrl)) . "&";
-        $querystring .= "cancel_return=" . urlencode(stripslashes($cancelUrl)) . "&";
-        $querystring .= "notify_url=" . urlencode($notifyUrl);
-
-        return [
-            'redirectUri' => $paypalURL . $querystring
-        ];
-    }
-
-    public function goPayU($model){
-        $getUrl = json_decode($this->getPauLink($model), true);
-
-        if ($getUrl !== false){
-            return $getUrl;
-        } else {
-            return false;
-        }
-    }
-
-    public function getPauLink($model){
-        $price          = $model->summary + $model->shipping;
-        $items          = [];
-        $cart           = CartModel::getCart();
-
-        if (ApiToken::checkApiToken()) {
-            $token = ApiToken::getApiToken();
-        } else {
-            ApiToken::setApiToken();
-            $token = ApiToken::getApiToken();
-        }
-
-        foreach ($cart as $item) {
-            $items[]    = [
-                "name"      => strip_tags($item->locale->title),
-                "unitPrice" => round($item->getEndPrice()),
-                "quantity"  => $item->count
-            ];
-        }
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, "https://secure.payu.com/api/v2_1/orders/");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-
-        $post = [
-            "notifyUrl"     => "http://tedacar.eu/notifypayu",
-            "customerIp"    => "127.0.0.1",
-            "merchantPosId" => Yii::$app->params['PayU']['merchantPosId'],
-            "description"   => "Ted a Car purchase",
-            "currencyCode"  => 'PLN',
-            "totalAmount"   => $price*100,
-            "products"      => json_encode($items)
-        ];
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
-            \"notifyUrl\": \"".$post['notifyUrl']."\",
-            \"customerIp\": \"127.0.0.1\",
-            \"merchantPosId\": \"".Yii::$app->params['PayU']['merchantPosId']."\",
-            \"description\": \"".$post['description']."\",
-            \"currencyCode\": \"PLN\",
-            \"totalAmount\": \"".$post['totalAmount']."\",
-            \"products\": ".$post['products']."
-        }");
-
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            "Content-Type: application/json",
-            "Authorization: Bearer ".$token
-        ));
-
-        $response = curl_exec($ch);
-        $err = curl_error($ch);
-
-        curl_close($ch);
-
-        if ($err) {
-            return false;
-        } else {
-            return $response;
-        }
-    }
-
 
 
     /**

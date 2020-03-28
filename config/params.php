@@ -13,23 +13,23 @@ return [
         3 => 'Not verify',
     ],
     'payment_type'=>[
-        0 => [
+        [
             'image'     => '/img/PayPal.svg',
             'status'    => 1,
-            'id'        => 'pay',
-            'key'       => 0
+            'id'        => 'paypal',
+            'name'      => 'PayPal',
         ],
-        1 => [
-            'image'     => '/img/PayU.svg',
-            'status'    => 1,
-            'id'        => 'payu',
-            'key'       => 1
-        ],
-        2 => [
+        [
             'image'     => '/img/applepay.svg',
             'status'    => 0,
-            'id'        =>  'payapple',
-            'key'       => 2
+            'id'        =>  'applepay',
+            'name'      =>  'ApplePay',
+        ],
+        [
+            'image'     => '/img/applepay.svg',
+            'status'    => 0,
+            'id'        =>  'stripe',
+            'name'      =>  'Stripe',
         ],
     ],
     'delivery'=>[
