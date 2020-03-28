@@ -36,18 +36,14 @@ return [
         'pl' => [
             'currency'          => 'PLN',
             'currency_name'     => 'PLN',
-            'poland'            => 10,
-            'world'             => 15
+            'poland'            => 0,
+            'world'             => 0
         ],
         'en' => [
             'currency'          => 'USD',
             'currency_name'     => '$',
-            'poland'            => 3,
-            'world'             => 5
+            'poland'            => 0,
+            'world'             => 0
         ],
     ],
-    'PayU' => [
-        'token'         => 'b00c2f83-c50c-461a-8255-2ca7fb087dd9',
-        'merchantPosId' => '669539'
-    ]
 ];
