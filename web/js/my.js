@@ -126,12 +126,14 @@ Stripe.setPublishableKey('pk_test_poWm1RwviFqzFWOA5Zz09R9U00817gkyjY');
 $(function() {
     var $form = $('#payment-form');
     $form.submit(function(event) {
-        // Отключим кнопку, чтобы предотвратить повторные клики
-        $form.find('.submit').prop('disabled', true);
-        // Запрашиваем token у Stripe
-        Stripe.card.createToken($form, stripeResponseHandler);
-        // Запретим форме submit
-        return false;
+        if ($('.stripe_fields').is(":visible")){
+            // Отключим кнопку, чтобы предотвратить повторные клики
+            $form.find('.submit').prop('disabled', true);
+            // Запрашиваем token у Stripe
+            Stripe.card.createToken($form, stripeResponseHandler);
+            // Запретим форме submit
+            return false;
+        }
     });
 });
 
