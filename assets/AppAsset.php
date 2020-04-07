@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/style.css'
     ];
     public $js = [
+        'https://js.stripe.com/v2/',
         ['js/fm.revealator.jquery.min.js', 'id' => 'revealator'],
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js',
         'js/main.js',

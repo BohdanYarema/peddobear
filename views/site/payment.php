@@ -26,7 +26,8 @@ $payments = Yii::$app->params['payment_type'];
 
                     <?php $form = ActiveForm::begin([
                         'options' => [
-                            'class' => 'ted-info'
+                            'class' => 'ted-info',
+                            'id' => 'payment-form'
                         ],
                         'fieldConfig' => ['template' => "{label}\n{input}\n{error}"],
                     ]); ?>
@@ -93,6 +94,54 @@ $payments = Yii::$app->params['payment_type'];
                             'placeholder' => Yii::t('frontend', 'City'),
                             'autocomplete' => 'off'
                         ])->label(false) ?>
+
+                        <div class="stripe_fields">
+                            <?= $form->field($model, 'card_number', [
+                                'options' => [
+                                    'class' => 'input-wrapp'
+                                ]
+                            ])->textInput([
+                                'placeholder' => Yii::t('frontend', 'Card Number'),
+                                'autocomplete' => 'off',
+                                'data-stripe' => 'number'
+                            ])->label(false) ?>
+
+                            <?= $form->field($model, 'cvc', [
+                                'options' => [
+                                    'class' => 'input-wrapp'
+                                ]
+                            ])->textInput([
+                                'placeholder' => Yii::t('frontend', 'Cvc'),
+                                'autocomplete' => 'off',
+                                'data-stripe' => 'cvc'
+                            ])->label(false) ?>
+
+                            <?= $form->field($model, 'month', [
+                                'options' => [
+                                    'class' => 'input-wrapp'
+                                ]
+                            ])->textInput([
+                                'placeholder' => Yii::t('frontend', 'Month'),
+                                'autocomplete' => 'off',
+                                'data-stripe' => 'exp_month'
+                            ])->label(false) ?>
+
+                            <?= $form->field($model, 'year', [
+                                'options' => [
+                                    'class' => 'input-wrapp'
+                                ]
+                            ])->textInput([
+                                'placeholder' => Yii::t('frontend', 'Year'),
+                                'autocomplete' => 'off',
+                                'data-stripe' => 'exp_year'
+                            ])->label(false) ?>
+
+
+                            <?= $form->field($model, 'stripeToken')->hiddenInput()->label(false) ?>
+
+
+                        </div>
+
 
                         <?php echo $form->field($model, 'payment_type')->radioList(
                             $payments,

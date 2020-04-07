@@ -34,6 +34,14 @@ $(document).on("click", ".remove-krest", function () {
     deleteFromCart(id);
 });
 
+$(document).on("click", "#paypal", function () {
+    $('.stripe_fields').css('display', 'none');
+});
+
+$(document).on("click", "#stripe", function () {
+    $('.stripe_fields').css('display', 'block');
+});
+
 function addToCart(id, count) {
     var data = {};
     data[param]     = token;
@@ -112,3 +120,34 @@ function updateRadio(value) {
 $(document).on("change", ".qwe", function () {
     updateRadio($(this).val())
 });
+
+Stripe.setPublishableKey('pk_test_poWm1RwviFqzFWOA5Zz09R9U00817gkyjY');
+
+$(function() {
+    var $form = $('#payment-form');
+    $form.submit(function(event) {
+        // Отключим кнопку, чтобы предотвратить повторные клики
+        $form.find('.submit').prop('disabled', true);
+        // Запрашиваем token у Stripe
+        Stripe.card.createToken($form, stripeResponseHandler);
+        // Запретим форме submit
+        return false;
+    });
+});
+
+function stripeResponseHandler(status, response) {
+    // Получим форму:
+    var $form = $('#payment-form');
+    if (response.error) { // Problem!
+        // Показываем ошибки в форме:
+        $form.find('.field-payment-payment_type .help-block').text(response.error.message);
+        $form.find('.submit').prop('disabled', false); // Разрешим submit
+    } else { // Token был создан
+        // Получаем token id:
+        var token = response.id;
+        // Вставим token в форму, чтобы при submit он пришел на сервер:
+        $('#payment-stripetoken').val(token);
+        // Сабмитим форму:
+        $form.get(0).submit();
+    }
+};

@@ -1,3 +1,7 @@
+.stripe_fields {
+  display: none;
+}
+
 .cookies-bar {
   display: block;
   min-height: 30px;

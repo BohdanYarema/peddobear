@@ -21,15 +21,15 @@ return [
         ],
         [
             'image'     => '/img/applepay.svg',
-            'status'    => 0,
-            'id'        =>  'applepay',
-            'name'      =>  'ApplePay',
+            'status'    => 1,
+            'id'        =>  'stripe',
+            'name'      =>  'Stripe',
         ],
         [
             'image'     => '/img/applepay.svg',
             'status'    => 0,
-            'id'        =>  'stripe',
-            'name'      =>  'Stripe',
+            'id'        =>  'applepay',
+            'name'      =>  'ApplePay',
         ],
     ],
     'delivery'=>[

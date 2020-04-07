@@ -18,6 +18,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use app\models\PaymentController;
 use app\models\PayPal;
+use app\models\Stripe;
 
 class SiteController extends Controller
 {
@@ -259,11 +260,18 @@ class SiteController extends Controller
         $model->items               = CartModel::getCart();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
             switch ($model->payment_type){
+                case 1: {
+                    $model->payment_order_id    = Yii::$app->security->generateRandomKey(5)+time();
+                    $result = new PaymentController(new Stripe());
+                    $model->redirectUrl = $result->pay($model);
+                    break;
+                }
                 case 0 :{
                     $model->payment_order_id    = Yii::$app->security->generateRandomKey(5)+time();
                     $result = new PaymentController(new PayPal());
-                    $model->redirectUrl         = $result->pay($model);
+                    $model->redirectUrl = $result->pay($model);
                     break;
                 }
             }

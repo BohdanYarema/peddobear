@@ -37,6 +37,12 @@ class Payment extends \yii\db\ActiveRecord
      */
     public $items;
 
+    public $card_number;
+    public $cvc;
+    public $month;
+    public $year;
+    public $stripeToken;
+
 
     /**
      * {@inheritdoc}
@@ -63,7 +69,7 @@ class Payment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['items', 'payment_order_id', 'redirectUrl'], 'safe'],
+            [['items', 'payment_order_id', 'redirectUrl', 'card_number', 'month', 'year', 'cvc', 'stripeToken'], 'safe'],
             [['shipping', 'summary'], 'number'],
             [['name', 'email', 'phone', 'country', 'address', 'zipcode', 'city', 'payment_type'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
@@ -92,6 +98,11 @@ class Payment extends \yii\db\ActiveRecord
             'status' => 'Status',
             'payment_order_id' => 'Payment order id',
             'redirectUrl' => 'redirect Url',
+            'year' => 'Year',
+            'month' => 'Month',
+            'cvc' => 'Cvc',
+            'stripeToken' => 'Stripe Token',
+            'card_number' => 'Card Number',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
